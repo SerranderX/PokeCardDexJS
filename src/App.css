@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
 .App-logo {
@@ -26,6 +29,26 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.Dark-mode {
+  color: white;
+  background-color: #282c34;
+}
+
+.Header {
+  margin : 0 0 2em 0;
+}
+
+.Header h1 {
+  margin: 0;
+  padding: 20px;
+}
+
+.Character {
+  background-color: #bfc9ce63;
+  margin: 15px;
+  border-radius: 10%;
 }
 
 @keyframes App-logo-spin {

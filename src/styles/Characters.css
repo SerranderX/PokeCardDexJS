@@ -1,0 +1,295 @@
+.Characters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.Character {
+    cursor: pointer;
+}
+
+.CharacterCard {
+    background-color: #626970;
+    color: white;
+    border-radius: 10%;
+    padding: 20px;
+    margin: 15px;
+    width: 400px;
+    height: 600px;
+    position: fixed;
+    left: calc(50% - 200px);
+    top: calc(50% - 300px);
+    border: 10px solid #e7e430f3;
+    background-clip: padding-box;
+    box-shadow: 40px 40px 40px black;
+}
+
+.CharacterCard-Button {
+    position: relative;
+    padding: 0%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    margin-top: 1%;
+    cursor: pointer;
+    top: 3.5px;
+}
+
+.CharacterCard-Button label {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.CharacterCard-Icon-Type {
+    float: left;
+    position: relative;
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -4%;
+}
+
+.CharacterCard-Image {
+    border-radius: 2%;
+    background-image: url('../assets/images/forest.jpg');
+    background-size: 100% 100%;
+    clear: both;
+}
+
+.CharacterCard-Head {
+    margin-bottom: 1.5%;
+    padding-bottom: 2%;    
+    border-bottom: #424242 2px solid;
+}
+
+.CharacterCard-Body {
+    margin-bottom: 1.5%;
+    padding-bottom: 2%;    
+    border-bottom: #424242 2px solid;
+}
+
+.CharacterCard-Title {
+    float: left;
+    margin: 3% 2% 2% 2%; 
+    padding: 0;
+    width: 270px;
+    text-align: left;
+    margin-left: 2%;
+}
+
+.Character-Selected {
+    opacity: 0 !important;
+}
+
+h2 em {
+    font-size: 1em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.445);
+}
+
+.CharacterCard-Description-Content {
+    background-color: #42424260;
+    border-radius: 0 0 3% 3%;
+    padding: 0% 1% 0% 2%;
+}
+
+.CharacterCard-Description-Content-Display {
+    height: 100%;
+    max-height: 400px;
+    text-align: left;
+    overflow-y: auto;
+}
+
+.CharacterCard-Description-Title {
+    text-align: center;
+    margin: 4% 0 4% 0;
+}
+
+.CharacterCard-Description {
+    height: 50%;
+}
+
+.CharacterCard-Description main {
+    height: 80%;
+    position: relative;
+    top: -.3%;
+}
+
+.CharacterCard-Description-Text {
+    display: flex !important;
+    font-size: 18px;
+    margin: 8px 0 8px 0;
+    align-items: center;
+}
+
+.CharacterCard-Description-Text p {
+    font-size: 16px;
+    margin: 0 7px 0 0;
+}
+
+.CharacterCard-Description-Text h4 {
+    margin: 0 4px 0 0;
+}
+
+.CharacterCard-Description-Text b {
+    margin: 0 4px 0 0;
+    font-size: 18px;
+}
+
+.CharacterCard-Description-Text-Ability {
+    font-size: 18px;
+    margin: 5px 0 5px 0;
+    align-items: center;
+    border-top: #000 1.2px solid;
+    display: inline-block;
+}
+
+.CharacterCard-Description-Text-Ability h3{
+    margin: 8px 0 8px 0;
+}
+
+.CharacterCard-Description-Text-Ability-Detail {
+    display: block;
+}
+
+.CharacterCard-Description-Text-Ability-Detail li {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    max-width: -webkit-fill-available;
+    height: auto;
+    font-size: 1.1em;
+    padding: 5px 10px 5px 15px;
+    cursor:initial;
+}
+
+.CharacterCard-Description-Text-Ability-Detail em {
+    font-size: 1.4em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgba(250, 249, 249, 0.76);
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+
+.CharacterCard-Description-Content-Display::-webkit-scrollbar {
+    width: .7em;
+    color: white;
+}
+
+.CharacterCard-Description-Content-Display::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+}
+
+.CharacterCard-Description-Content-Display::-webkit-scrollbar-thumb {
+    background-color: rgba(224, 224, 224, 0.8);
+    outline: 1px solid rgba(112, 128, 144, 0);
+    border-radius: 5px;
+}
+
+.CharacterCard-Sprite {
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-right: 2%;
+    cursor: pointer;
+}
+
+.CharacterCard-Sprite-img {
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255, 0.3);
+    position: relative;
+    width: 60px;
+    height: 60px;
+    top: -10%;
+    left: -20%;
+}
+
+.CharacterCard-Sprite-label {
+    position: relative;
+    float: left;
+    padding-left: 8%;
+    top: -27%;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: black;
+}
+
+/* pOKEMON INFO*/
+
+
+ul, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+ul {
+    display: flex;
+    width: 100%;
+}
+
+li {
+    border-radius: 7px;
+    width: 100%;
+    padding: 10px 15px;
+    position: relative;
+    cursor: pointer;
+    height: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    user-select: none;
+}
+
+.underline {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #ffffff;
+}
+
+li button {
+    width: 20px;
+    height: 20px;
+    border: 0;
+    background: #fff;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    stroke: #000;
+    margin-left: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Descartado */
+li.selected {
+    display:flex;
+    background: rgba(136, 124, 124, 0.3);
+    top: -1px;
+}
+
+nav {
+    padding: 5px 5px 0;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid #ccc6c600;
+    background: rgba(136, 124, 124, 0.281);
+    height: 44px;
+}
+
+.CharacterCard-Description-Text-Stat p em {
+    font-size: 1em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.692);
+}

@@ -1,0 +1,72 @@
+.Normal {
+    background: radial-gradient(circle, rgba(230,230,209,1) 0%, rgba(164,164,144,1) 100%);
+}
+
+.Fighting {
+    background: radial-gradient(circle, rgba(204,135,132,1) 0%, rgba(192,48,40,1) 100%);
+}
+
+.Flying {
+    background: radial-gradient(circle, rgba(201,192,231,1) 0%, rgba(168,144,240,1) 100%);
+}
+
+.Poison {
+    background: radial-gradient(circle, rgba(182,126,182,1) 0%, rgba(160,64,160,1) 100%);
+}
+
+.Ground {
+    background: radial-gradient(circle, rgba(218,203,163,1) 0%, rgba(224,192,104,1) 100%);
+}
+
+.Rock {
+    background: radial-gradient(circle, rgba(201,186,167,1) 0%, rgba(176,132,80,1) 100%)
+}
+
+.Bug {
+    background: radial-gradient(circle, rgba(209,213,171,1) 0%, rgba(174,186,69,1) 100%);
+}
+
+.Ghost {
+    background: radial-gradient(circle, rgba(157,141,182,1) 0%, rgba(112,88,152,1) 100%);
+}
+
+.Steel {
+    background: radial-gradient(circle, rgba(218,218,233,1) 0%, rgba(184,184,208,1) 100%);
+}
+
+.Fire {
+    background: radial-gradient(circle, rgba(218,191,172,1) 0%, rgba(203,128,75,1) 100%);
+}
+
+.Water {
+    background: radial-gradient(circle, rgba(180,193,226,1) 0%, rgba(118,152,233,1) 100%);
+}
+
+.Grass {
+    background: radial-gradient(circle, rgba(189,213,178,1) 0%, rgba(133,195,103,1) 100%);
+}
+
+.Electric {
+    background: radial-gradient(circle, rgba(208,197,161,1) 0%, rgba(196,163,49,1) 100%); 
+}
+
+.Psychic {
+    background: radial-gradient(circle, rgba(244,181,200,1) 0%, rgba(248,88,136,1) 100%);
+}
+
+.Ice {
+    background: radial-gradient(circle, rgba(189,223,223,1) 0%, rgba(107,168,168,1) 100%);
+}
+
+.Dragon {
+    background: radial-gradient(circle, rgba(185,163,238,1) 0%, rgba(112,56,248,1) 100%);
+}
+
+.Dark {
+    background: radial-gradient(circle, rgba(212,187,170,1) 0%, rgba(112,88,72,1) 100%);
+}
+
+.Fairy {
+    background: radial-gradient(circle, rgba(240,209,216,1) 0%, rgba(238,153,172,1) 100%);
+}
+

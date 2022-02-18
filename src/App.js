@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
+import Header from './components/Header';
+import Characters from './components/Characters';
+import { usePokemonsData } from './hooks/usePokemonsData';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
+  const {characters, getGeneration, generacion, loading, error, offSet, versions} = usePokemonsData();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`App ${darkMode && 'Dark-mode'}`}>
+      <Header darkMode={darkMode} setDarkMode={setDarkMode} getGeneracion={getGeneration} generacion={generacion}/>
+      {loading && <p>Loading...</p>}
+      {!loading && !error && <Characters offSet={offSet} darkMode={darkMode} characters={characters} versions={versions} />}
+
     </div>
   );
 }
