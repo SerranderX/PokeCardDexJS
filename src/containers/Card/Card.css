@@ -1,0 +1,16 @@
+.CharacterCard {
+    background-color: #626970;
+    color: white;
+    border-radius: 10%;
+    padding: 20px;
+    margin: 15px;
+    width: 400px;
+    height: 600px;
+    position: fixed;
+    left: calc(50% - 250px);
+    top: calc(50% - 300px);
+    border: 10px solid #e7e430f3;
+    background-clip: padding-box;
+    box-shadow: 40px 40px 40px black;
+}
+

@@ -1,20 +1,26 @@
 import './App.css';
-import React, {useState} from 'react';
-import Header from './components/Header';
-import Characters from './components/Characters';
+import React from 'react';
+import Header from './containers/Header/Header';
+import Characters from './containers/Characters/Characters';
+import { Footer } from './containers/Footer/Footer';
+import Loading from './components/Loading/Loading';
 import { usePokemonsData } from './hooks/usePokemonsData';
+import { AppContext } from './context/AppContext';
+import { useAppInitialState } from './hooks/useAppInitialState'; 
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
   const {characters, getGeneration, generacion, loading, error, offSet, versions} = usePokemonsData();
+  const initialState = useAppInitialState();
 
   return (
-    <div className={`App ${darkMode && 'Dark-mode'}`}>
-      <Header darkMode={darkMode} setDarkMode={setDarkMode} getGeneracion={getGeneration} generacion={generacion}/>
-      {loading && <p>Loading...</p>}
-      {!loading && !error && <Characters offSet={offSet} darkMode={darkMode} characters={characters} versions={versions} />}
-
-    </div>
+    <AppContext.Provider value={initialState}>
+      <div className={`App`} data-theme={initialState.theme}>
+        <Header getGeneracion={getGeneration} generacion={generacion}/>
+        {loading && <Loading/>}
+        {!loading && !error && <Characters offSet={offSet} characters={characters} versions={versions} />}
+        <Footer/>
+      </div>
+    </AppContext.Provider>
   );
 }
 

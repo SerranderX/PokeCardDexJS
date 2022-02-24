@@ -1,8 +1,12 @@
+@import url('./styles/_var.scss');
+
 .App {
   text-align: center;
-  min-height: 100vh;
   padding: 0;
   margin: 0;
+  height: auto;
+  background-color: var(--background);
+  color: var(--text-primary);
 }
 
 .App-logo {
@@ -29,11 +33,6 @@
 
 .App-link {
   color: #61dafb;
-}
-
-.Dark-mode {
-  color: white;
-  background-color: #282c34;
 }
 
 .Header {

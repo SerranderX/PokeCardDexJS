@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/Characters.css';
-import CardGeneralDescription from './CardGeneralDescription';
-import CardLoadDescription from './CardLoadDescription';
-import CardStatsDescription from './CardStatsDescription';
+import CardGeneralDescription from '../components/CardGeneralDescription';
+import CardLoadDescription from '../components/CardLoadDescription';
+import CardStatsDescription from '../components/CardStatsDescription';
 import CardAbilitiesDescription from './CardAbilitiesDescription';
-import CardLocationsDescription from './CardLocationsDescription';
-import CardMovesDescription from './CardMovesDescription';
+import CardLocationsDescription from '../components/CardLocationsDescription';
+import CardMovesDescription from '../components/CardMovesDescription';
 
-const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemonData, onLoadDescription, logoType, shinny, famale, tabDescriptionData }) => {
+const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemonData, onLoadDescription, logoType, shinny, famale, tabDescriptionData, pokemonBackground, versions }) => {
 
     const imagen = () => {
         if (shinny && famale) {
@@ -60,10 +60,10 @@ const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemon
                         >
                             {onLoadDescription && (<CardLoadDescription logoType={logoType} />)}
                             {(!onLoadDescription && tabKey === "general") && (
-                                <CardGeneralDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab}/>
+                                <CardGeneralDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab} pokemon={pokemon}/>
                             )}
                             {(!onLoadDescription && tabKey === "stats") && (
-                                <CardStatsDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemon={pokemon} pokemonData={pokemonData} selectedTab={selectedTab}/>
+                                <CardStatsDescription pokemonBackground={pokemonBackground} tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemon={pokemon} pokemonData={pokemonData} selectedTab={selectedTab}/>
                             )}
                             {(!onLoadDescription && tabKey === "abilities") && (
                                 <CardAbilitiesDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab}/>
@@ -72,7 +72,7 @@ const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemon
                                 <CardMovesDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab}/>
                             )} 
                             {(!onLoadDescription && tabKey === "locations") && (
-                                <CardLocationsDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab}/>
+                                <CardLocationsDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab} versions={versions}/>
                             )} 
                         </motion.div>
                     </AnimatePresence>

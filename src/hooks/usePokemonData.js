@@ -40,24 +40,24 @@ import axios from 'axios';
 const API_URL = 'https://pokeapi.co/api/v2/';
 
 const pokemonTypeIcons = {
-    'normal': { 'logo': NormalLogo, 'color': 'Normal', 'typeIcon': NormalTypeIcon },
-    'fighting': { 'logo': FightingLogo, 'color': 'Fighting', 'typeIcon': FightingTypeIcon },
-    'flying': { 'logo': FlyingLogo, 'color': 'Flying', 'typeIcon': FlayingTypeIcon },
-    'poison': { 'logo': PoisonLogo, 'color': 'Poison', 'typeIcon': PoisonTypeIcon },
-    'ground': { 'logo': GroundLogo, 'color': 'Ground', 'typeIcon': GroundTypeIcon },
-    'rock': { 'logo': RockLogo, 'color': 'Rock', 'typeIcon': RockTypeIcon },
-    'bug': { 'logo': BugLogo, 'color': 'Bug', 'typeIcon': BugTypeIcon },
-    'ghost': { 'logo': GhostLogo, 'color': 'Ghost', 'typeIcon': GhostTypeIcon },
-    'steel': { 'logo': SteelLogo, 'color': 'Steel', 'typeIcon': SteelTypeIcon },
-    'fire': { 'logo': FireLogo, 'color': 'Fire', 'typeIcon': FireTypeIcon },
-    'water': { 'logo': WaterLogo, 'color': 'Water', 'typeIcon': WaterTypeIcon },
-    'grass': { 'logo': GrassLogo, 'color': 'Grass', 'typeIcon': GrassTypeIcon },
-    'electric': { 'logo': ElectricLogo, 'color': 'Electric', 'typeIcon': ElectricTypeIcon },
-    'psychic': { 'logo': PsychicLogo, 'color': 'Psychic', 'typeIcon': PsychicTypeIcon },
-    'ice': { 'logo': IceLogo, 'color': 'Ice', 'typeIcon': IceTypeIcon },
-    'dragon': { 'logo': DragonLogo, 'color': 'Dragon', 'typeIcon': DragonTypeIcon },
-    'dark': { 'logo': DarkLogo, 'color': 'Dark', 'typeIcon': DarkTypeIcon },
-    'fairy': { 'logo': FairyLogo, 'color': 'Fairy', 'typeIcon': FairyTypeIcon }
+    'normal': { 'logo': NormalLogo, 'color': { name: 'Normal', primary: 'rgba(145, 154, 162, 1)', secondary: 'rgba(145, 154, 162, 0.2)' }, 'typeIcon': NormalTypeIcon },
+    'fighting': { 'logo': FightingLogo, 'color': { name: 'Fighting', primary: 'rgba(224, 48, 106, 1)', secondary: 'rgba(224, 48, 106, 0.2)' }, 'typeIcon': FightingTypeIcon },
+    'flying': { 'logo': FlyingLogo, 'color': { name: 'Flying', primary: 'rgba(137 170 227, 1)', secondary: 'rgba(137 170 227, 0.2)' }, 'typeIcon': FlayingTypeIcon },
+    'poison': { 'logo': PoisonLogo, 'color': { name: 'Poison', primary: 'rgba(181, 103, 206, 1)', secondary: 'rgba(181, 103, 206, 0.2)' }, 'typeIcon': PoisonTypeIcon },
+    'ground': { 'logo': GroundLogo, 'color': { name: 'Ground', primary: 'rgba(232, 114, 54, 1)', secondary: 'rgba(232, 114, 54, 0.2)' }, 'typeIcon': GroundTypeIcon },
+    'rock': { 'logo': RockLogo, 'color': { name: 'Rock', primary: 'rgba(200, 182, 134, 1)', secondary: 'rgba(200, 182, 134, 0.2)' }, 'typeIcon': RockTypeIcon },
+    'bug': { 'logo': BugLogo, 'color': { name: 'Bug', primary: 'rgba(131, 195, 0, 1)', secondary: 'rgba(131, 195, 0, 0.2)' }, 'typeIcon': BugTypeIcon },
+    'ghost': { 'logo': GhostLogo, 'color': { name: 'Ghost', primary: 'rgba(76, 106, 178, 1)', secondary: 'rgba(76, 106, 178, 0.2)' }, 'typeIcon': GhostTypeIcon },
+    'steel': { 'logo': SteelLogo, 'color': { name: 'Steel', primary: 'rgba(90, 142, 162, 1)', secondary: 'rgba(90, 142, 162, 0.2)' }, 'typeIcon': SteelTypeIcon },
+    'fire': { 'logo': FireLogo, 'color': { name: 'Fire', primary: 'rgba(255, 151, 65, 1)', secondary: 'rgba(255, 151, 65, 0.2)' }, 'typeIcon': FireTypeIcon },
+    'water': { 'logo': WaterLogo, 'color': { name: 'Water', primary: 'rgba(54, 146, 220, 1)', secondary: 'rgba(54, 146, 220, 0.2)' }, 'typeIcon': WaterTypeIcon },
+    'grass': { 'logo': GrassLogo, 'color': { name: 'Grass', primary: 'rgba(58, 255, 86, 1)', secondary: 'rgba(58, 255, 86, 0.2)' }, 'typeIcon': GrassTypeIcon },
+    'electric': { 'logo': ElectricLogo, 'color': { name: 'Electric', primary: 'rgba(251, 209, 0, 1)', secondary: 'rgba(251, 209, 0, 0.2)' }, 'typeIcon': ElectricTypeIcon },
+    'psychic': { 'logo': PsychicLogo, 'color': { name: 'Psychic', primary: 'rgba(255, 102, 117, 1)', secondary: 'rgba(255, 102, 117, 0.2)' }, 'typeIcon': PsychicTypeIcon },
+    'ice': { 'logo': IceLogo, 'color': { name: 'Ice', primary: 'rgba(76, 209, 192, 1)', secondary: 'rgba(76, 209, 192, 0.2)' }, 'typeIcon': IceTypeIcon },
+    'dragon': { 'logo': DragonLogo, 'color': { name: 'Dragon', primary: 'rgba(0, 111, 201, 1)', secondary: 'rgba(0, 111, 201, 0.2)' }, 'typeIcon': DragonTypeIcon },
+    'dark': { 'logo': DarkLogo, 'color': { name: 'Dark', primary: 'rgba(255, 255, 255, 1)', secondary: 'rgba(255, 255, 255, 0.2)' }, 'typeIcon': DarkTypeIcon },
+    'fairy': { 'logo': FairyLogo, 'color': { name: 'Fairy', primary: 'rgba(251, 137, 235, 1)', secondary: 'rgba(251, 137, 235, 0.2)' }, 'typeIcon': FairyTypeIcon }
 };
 
 const usePokemonData = () => {
@@ -108,6 +108,7 @@ const usePokemonData = () => {
                 }
             });
             
+            
 
             playPokemonSound(0.1, response.data.name);
             
@@ -117,14 +118,21 @@ const usePokemonData = () => {
         const getPokemonGeneralData = async (id, name) => {
             console.log("getPokemonGeneralData iniciado");
             console.log(tabDescriptionData);
+            console.log(pokemon);
             if(tabDescriptionData === null){
                 const evolutionTriggers = await axios.get(`${API_URL}evolution-trigger/${id}`).then(response => response.data).catch(() => null );
                 const encounterMethod = await axios.get(`${API_URL}encounter-method/${id}`).then(response => response.data).catch(() => null);
                 const species = await axios.get(`${API_URL}pokemon-species/${id}`).then(response => response.data).catch(() => null);
-                const location = await axios.get(`${API_URL}pokemon/${id}/encounters`).then(response => response.data).catch(() => null);
-                const evolutions = await axios.get(species.evolution_chain.url).then(response => response.data).catch(() => null);
+                const location = await axios.get(pokemon.location_area_encounters).then(response => response.data).catch(() => null);
+                if(species != null){
+                    const evolutions = await axios.get(species.evolution_chain.url).then(response => response.data).catch(() => null);
+                    setTabDescriptionData({evolutions, evolutionTriggers, encounterMethod, location, species});
+                } else {
+                    setTabDescriptionData({evolutionTriggers, encounterMethod, location, species});
+                }
 
-                setTabDescriptionData({evolutions, evolutionTriggers, encounterMethod, location, species});
+                console.log("location");
+                console.log(location);
             } else {
                 console.log("Tab description data is not null");
                 const evolutionTriggers = tabDescriptionData.evolutionTriggers;

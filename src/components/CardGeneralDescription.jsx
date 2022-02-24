@@ -2,8 +2,18 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { toUpperCaseIndex, transformString } from '../shared/Utils';
 
-const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, pokemonData}) => {
+const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, pokemonData, pokemon}) => {
     let auxDesc = false;
+    let pseudoLegendary = false;
+
+    if (pokemon) { 
+        console.log("Calc pseudo legendary");
+        var asd = 0;
+        pokemon.stats.map(item => asd += item.base_stat); 
+        if(asd === 600){
+            pseudoLegendary = true;
+        }
+    }
 
     const transformWeight = (weight) => {
         let weightStr = weight.toString();
@@ -62,10 +72,13 @@ const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, poke
                 <p><b>Base happiness:</b>{tabDescriptionData.species.base_happiness}/255</p>
             </motion.section>
             <motion.section className="CharacterCard-Description-Text">
-                <p><b>Legendary:</b>{(tabDescriptionData.species.is_legendary) ? "Yes" : "No"}</p>
+                <p><b>Legendary:</b>{(tabDescriptionData.species.is_legendary || tabDescriptionData.species.is_mythical) ? "Yes" : "No"}</p>
             </motion.section>
             <motion.section className="CharacterCard-Description-Text">
                 <p><b>Mythical:</b>{(tabDescriptionData.species.is_mythical) ? "Yes" : "No"}</p>
+            </motion.section>
+            <motion.section className="CharacterCard-Description-Text">
+                <p><b>Pseudo Legendary: </b>{(pseudoLegendary) ? "Yes" : "No"}</p>
             </motion.section>
             <motion.section className="CharacterCard-Description-Text">
                 <p><b>Generation:</b>{toUpperCaseIndex(tabDescriptionData.species.generation.name)}</p>

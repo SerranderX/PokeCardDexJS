@@ -1,0 +1,14 @@
+:root {
+  --background: #f0f7fc;;
+  --text-primary: black;
+  --text-primary-shadow: rgb(88, 87, 87, 0.7);
+  --text-secondary: royalblue;
+  --accent: purple;
+}
+[data-theme='dark'] {
+  --background: #262626;
+  --text-primary: white;
+  --text-primary-shadow: rgba(255, 255, 255, 0.4);
+  --text-secondary: grey;
+  --accent: darkred;
+}

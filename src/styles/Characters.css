@@ -1,26 +1,11 @@
-.Characters {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
+@import url('./_var.scss');
 
-.Character {
-    cursor: pointer;
-}
+.Versions-Select{
+    width: -webkit-fill-available;
+    height: 12%;
+    text-align: center;
+    font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
-.CharacterCard {
-    background-color: #626970;
-    color: white;
-    border-radius: 10%;
-    padding: 20px;
-    margin: 15px;
-    width: 400px;
-    height: 600px;
-    position: fixed;
-    left: calc(50% - 200px);
-    top: calc(50% - 300px);
-    border: 10px solid #e7e430f3;
-    background-clip: padding-box;
-    box-shadow: 40px 40px 40px black;
 }
 
 .CharacterCard-Button {
@@ -84,11 +69,11 @@
 h2 em {
     font-size: 1em;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgba(255, 255, 255, 0.445);
+    color: var(--text-primary-shadow);
 }
 
 .CharacterCard-Description-Content {
-    background-color: #42424260;
+    background-color: #424242a3;
     border-radius: 0 0 3% 3%;
     padding: 0% 1% 0% 2%;
 }

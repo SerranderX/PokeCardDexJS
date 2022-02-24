@@ -31,7 +31,7 @@
 }
 
 .Steel {
-    background: radial-gradient(circle, rgba(218,218,233,1) 0%, rgba(184,184,208,1) 100%);
+    background: radial-gradient(circle, rgba(218,218,233,1) 0%, rgba(130, 130, 201,1) 100%);
 }
 
 .Fire {
@@ -63,10 +63,9 @@
 }
 
 .Dark {
-    background: radial-gradient(circle, rgba(212,187,170,1) 0%, rgba(112,88,72,1) 100%);
+    background: radial-gradient(circle, rgba(212,187,170,1) 0%, rgb(100, 74, 56) 100%);
 }
 
 .Fairy {
     background: radial-gradient(circle, rgba(240,209,216,1) 0%, rgba(238,153,172,1) 100%);
 }
-
