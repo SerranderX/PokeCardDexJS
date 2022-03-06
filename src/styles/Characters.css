@@ -5,7 +5,6 @@
     height: 12%;
     text-align: center;
     font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-
 }
 
 .CharacterCard-Button {
@@ -34,24 +33,9 @@
     left: -4%;
 }
 
-.CharacterCard-Image {
-    border-radius: 2%;
-    background-image: url('../assets/images/forest.jpg');
-    background-size: 100% 100%;
-    clear: both;
-}
 
-.CharacterCard-Head {
-    margin-bottom: 1.5%;
-    padding-bottom: 2%;    
-    border-bottom: #424242 2px solid;
-}
 
-.CharacterCard-Body {
-    margin-bottom: 1.5%;
-    padding-bottom: 2%;    
-    border-bottom: #424242 2px solid;
-}
+
 
 .CharacterCard-Title {
     float: left;
@@ -72,27 +56,8 @@ h2 em {
     color: var(--text-primary-shadow);
 }
 
-.CharacterCard-Description-Content {
-    background-color: #424242a3;
-    border-radius: 0 0 3% 3%;
-    padding: 0% 1% 0% 2%;
-}
 
-.CharacterCard-Description-Content-Display {
-    height: 100%;
-    max-height: 400px;
-    text-align: left;
-    overflow-y: auto;
-}
 
-.CharacterCard-Description-Title {
-    text-align: center;
-    margin: 4% 0 4% 0;
-}
-
-.CharacterCard-Description {
-    height: 50%;
-}
 
 .CharacterCard-Description main {
     height: 80%;
@@ -100,105 +65,8 @@ h2 em {
     top: -.3%;
 }
 
-.CharacterCard-Description-Text {
-    display: flex !important;
-    font-size: 18px;
-    margin: 8px 0 8px 0;
-    align-items: center;
-}
-
-.CharacterCard-Description-Text p {
-    font-size: 16px;
-    margin: 0 7px 0 0;
-}
-
-.CharacterCard-Description-Text h4 {
-    margin: 0 4px 0 0;
-}
-
-.CharacterCard-Description-Text b {
-    margin: 0 4px 0 0;
-    font-size: 18px;
-}
-
-.CharacterCard-Description-Text-Ability {
-    font-size: 18px;
-    margin: 5px 0 5px 0;
-    align-items: center;
-    border-top: #000 1.2px solid;
-    display: inline-block;
-}
-
-.CharacterCard-Description-Text-Ability h3{
-    margin: 8px 0 8px 0;
-}
-
-.CharacterCard-Description-Text-Ability-Detail {
-    display: block;
-}
-
-.CharacterCard-Description-Text-Ability-Detail li {
-    display: inline-block;
-    margin: 0 5px 0 0;
-    max-width: -webkit-fill-available;
-    height: auto;
-    font-size: 1.1em;
-    padding: 5px 10px 5px 15px;
-    cursor:initial;
-}
-
-.CharacterCard-Description-Text-Ability-Detail em {
-    font-size: 1.4em;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgba(250, 249, 249, 0.76);
-}
-
 body::-webkit-scrollbar {
     width: 0;
-}
-
-
-.CharacterCard-Description-Content-Display::-webkit-scrollbar {
-    width: .7em;
-    color: white;
-}
-
-.CharacterCard-Description-Content-Display::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-}
-
-.CharacterCard-Description-Content-Display::-webkit-scrollbar-thumb {
-    background-color: rgba(224, 224, 224, 0.8);
-    outline: 1px solid rgba(112, 128, 144, 0);
-    border-radius: 5px;
-}
-
-.CharacterCard-Sprite {
-    float: left;
-    width: 50px;
-    height: 50px;
-    margin-right: 2%;
-    cursor: pointer;
-}
-
-.CharacterCard-Sprite-img {
-    border-radius: 50%;
-    background-color: rgb(255, 255, 255, 0.3);
-    position: relative;
-    width: 60px;
-    height: 60px;
-    top: -10%;
-    left: -20%;
-}
-
-.CharacterCard-Sprite-label {
-    position: relative;
-    float: left;
-    padding-left: 8%;
-    top: -27%;
-    font-weight: bold;
-    font-size: 0.9em;
-    color: black;
 }
 
 /* pOKEMON INFO*/

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { toUpperCaseIndex, transformString } from '../shared/Utils';
+import { toUpperCaseIndex, transformString } from '../../shared/Utils';
 
 const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, pokemonData, pokemon}) => {
     let auxDesc = false;
@@ -8,9 +8,9 @@ const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, poke
 
     if (pokemon) { 
         console.log("Calc pseudo legendary");
-        var asd = 0;
-        pokemon.stats.map(item => asd += item.base_stat); 
-        if(asd === 600){
+        var sum = 0;
+        pokemon.stats.map(item => sum += item.base_stat); 
+        if(sum === 600){
             pseudoLegendary = true;
         }
     }
@@ -42,7 +42,7 @@ const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, poke
         <React.Fragment>
             <motion.h1 className="CharacterCard-Description-Title">{toUpperCaseIndex(tabTitle)}</motion.h1>
             <motion.section className="CharacterCard-Description-Text">
-                {tabDescriptionData.species.flavor_text_entries.map(item => {
+                {tabDescriptionData.species?.flavor_text_entries.map(item => {
                     if(item.language.name === "en" && !auxDesc){
                         auxDesc = true;
                         return (
@@ -65,40 +65,54 @@ const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, poke
                 <b>Height:</b>
                 <p>{pokemonData[0].general.height}0 cm</p>
             </motion.section>
-            <motion.section className="CharacterCard-Description-Text">
-                <p><b>Capture Rate:</b>{tabDescriptionData.species.capture_rate}/255</p>
-            </motion.section>
-            <motion.section className="CharacterCard-Description-Text">
-                <p><b>Base happiness:</b>{tabDescriptionData.species.base_happiness}/255</p>
-            </motion.section>
-            <motion.section className="CharacterCard-Description-Text">
-                <p><b>Legendary:</b>{(tabDescriptionData.species.is_legendary || tabDescriptionData.species.is_mythical) ? "Yes" : "No"}</p>
-            </motion.section>
-            <motion.section className="CharacterCard-Description-Text">
-                <p><b>Mythical:</b>{(tabDescriptionData.species.is_mythical) ? "Yes" : "No"}</p>
-            </motion.section>
-            <motion.section className="CharacterCard-Description-Text">
-                <p><b>Pseudo Legendary: </b>{(pseudoLegendary) ? "Yes" : "No"}</p>
-            </motion.section>
-            <motion.section className="CharacterCard-Description-Text">
-                <p><b>Generation:</b>{toUpperCaseIndex(tabDescriptionData.species.generation.name)}</p>
-            </motion.section>
-            {(tabDescriptionData.species.evolves_from_species) && (
+            {(tabDescriptionData.species?.capture_rate) && (
                 <motion.section className="CharacterCard-Description-Text">
-                    <p><b>Pre-evolution:</b>{toUpperCaseIndex(tabDescriptionData.species.evolves_from_species.name)}</p>
+                    <p><b>Capture Rate:</b>{tabDescriptionData.species?.capture_rate}/255</p>
+                </motion.section>
+            )}
+            {(tabDescriptionData.species?.base_happiness) && (
+                <motion.section className="CharacterCard-Description-Text">
+                    <p><b>Base happiness:</b>{tabDescriptionData.species?.base_happiness}/255</p>
+                </motion.section>
+            )}
+            {(tabDescriptionData.species?.is_legendary && tabDescriptionData.species?.is_mythical) && (
+                <motion.section className="CharacterCard-Description-Text">
+                    <p><b>Legendary:</b>{(tabDescriptionData.species?.is_legendary || tabDescriptionData.species?.is_mythical) ? "Yes" : "No"}</p>
+                </motion.section>
+            )}
+            {(tabDescriptionData.species?.is_mythical) && (
+                <motion.section className="CharacterCard-Description-Text">
+                    <p><b>Mythical:</b>{(tabDescriptionData.species?.is_mythical) ? "Yes" : "No"}</p>
                 </motion.section>
             )}
             <motion.section className="CharacterCard-Description-Text">
-                <p><b>Shape:</b>{toUpperCaseIndex(tabDescriptionData.species.shape.name)}</p>
+                <p><b>Pseudo Legendary: </b>{(pseudoLegendary) ? "Yes" : "No"}</p>
             </motion.section>
-            {tabDescriptionData.species.egg_groups.length > 0 && (
+            {(tabDescriptionData.species?.generation?.name) && (
+                <motion.section className="CharacterCard-Description-Text">
+                    <p><b>Generation:</b>{toUpperCaseIndex(tabDescriptionData.species?.generation?.name)}</p>
+                </motion.section>
+            )}
+            {(tabDescriptionData.species?.evolves_from_species) && (
+                <motion.section className="CharacterCard-Description-Text">
+                    <p><b>Pre-evolution:</b>{toUpperCaseIndex(tabDescriptionData.species?.evolves_from_species?.name)}</p>
+                </motion.section>
+            )}
+            {(tabDescriptionData.species?.shape?.name) && (
+                <motion.section className="CharacterCard-Description-Text">
+                    <p><b>Shape:</b>{toUpperCaseIndex(tabDescriptionData.species?.shape.name)}</p>
+                </motion.section>
+            )}
+            {tabDescriptionData.species?.egg_groups?.length > 0 && (
                 <motion.section className="CharacterCard-Description-Text">
                     <p><b>{(tabDescriptionData.species.egg_groups.length > 1) ? 'Egg groups:' : 'Egg group:'}</b>{getEggGroups(tabDescriptionData.species.egg_groups)}</p>
                 </motion.section>
             )}
-            <motion.section className="CharacterCard-Description-Text">
-                <p><b>Grouth Rate: </b>{toUpperCaseIndex(tabDescriptionData.species.growth_rate.name)}</p>
-            </motion.section>
+            {tabDescriptionData.species?.egg_groups?.length > 0 && (
+                <motion.section className="CharacterCard-Description-Text">
+                    <p><b>Grouth Rate: </b>{toUpperCaseIndex(tabDescriptionData.species?.growth_rate.name)}</p>
+                </motion.section>
+            )}
         </React.Fragment>
     )
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { variantsCardAnimation, whileHoverCardExit } from '../../shared/CharacterAnimations';
-import { CardBody } from '../CardBody';
-import { CardHead } from '../CardHead';
-import { CardFooter } from '../CardFooter';
+import { CardBody } from '../CardBody/CardBody';
+import { CardHead } from '../CardHead/CardHead';
+import { CardFooter } from '../CardFooter/CardFooter';
 import '../../styles/PokemonTypes.css';
 import './Card.css';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { toUpperCaseIndex } from '../shared/Utils';
+import { toUpperCaseIndex } from '../../shared/Utils';
+import './CardAbilitiesDescription.css';
 
 const CardAbilitiesDescription = ({tabTitle, tabDescriptionData, selectedTab, pokemonData}) => {
     const abilities = tabDescriptionData?.abilities ?? null;
@@ -15,7 +16,7 @@ const CardAbilitiesDescription = ({tabTitle, tabDescriptionData, selectedTab, po
                     <motion.section key={item.name} className="CharacterCard-Description-Text-Ability">
                         <h3>{index + 1}. {toUpperCaseIndex(item.name)}</h3>
                         <ul className='CharacterCard-Description-Text-Ability-Detail'>
-                            {item.data.flavor_text_entries.map(flavorText => {
+                            {item.data.flavor_text_entries.forEach(flavorText => {
                                 if(flavorText.language.name === "en" && !aux){
                                     aux = true;
                                     return (
@@ -23,7 +24,7 @@ const CardAbilitiesDescription = ({tabTitle, tabDescriptionData, selectedTab, po
                                     )
                                 }
                             })}
-                            {item.data.effect_entries.map(effect => {
+                            {item.data.effect_entries.forEach(effect => {
                                 if(effect.language.name === "en"){
                                     return (
                                         <React.Fragment key={effect.effect}>

@@ -15,10 +15,14 @@ const usePokemonsData = () => {
 
     useEffect(() => {
         const getPokemons = async () => {
-            let limit = 151;
-            let offSet = 0;
+            let limit;
+            let offSet;
 
             switch (generacion) {
+                case 1:
+                    limit = 151;
+                    offSet = 0;
+                    break;
                 case 2:
                     limit = 100;
                     offSet = 151;
@@ -73,7 +77,7 @@ const initialState = () => ({
     characters: [],
     loading: true,
     error: false,
-    generacion: 1,
+    generacion: 8,
     offSet: 0
 });
 

@@ -1,0 +1,32 @@
+@import url('../../styles/_var.scss');
+
+.sub-menu-item {
+    list-style: none !important;
+    margin-bottom: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    width: auto !important;
+    height: 30px;
+    background-color: var(--background-section-shadow);
+    padding-right: 10px;
+}
+  
+.sub-icon-placeholder {
+    width: 40px;
+    margin-top: 8px;
+    flex: 40px 0;
+}
+  
+.sub-icon-placeholder img {
+    width: 50px;
+    height: 50px;
+}
+
+.sub-text-placeholder {
+    border-radius: 5px;
+    width: 200px;
+    height: 20px;
+    font-size: 20px;
+    flex: 1;
+}

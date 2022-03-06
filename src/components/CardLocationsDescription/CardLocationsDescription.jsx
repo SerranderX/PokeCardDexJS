@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { toUpperCaseIndex } from '../shared/Utils';
-import CardDataNotFound from './CardDataNotFound';
+import { toUpperCaseIndex } from '../../shared/Utils';
+import CardDataNotFound from '../CardDataNotFound/CardDataNotFound';
 
 const CardLocationsDescription = ({tabTitle, tabDescriptionData, selectedTab, pokemonData}) => {
+    console.log(tabTitle);
+
     return (
         <React.Fragment>
             <motion.h1 className="CharacterCard-Description-Title">{toUpperCaseIndex(tabTitle)}</motion.h1>

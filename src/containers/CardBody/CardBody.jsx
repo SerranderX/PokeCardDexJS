@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import '../styles/Characters.css';
-import CardGeneralDescription from '../components/CardGeneralDescription';
-import CardLoadDescription from '../components/CardLoadDescription';
-import CardStatsDescription from '../components/CardStatsDescription';
-import CardAbilitiesDescription from './CardAbilitiesDescription';
-import CardLocationsDescription from '../components/CardLocationsDescription';
-import CardMovesDescription from '../components/CardMovesDescription';
+import CardGeneralDescription from '../../components/CardGeneralDescription/CardGeneralDescription';
+import CardLoadDescription from '../../components/CardLoadDescription/CardLoadDescription';
+import CardStatsDescription from '../../components/CardStatsDescription/CardStatsDescription';
+import CardAbilitiesDescription from '../../components/CardAbilitiesDescription/CardAbilitiesDescription';
+import CardLocationsDescription from '../../components/CardLocationsDescription/CardLocationsDescription';
+import CardMovesDescription from '../../components/CardMovesDescription/CardMovesDescription';
+import '../../styles/Characters.css';
+import './CardBody.css';
 
 const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemonData, onLoadDescription, logoType, shinny, famale, tabDescriptionData, pokemonBackground, versions }) => {
 
@@ -28,7 +29,7 @@ const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemon
         <React.Fragment>
             <motion.div className="CharacterCard-Body">
                 <motion.div className="CharacterCard-Image" >
-                    <motion.img height="200" className="CharacterCard-Image-Pokemon" src={imagen()} alt={selectedId.name} />
+                    <motion.img height="200" src={imagen()} alt={selectedId.name} />
                 </motion.div>
             </motion.div>
             <motion.div className="CharacterCard-Description">
@@ -53,9 +54,9 @@ const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemon
                         <motion.div
                             key={selectedTab ? selectedTab.key : "empty"}
                             animate={{ opacity: 1, y: 0 }}
-                            initial={{ opacity: 0, y: 2 }}
+                            initial={{ opacity: 0, y: 20 }}
                             exit={{ opacity: 0, y: 2 }}
-                            transition={{ duration: 0.15 }}
+                            transition={{ duration: 0.15 }} 
                             className="CharacterCard-Description-Content-Display"
                         >
                             {onLoadDescription && (<CardLoadDescription logoType={logoType} />)}

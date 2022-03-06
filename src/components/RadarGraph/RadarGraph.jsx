@@ -9,7 +9,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
-import { toUpperCaseIndex, transformString } from '../shared/Utils';
+import { toUpperCaseIndex, transformString } from '../../shared/Utils';
 
 ChartJS.register(
     RadialLinearScale,

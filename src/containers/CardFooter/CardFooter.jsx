@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import '../styles/CardFooter.css';
-import { SlideButton } from '../components/SlideButton';
+import { SlideButton } from '../../components/SlideButton/SlideButton';
+import './CardFooter.css';
 
 
 const CardFooter = ({ setShinny, shinny, setFamale, famale, infoShared }) => {

@@ -44,12 +44,6 @@
   padding: 20px;
 }
 
-.Character {
-  background-color: #bfc9ce63;
-  margin: 15px;
-  border-radius: 10%;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

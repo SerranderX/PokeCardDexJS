@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { toUpperCaseIndex } from '../shared/Utils';
-import RadarGraph from './RadarGraph';
+import { toUpperCaseIndex } from '../../shared/Utils';
+import RadarGraph from '../RadarGraph/RadarGraph';
 
 const CardStatsDescription = ({tabTitle, pokemon, pokemonBackground}) => {
     var asd = 0;

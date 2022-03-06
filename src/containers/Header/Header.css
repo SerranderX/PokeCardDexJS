@@ -1,21 +1,71 @@
+@import url('../../styles/_var.scss');
+
 .Header-navigator {
     position: relative;
     border-radius: 1%;
     height: auto;
     padding: 10px 1px 10px 1px;
+    background: var(--background-section);
 }
 
 .Header-Button {
     width: 150px;
-    height: 37px;
+    height: 79px;
     border: none 20px;
     border-radius: 4%;
-    background-color: #bfc9ce63;
+    background-color: var(--background-section-shadow);
     font-size: larger;
     font-weight: bold;
     color: var(--text-primary);
-    margin: 5px;
+    cursor: pointer;
+    margin: 7px;
 }
+
+.Header-Button p {
+    margin: 0;
+    padding: 0;
+}
+
+.Header-Button-img_container {
+    margin: 1px;
+    width: 100%;
+    height: 45%;
+}
+
+.Header-Button-img_container img {
+    width: 55%;
+    position: relative;
+}
+
+.Header-Button-img_container img:nth-of-type(1){
+    top: -15px;
+    left: -42px;
+}
+
+.Header-Button-img_container img:nth-of-type(2){
+    top: -97px;
+}
+
+.Header-Button-img_container img:nth-of-type(3){
+    top: -177px;
+    left: 42px;
+}
+
+.Theme-button {
+    background-color: #f6f6f600;
+    border: none;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    width: 3%;
+    height: 4%;
+    cursor: pointer;
+}
+
+.Dark-theme {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(353deg) brightness(100%) contrast(100%);
+}
+
 
 @media (max-width: 600px) {
     

@@ -1,14 +1,19 @@
 :root {
-  --background: #f0f7fc;;
+  --background: #f3f6fd;
   --text-primary: black;
   --text-primary-shadow: rgb(88, 87, 87, 0.7);
   --text-secondary: royalblue;
   --accent: purple;
+  --background-section:#fff;
+  --background-section-shadow: #e0e5e7;
 }
+
 [data-theme='dark'] {
-  --background: #262626;
+  --background: #111827;
   --text-primary: white;
   --text-primary-shadow: rgba(255, 255, 255, 0.4);
   --text-secondary: grey;
   --accent: darkred;
+  --background-section: #1f2937;
+  --background-section-shadow: #545d68;
 }

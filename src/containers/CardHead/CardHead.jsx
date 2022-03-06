@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { whileHoverSpriteImage } from '../shared/CharacterAnimations.js'; 
+import { whileHoverSpriteImage } from '../../shared/CharacterAnimations'; 
+import './CardHead.css';
 
 const CardHead = ({pokemon, selectedId, logoType, handleCloseCard, whileHoverCardExit, playPokemonSound, shinny, famale}) => {
 
@@ -35,9 +36,8 @@ const CardHead = ({pokemon, selectedId, logoType, handleCloseCard, whileHoverCar
                 />
                 <motion.label className="CharacterCard-Sprite-label">sound</motion.label>
             </motion.div>
-            
             <motion.h2 className="CharacterCard-Title">{selectedId.name.charAt(0).toUpperCase()}{selectedId.name.slice(1)} <em>#{pokemon.id}</em></motion.h2>
-            <motion.button
+            <motion.button 
                 onClick={() => handleCloseCard()}
                 className="CharacterCard-Button"
             >

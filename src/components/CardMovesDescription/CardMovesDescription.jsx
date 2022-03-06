@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { toUpperCaseIndex } from '../shared/Utils';
+import { toUpperCaseIndex } from '../../shared/Utils';
 
 const CardMovesDescription = ({tabTitle}) => {
     return (
