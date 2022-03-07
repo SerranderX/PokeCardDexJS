@@ -147,7 +147,7 @@ const navMenu = [
             icons: [
                 {
                     type: 'legendary',
-                    url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/716.png'
+                    url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/791.png'
                 },
                 {
                     name: 'glass',
