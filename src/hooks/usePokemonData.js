@@ -115,10 +115,7 @@ const usePokemonData = () => {
             document.body.style.overflow = "hidden";
         }
 
-        const getPokemonGeneralData = async (id, name) => {
-            console.log("getPokemonGeneralData iniciado");
-            console.log(tabDescriptionData);
-            console.log(pokemon);
+        const getPokemonGeneralData = async (id) => {
             if(tabDescriptionData === null){
                 const evolutionTriggers = await axios.get(`${API_URL}evolution-trigger/${id}`).then(response => response.data).catch(() => null );
                 const encounterMethod = await axios.get(`${API_URL}encounter-method/${id}`).then(response => response.data).catch(() => null);
@@ -130,11 +127,7 @@ const usePokemonData = () => {
                 } else {
                     setTabDescriptionData({evolutionTriggers, encounterMethod, location, species});
                 }
-
-                console.log("location");
-                console.log(location);
             } else {
-                console.log("Tab description data is not null");
                 const evolutionTriggers = tabDescriptionData.evolutionTriggers;
                 const encounterMethod = tabDescriptionData.encounterMethod;
                 const species = tabDescriptionData.species;
@@ -154,6 +147,9 @@ const usePokemonData = () => {
                                     return {name: ability.name, data: ability};
                                 }
                             }));
+
+                            console.log("abilities");
+                            console.log(abilities);
                             setTabDescriptionData({evolutions, evolutionTriggers, encounterMethod, location, species, abilities});
                         } else {
                             changeLoading(false);
@@ -170,7 +166,6 @@ const usePokemonData = () => {
                         break;
                 }
             }
-            console.log("getPokemonGeneralData finalizado");
         }
         
         if (characterSelect != null && selectedTab == null && pokemon == null) {

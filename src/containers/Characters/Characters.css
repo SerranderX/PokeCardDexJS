@@ -1,13 +1,23 @@
-@import url('../../styles/_var.scss');
+@import url("../../styles/_var.scss");
 
 .Characters-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .Character {
-    background-color: var(--background-section);
-    margin: 15px;
-    border-radius: 10%;
-    cursor: pointer;
-  }
+  background-color: var(--background-section);
+  margin: 15px;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+.Character-Selected {
+  opacity: 0 !important;
+}
+
+.CardConainer {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+}

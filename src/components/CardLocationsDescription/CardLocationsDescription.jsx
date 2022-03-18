@@ -2,9 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { toUpperCaseIndex } from '../../shared/Utils';
 import CardDataNotFound from '../CardDataNotFound/CardDataNotFound';
+import './CardLocationsDescription.css';
 
-const CardLocationsDescription = ({tabTitle, tabDescriptionData, selectedTab, pokemonData}) => {
-    console.log(tabTitle);
+const CardLocationsDescription = ({ tabTitle, tabDescriptionData }) => {
 
     return (
         <React.Fragment>

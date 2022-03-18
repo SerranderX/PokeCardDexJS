@@ -6,7 +6,6 @@ import CardStatsDescription from '../../components/CardStatsDescription/CardStat
 import CardAbilitiesDescription from '../../components/CardAbilitiesDescription/CardAbilitiesDescription';
 import CardLocationsDescription from '../../components/CardLocationsDescription/CardLocationsDescription';
 import CardMovesDescription from '../../components/CardMovesDescription/CardMovesDescription';
-import '../../styles/Characters.css';
 import './CardBody.css';
 
 const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemonData, onLoadDescription, logoType, shinny, famale, tabDescriptionData, pokemonBackground, versions }) => {
@@ -26,18 +25,15 @@ const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemon
     const tabKey = (selectedTab != null) ? selectedTab.key : ""; 
 
     return (
-        <React.Fragment>
-            <motion.div className="CharacterCard-Body">
-                <motion.div className="CharacterCard-Image" >
-                    <motion.img height="200" src={imagen()} alt={selectedId.name} />
-                </motion.div>
+        <motion.div className="CharacterCard-Body">
+            <motion.div className="CharacterCard-Image" >
+                <motion.img src={imagen()} alt={selectedId.name} />
             </motion.div>
             <motion.div className="CharacterCard-Description">
                 <nav>
                     <ul>
                         {pokemonData.map((item) => (
-                            <li
-                                key={item.key}
+                            <li key={item.key}
                                 className={item === selectedTab ? "selected" : ""}
                                 onClick={() => changeSelectedTab(item)}
                             >
@@ -79,7 +75,7 @@ const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemon
                     </AnimatePresence>
                 </main>
             </motion.div>
-        </React.Fragment>
+        </motion.div>
     );
 };
 

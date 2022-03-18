@@ -6,7 +6,6 @@ function useAppInitialState() {
 
     const toggleTheme = () => {
         const newTheme = theme === 'dark' ? 'light' : 'dark';
-        console.log(newTheme);
         setTheme(newTheme);
     }
 

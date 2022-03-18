@@ -7,9 +7,8 @@ const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, poke
     let pseudoLegendary = false;
 
     if (pokemon) { 
-        console.log("Calc pseudo legendary");
         var sum = 0;
-        pokemon.stats.map(item => sum += item.base_stat); 
+        pokemon.stats.forEach(item => sum += item.base_stat); 
         if(sum === 600){
             pseudoLegendary = true;
         }
@@ -75,7 +74,7 @@ const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, poke
                     <p><b>Base happiness:</b>{tabDescriptionData.species?.base_happiness}/255</p>
                 </motion.section>
             )}
-            {(tabDescriptionData.species?.is_legendary && tabDescriptionData.species?.is_mythical) && (
+            {(tabDescriptionData.species?.is_legendary || tabDescriptionData.species?.is_mythical) && (
                 <motion.section className="CharacterCard-Description-Text">
                     <p><b>Legendary:</b>{(tabDescriptionData.species?.is_legendary || tabDescriptionData.species?.is_mythical) ? "Yes" : "No"}</p>
                 </motion.section>

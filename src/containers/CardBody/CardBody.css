@@ -1,44 +1,141 @@
 .CharacterCard-Body {
-    margin-bottom: 1.5%;
-    padding-bottom: 2%;    
-    border-bottom: #424242 2px solid;
+  margin-bottom: 1%;
+  grid-row-start: auto;
+  grid-row-end: auto;
+  grid-template-columns: auto;
+  grid-template-rows: 40% 60%;
+  display: grid;
+  gap: 8px;
+  grid-column-start: 1;
+  grid-column-end: 5;
 }
 
 .CharacterCard-Image {
-    border-radius: 2%;
-    background-image: url('../../assets/images/forest.jpg');
-    background-size: 100% 100%;
-    clear: both;
+  border-radius: 2%;
+  background-image: url("../../assets/images/forest.jpg");
+  background-size: 100% 100%;
+  clear: both;
+  border-bottom: #3b3b3b 3px solid;
+  border-top: #3b3b3b 3px solid;
+}
+
+.CharacterCard-Image img {
+  max-height: 100%;
+  max-width: 100%;
+  min-height: 50%;
+  min-width: 50%;
 }
 
 .CharacterCard-Description {
-    height: 50%;
+  margin-bottom: 7px;
 }
 
 .CharacterCard-Description-Content {
-    background-color: #424242a3;
-    border-radius: 0 0 3% 3%;
-    padding: 0% 1% 0% 2%;
+  background-color: #424242a3;
+  border-radius: 0 0 3% 3%;
+  padding: 0% 1% 0% 2%;
 }
 
 .CharacterCard-Description-Content-Display {
-    height: 100%;
-    max-height: 400px;
-    text-align: left;
-    overflow-y: auto;
+  height: 100%;
+  max-height: 400px;
+  text-align: left;
+  overflow-y: auto;
 }
 
 .CharacterCard-Description-Content-Display::-webkit-scrollbar {
-    width: .7em;
-    color: white;
+  width: 0.7em;
+  color: white;
 }
 
 .CharacterCard-Description-Content-Display::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
 }
 
 .CharacterCard-Description-Content-Display::-webkit-scrollbar-thumb {
-    background-color: rgba(224, 224, 224, 0.8);
-    outline: 1px solid rgba(112, 128, 144, 0);
-    border-radius: 5px;
+  background-color: rgba(224, 224, 224, 0.8);
+  outline: 1px solid rgba(112, 128, 144, 0);
+  border-radius: 5px;
+}
+
+.CharacterCard-Description h2 em {
+  font-size: 1em;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: var(--text-primary-shadow);
+}
+
+.CharacterCard-Description main {
+  height: 84%;
+  position: relative;
+  top: -.3%;
+}
+
+.CharacterCard-Description ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.CharacterCard-Description ul {
+  display: flex;
+  width: 100%;
+}
+
+.CharacterCard-Description li {
+  padding: 10px;
+  border-radius: 7px;
+  width: 100%;
+  padding: 10px 15px !important;
+  position: relative;
+  cursor: pointer;
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  user-select: none;
+}
+
+.CharacterCard-Description li button {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background: #fff;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  stroke: #000;
+  margin-left: 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Descartado */
+.CharacterCard-Description li.selected {
+  display: flex;
+  background: rgba(136, 124, 124, 0.3);
+  top: -1px;
+}
+
+.CharacterCard-Description nav {
+  padding: 5px 5px 0;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid #ccc6c600;
+  background: rgba(136, 124, 124, 0.281);
+  height: 44px;
+}
+
+.underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ffffff;
 }

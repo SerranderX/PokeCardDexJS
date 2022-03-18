@@ -77,7 +77,7 @@ const initialState = () => ({
     characters: [],
     loading: true,
     error: false,
-    generacion: 8,
+    generacion: 1,
     offSet: 0
 });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { whileHoverCard } from '../../shared/CharacterAnimations';
+import { whileHoverCard } from '../../shared/Animations';
 import { usePokemonData } from '../../hooks/usePokemonData';
 import { toUpperCaseIndex } from '../../shared/Utils';
 import { Card } from '../Card/Card';
@@ -51,6 +51,7 @@ const Characters = ({ characters, offSet, versions }) => {
             ))}
 
             {selectedId && (
+                <div className="CardConainer">
                     <Card
                         selectedId={selectedId}
                         pokemon={pokemon}
@@ -71,6 +72,7 @@ const Characters = ({ characters, offSet, versions }) => {
                         tabDescriptionData={tabDescriptionData}
                         versions={versions}
                     />
+                </div>
             )}
             </AnimatePresence>
         </motion.div>

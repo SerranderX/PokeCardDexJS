@@ -9,16 +9,23 @@ import { AppContext } from './context/AppContext';
 import { useAppInitialState } from './hooks/useAppInitialState'; 
 
 function App() {
-  const {characters, getGeneration, generacion, loading, error, offSet, versions} = usePokemonsData();
+  const {
+      characters,
+     getGeneration, 
+     generacion, 
+     loading, 
+     error, offSet, versions
+    } = usePokemonsData();
+
   const initialState = useAppInitialState();
 
   return (
     <AppContext.Provider value={initialState}>
-      <div className={`App`} data-theme={initialState.theme}>
+      <div className={`App`} data-theme={initialState.theme} >
         <Header getGeneracion={getGeneration} generacion={generacion}/>
         {loading && <Loading/>}
         {!loading && !error && <Characters offSet={offSet} characters={characters} versions={versions} />}
-        <Footer/>
+        <Footer />
       </div>
     </AppContext.Provider>
   );

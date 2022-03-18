@@ -1,3 +1,7 @@
+import AboutIcon from "../assets/icons/about.jsx";
+import PokedexIcon from "../assets/icons/pokeball.jsx";
+import HomeIcon from "../assets/icons/home.jsx";
+import ArrowDownIcon from "../assets/icons/arrowDown.jsx";
 
 const toUpperCaseIndex = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -10,12 +14,15 @@ const transformString = (text) => {
 const navMenu = [
     {
         name: "Home",
+        icon: HomeIcon,
         link: "/"
     }, 
     {
-    name: "Pokedex",
-    link: "/pokedex",
-    subMenu: [
+        name: "Pokedex",
+        icon: PokedexIcon,
+        iconDrag: ArrowDownIcon,
+        link: "/pokedex",
+        subMenu: [
         {
             name: "Generation I",
             icons: [
@@ -185,6 +192,11 @@ const navMenu = [
             ]
         },
     ]},
+    {
+        name: "About",
+        icon: AboutIcon,
+        link: "/About",
+    }
 ];
 
 export {toUpperCaseIndex, transformString, navMenu};

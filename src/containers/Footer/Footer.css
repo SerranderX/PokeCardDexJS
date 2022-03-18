@@ -2,8 +2,8 @@
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 
-.footer-distributed {
-  background-color: #292c2f;
+.Footer-distributed {
+  background-color: var(--background-section);
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   width: 100%;
@@ -12,23 +12,23 @@
   padding: 45px 50px;
 }
 
-.footer-distributed .footer-left p {
-  color: #8f9296;
+.Footer-distributed .Footer-left p {
+  color: var(--text-primary-shadow);
   font-size: 14px;
   margin: 0;
 }
 /* Footer links */
 
-.footer-distributed p.footer-links {
+.Footer-distributed p.Footer-links {
   font-size: 18px;
   font-weight: bold;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0 0 10px;
   padding: 0;
   transition: ease .25s;
 }
 
-.footer-distributed p.footer-links a {
+.Footer-distributed p.Footer-links a {
   display: inline-block;
   line-height: 1.8;
   text-decoration: none;
@@ -36,54 +36,52 @@
   transition: ease .25s;
 }
 
-.footer-distributed .footer-links a:before {
+.Footer-distributed .Footer-links a:before {
   content: "·";
   font-size: 20px;
   left: 0;
-  color: #fff;
+  color: var(--text-primary);
   display: inline-block;
   padding-right: 5px;
 }
 
-.footer-distributed .footer-links .link-1:before {
+.Footer-distributed .Footer-links .link-1:before {
   content: none;
 }
 
-.footer-distributed .footer-right {
+.Footer-distributed .Footer-right {
   float: right;
   margin-top: 6px;
   max-width: 180px;
 }
 
-.footer-distributed .footer-right a {
+.Footer-distributed .Footer-right a {
   display: inline-block;
   width: 35px;
   height: 35px;
-  background-color: #33383b;
+  background-color: var(--background-section-shadow);
   border-radius: 2px;
   font-size: 20px;
-  color: #ffffff;
+  color: var(--text-primary);
   text-align: center;
   line-height: 35px;
   margin-left: 3px;
   transition:all .25s;
+  border-radius: 50%;
 }
 
-.footer-distributed .footer-right a:hover{transform:scale(1.1); -webkit-transform:scale(1.1);}
-
-.footer-distributed p.footer-links a:hover{text-decoration:underline;}
-
 /* Media Queries */
-
 @media (max-width: 600px) {
-  .footer-distributed .footer-left, .footer-distributed .footer-right {
+  .Footer-distributed .Footer-left, .Footer-distributed .Footer-right {
     text-align: center;
   }
-  .footer-distributed .footer-right {
+
+  .Footer-distributed .Footer-right {
     float: none;
     margin: 0 auto 20px;
   }
-  .footer-distributed .footer-left p.footer-links {
+
+  .Footer-distributed .Footer-left p.Footer-links {
     line-height: 1.8;
   }
 }

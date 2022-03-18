@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { variantsCardAnimation, whileHoverCardExit } from '../../shared/CharacterAnimations';
+import { variantsCardAnimation, 
+    whileHoverCardExit 
+} from '../../shared/Animations';
 import { CardBody } from '../CardBody/CardBody';
 import { CardHead } from '../CardHead/CardHead';
 import { CardFooter } from '../CardFooter/CardFooter';
@@ -10,11 +12,11 @@ import './Card.css';
 
 const Card = ({
         selectedId, 
-        pokemon, 
         onSound,
         pokemonBackground,
-        logoType,
         closePokemonCard,
+        logoType,
+        pokemon, 
         playPokemonSound,
         shinnyOn,
         famaleOn,
@@ -22,21 +24,41 @@ const Card = ({
         changeSelectedTab,
         pokemonData,
         onLoadDescription,
-        infoShared,
         tabDescriptionData,
+        versions,
+        infoShared,
         setShinnyOn,
-        setFamaleOn,
-        versions
+        setFamaleOn
     }) => {
+
+    let legendary = false; 
 
     const handleCloseCard = () => {
         closePokemonCard();
     }
 
+    if (pokemon) { 
+        var sum = 0;
+        pokemon.stats.forEach(item => sum += item.base_stat); 
+        if(sum === 600){
+            legendary = true;
+        }
+
+        if(tabDescriptionData){
+            if(tabDescriptionData?.species?.is_legendary == true && !legendary){
+                legendary = true;
+            }
+
+            if(tabDescriptionData?.species?.is_mythical == true && !legendary){
+                legendary = true;
+            }
+        }
+    }
+
     return (
         <motion.div
             layoutId={selectedId.name} 
-            className={`CharacterCard ${pokemonBackground.name}`} 
+            className={`CharacterCard ${pokemonBackground.name} ${legendary ? 'Legendary' : ''}`} 
             animate={onSound ? "play" : "stop"}
             variants={variantsCardAnimation}
         >

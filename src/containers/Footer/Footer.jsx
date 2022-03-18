@@ -1,40 +1,32 @@
-import React from 'react';
-import GitHubIcon from '../../assets/images/github.png';
+import React, { useContext } from 'react';
+import { motion } from 'framer-motion';
+import { AppContext } from '../../context/AppContext';
+import GitHubIcon from "./../../assets/icons/social/github";
+import LinkedinIcon from "./../../assets/icons/social/linkedin";
+import TwitterIcon from "./../../assets/icons/social/twitter";
+import FacebookIcon from "./../../assets/icons/social/facebook";
 import './Footer.css';
 
 
 const Footer = () => {
+	const { theme } = useContext(AppContext);
+
     return (
-        <footer className="footer-distributed">
-
-			<div className="footer-right">
-
-				<a href="#"><i className="fa fa-facebook"></i></a>
-				<a href="#"><i className="fa fa-twitter"></i></a>
-				<a href="#"><i className="fa fa-linkedin"></i></a>
-				<a href="#"><i className="fa fa-github"></i></a>
-
+        <footer className="Footer-distributed">
+			<div className="Footer-right">
+				<motion.a whileHover={{scale: 1.1}} whileTap={{scale: .9}} href="#"><i className="fa fa-facebook">{FacebookIcon(theme)}</i></motion.a>
+				<motion.a whileHover={{scale: 1.1}} whileTap={{scale: .9}} href="#"><i className="fa fa-twitter">{TwitterIcon(theme)}</i></motion.a>
+				<motion.a whileHover={{scale: 1.1}} whileTap={{scale: .9}} href="#"><i className="fa fa-linkedin">{LinkedinIcon(theme)}</i></motion.a>
+				<motion.a whileHover={{scale: 1.1}} whileTap={{scale: .9}} href="#"><i className="fa fa-github">{GitHubIcon(theme)}</i></motion.a>
 			</div>
-
-			<div className="footer-left">
-
-				<p className="footer-links">
+			<div className="Footer-left">
+				<p className="Footer-links">
 					<a className="link-1" href="#">Home</a>
-
-					<a href="#">Blog</a>
-
-					<a href="#">Pricing</a>
-
 					<a href="#">About</a>
-
-					<a href="#">Faq</a>
-
 					<a href="#">Contact</a>
 				</p>
-
 				<p>Company Name &copy; 2015</p>
 			</div>
-
 		</footer>
     );
 };

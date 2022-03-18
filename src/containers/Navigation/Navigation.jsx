@@ -1,28 +1,29 @@
-import * as React from "react";
+import React from 'react';
 import { motion } from "framer-motion";
 import "./Navigation.css";
 
-const variants = {
+const variantsNav = ({closedType}) => ({
   open: {
     transition: { staggerChildren: 0.07, delayChildren: 0.2 }
   },
-  closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 }
+  [closedType]: {
+    transition: { staggerChildren: 3, staggerDirection: -1 }
   }
-};
+});
 
-const Navigation = ({children, isOpen, subMenu}) => {
+const Navigation = ({children, subMenu, parentIndex, expanded}) => {
+
   if(subMenu === true) {
     return (
       <div className={`subMenu collapse`}>
-        <motion.ul variants={variants} className={`subMenu-ul ${isOpen} && open`}>
+        <motion.ul variants={variantsNav('close')} className={`subMenu-ul`}>
           {children}
         </motion.ul>
       </div>
     );
   } else {
     return (
-      <motion.ul variants={variants} className={`navBar-ul ${isOpen} && open`}>
+      <motion.ul variants={variantsNav('collapsed')} className={`navBar-ul`}>
         {children}
       </motion.ul>
     );

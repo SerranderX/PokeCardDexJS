@@ -1,102 +1,88 @@
-.navBar ul, li {
-    margin: 0;
-    padding: 0;
+.navBar ul,
+li {
+  margin: 0;
+  padding: 0;
 }
 
-.navBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 22em;
-    padding: none !important;
-    border-radius: none !important;
-    border-bottom: none;
-    background: none;
-    height:68px;
-    overflow: scroll;
-    overflow-x: hidden;
+.navBar-ul li {
+    border-radius: 7px;
+    width: 100%;
+    padding: 10px 15px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    user-select: none;
 }
 
 .navBar::-webkit-scrollbar {
-    width: 0em;
+  width: 0em;
 }
 
 .navBar::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 0px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 0px rgba(0, 0, 0, 0);
 }
 
 .navBar::-webkit-scrollbar-thumb {
-    background-color: rgba(224, 224, 224, 0.8);
-    outline: 0;
-    border-radius: 0px;
+  background-color: rgba(224, 224, 224, 0.8);
+  outline: 0;
+  border-radius: 0px;
 }
 
 .navBar-ul {
-    z-index: -1;
-    display: block;
-    position: absolute !important;
-    top: 4em !important;
-    width: 85% !important;
-    padding: 20px !important;
+  z-index: -1;
+  display: block;
+  position: absolute !important;
+  top: 4em !important;
+  width: 85% !important;
+  padding: 20px !important;
 }
 
 .navBar button {
-    outline: none;
-    border: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    cursor: pointer;
-    position: absolute;
-    top: 18px;
-    left: 15px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: transparent;
-}
-
-.open {
-    z-index: 9;
-    height: auto !important;
-}
-
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 22em;
-    z-index: -1;
-    background: var(--background);
+  outline: none;
+  border: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  left: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: transparent;
 }
 
 .refresh {
-    padding: 10px;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    width: 20px;
-    height: 20px;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .subMenu-ul {
-    display: block;
+  display: block;
 }
 
 .subMenu {
-    list-style: none !important;
-    margin-top: 5px !important;
-    display: flex !important;
-    align-items: center !important;
-    cursor: pointer !important;
-    width: auto !important;
-    padding: 2% 4% 2% 4%;
+  list-style: none !important;
+  margin-top: 5px !important;
+  display: flex !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  width: auto !important;
+  padding: 2% 4% 2% 4%;
 }
+
+

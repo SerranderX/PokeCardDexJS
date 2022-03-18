@@ -1,5 +1,70 @@
+@import url('../../styles/_var.scss');
+
 .Loading-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    height: 100vmin;
+  display: block;
+  height: 21vmin;
+  padding: 15% 0 15% 0;
+  margin: 5%;
+}
+
+.load {
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.load div {
+  width: 25px;
+  height: 25px;
+  background-color: var(--primary-color);
+  margin-left: 5px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  margin-top: calc(50px - 12.5px);
+  animation-name: loading;
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.load-two {
+  animation-delay: 0.4s;
+}
+
+.load-three {
+  animation-delay: 0.8s;
+}
+
+@keyframes loading {
+  to {
+    opacity: 0.3;
+    transform: translateY(-25px);
+    -webkit-transform: translateY(-25px);
+    -moz-transform: translateY(-25px);
+    -ms-transform: translateY(-25px);
+    -o-transform: translateY(-25px);
+  }
+}
+
+@media (max-width: 768px) {
+    .Loading-container {
+        padding: 50% 0 50% 0;
+      }
+}
+
+@media (max-width: 1024px) {
+    .Loading-container {
+        padding: 55% 0 55% 0;
+      }
+}
+
+@media (max-width: 1280px) {
+  .Loading-container {
+        padding: 60% 0 60% 0;
+    }
 }

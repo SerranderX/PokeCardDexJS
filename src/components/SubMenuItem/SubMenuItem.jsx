@@ -4,26 +4,27 @@ import "./SubMenuItem.css";
 
 const variants = {
     open: {
-        y: 0,
-        opacity: 1,
-        transition: {
-            y: { stiffness: 1000, velocity: -100 }
-        }
+      y: 0,
+      opacity: 1,
+      transition: {
+        y: { stiffness: 1000, velocity: -100 }
+      }
     },
-    closed: {
-        y: 50,
-        opacity: 0,
-        transition: {
-            y: { stiffness: 1000 }
-        }
+    collapsed: {
+      y: -20,
+      opacity: 0,
+      transition: {
+        y: { stiffness: 1000 },
+        duration: 0.2
+      }
     }
-};
+  }
 
-const SubMenuItem = ({ i, children, data, color, getGeneracion }) => {
+const SubMenuItem = ({ data, getGeneracion }) => {
     return (
         <motion.li
-            className="sub-menu-item"
             variants={variants}
+            className="sub-menu-item"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={getGeneracion}

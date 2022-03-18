@@ -1,41 +1,177 @@
-.CharacterCard {
-    background-color: #626970;
-    color: white;
-    border-radius: 10%;
-    padding: 20px;
-    margin: 15px;
-    width: 400px;
-    height: 600px;
-    position: fixed;
-    left: calc(50% - 250px);
-    top: calc(50% - 300px);
-    border: 10px solid #e7e430f3;
-    background-clip: padding-box;
-    box-shadow: 40px 40px 40px black;
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+@keyframes opacity {
+  from { opacity: 0; }
+  to   { opacity: 0.4; }
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
 }
 
 .CharacterCard-Description-Title {
-    text-align: center;
-    margin: 4% 0 4% 0;
+  text-align: center;
+  margin: 4% 0 4% 0;
 }
 
 .CharacterCard-Description-Text {
-    display: flex !important;
-    font-size: 18px;
-    margin: 8px 0 8px 0;
-    align-items: center;
+  display: flex !important;
+  font-size: 18px;
+  margin: 8px 0 8px 0;
+  align-items: center;
 }
 
 .CharacterCard-Description-Text p {
-    font-size: 16px;
-    margin: 0 7px 0 0;
+  font-size: 16px;
+  margin: 0 7px 0 0;
 }
 
 .CharacterCard-Description-Text h4 {
-    margin: 0 4px 0 0;
+  margin: 0 4px 0 0;
 }
 
 .CharacterCard-Description-Text b {
-    margin: 0 4px 0 0;
-    font-size: 18px;
+  margin: 0 4px 0 0;
+  font-size: 18px;
+}
+
+
+.CharacterCard-Button {
+  width: auto;
+  height: auto;
+  max-height: 45px;
+  max-width: 50px;
+  min-height: 25px;
+  min-width: 30px;
+}
+
+
+.CharacterCard {
+  background-color: #626970;
+  border: 10px solid #e7e430f3;
+  color: white;
+  border-radius: 10%;
+  padding: 20px;
+  margin: 15px;
+  height: var(--card-height);
+  width: var(--card-width);
+  min-height: 550px;
+  min-width: 400px;
+  position: fixed;
+  left: calc(50% - 250px);
+  top: 20px;
+  background-clip: padding-box;
+  box-shadow: 40px 40px 40px black;
+  z-index: 9;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 13% 85% 2%;
+  gap: 5px;
+}
+
+.Legendary::before {
+  content: "";
+  width: 104.4%;
+  height: 103%;
+  border-radius: 10%;
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+    );
+    position: absolute;
+  z-index: -1;
+  top: -1.5%;
+  left: -2.1%;
+  animation: spin 2.5s linear infinite, opacity 1.5s;
+  opacity: .4;
+}
+
+.Legendary::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+    opacity: .4;
+    animation: spin 2.5s linear infinite, opacity 1.5s;
+  }
+  
+  
+  
+  @media (max-width: 768px) {
+    .CharacterCard {
+      min-height: 450px;
+      min-width: 320px;
+      left: calc(50% - 210px);
+      top: calc(-28% + 210px);
+    }
+  
+    .CharacterCard-Head {
+      border-bottom: none;
+    }
+  
+    .CharacterCard-Title {
+      border-bottom: #424242 2px solid;
+      width: -webkit-fill-available;
+      margin: 5% 2% 5% 2%;
+    }
+  
+    .CharacterCard-Description li {
+      padding: 5px 8px !important;
+      text-align: center;
+    }
+  
+    .CharacterCard-Description nav {
+      height: auto;
+    }
+  
+    .CharacterCard-Description {
+      content-visibility: auto;
+      height: auto;
+    }
+  
+    .CharacterCard-Sprite {
+      width: auto;
+      height: auto;
+      max-height: 45px;
+      max-width: 50px;
+      min-height: 25px;
+      min-width: 30px;
+    }
+  
+    .CharacterCard-Sprite-img {
+      width: auto;
+      height: auto;
+      max-height: 50px;
+      max-width: 50px;
+      min-height: 25px;
+      min-width: 25px;
+      top: -10%;
+      left: -20%;
+  }
 }
