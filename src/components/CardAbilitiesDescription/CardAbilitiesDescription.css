@@ -1,31 +1,13 @@
-
-.CharacterCard-Description-Text-Ability {
-    font-size: 18px;
-    margin: 5px 0 5px 0;
-    align-items: center;
-    border-top: #000 1.2px solid;
+.Card-Ability-Description-Content {
+    margin: 3% 1%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
 }
 
-.CharacterCard-Description-Text-Ability h3{
-    margin: 8px 0 8px 0;
+.Card-Ability-Description-Content h3 {
+    text-align: center;
+    margin: 0;
+    padding: 5% 0;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
-.CharacterCard-Description-Text-Ability-Detail {
-    display: block;
-}
-
-.CharacterCard-Description-Text-Ability-Detail li {
-    display: inline-block;
-    margin: 0 5px 0 0;
-    max-width: -webkit-fill-available;
-    height: auto;
-    font-size: 1.1em;
-    padding: 5px 10px 5px 15px;
-    cursor:initial;
-}
-
-.CharacterCard-Description-Text-Ability-Detail em {
-    font-size: 1.4em;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgba(250, 249, 249, 0.76);
-}

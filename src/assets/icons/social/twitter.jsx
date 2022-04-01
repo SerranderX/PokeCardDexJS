@@ -1,13 +1,13 @@
 import React from "react";
 
-function Icon(theme) {
+function Icon({theme}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="35"
-      height="34"
+      height="35"
       fill="none"
-      viewBox="0 0 48 48"
+      viewBox="1 1 48 48"
       className={`${(theme === 'dark') ? 'Dark-theme' : 'Light-theme'}`}
     >
       <path

@@ -25,10 +25,10 @@ const Card = ({
         pokemonData,
         onLoadDescription,
         tabDescriptionData,
-        versions,
         infoShared,
         setShinnyOn,
-        setFamaleOn
+        setFamaleOn,
+        generacion
     }) => {
 
     let legendary = false; 
@@ -54,7 +54,7 @@ const Card = ({
             }
         }
     }
-
+    
     return (
         <motion.div
             layoutId={selectedId.name} 
@@ -83,7 +83,7 @@ const Card = ({
                 famale={famaleOn}
                 tabDescriptionData={tabDescriptionData}
                 pokemonBackground={pokemonBackground}
-                versions={versions}
+                generacion={generacion}
             />
             {!onLoadDescription && 
                 (<CardFooter 
@@ -92,7 +92,6 @@ const Card = ({
                     setFamale={setFamaleOn}
                     famale={famaleOn}
                     infoShared={infoShared}
-                    versions={versions}
                 />)
             }
         </motion.div>

@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { toUpperCaseIndex, transformString } from '../../shared/Utils';
+import { DescriptionItem } from '../DescriptionItem/DescriptionItem';
+import './CardGeneralDescription.css';
 
-const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, pokemonData, pokemon}) => {
+const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, pokemonData, pokemon, pokemonBackground}) => {
     let auxDesc = false;
     let pseudoLegendary = false;
 
@@ -36,82 +38,133 @@ const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, poke
         })
         return result;
     }
-
+    
     return (
         <React.Fragment>
-            <motion.h1 className="CharacterCard-Description-Title">{toUpperCaseIndex(tabTitle)}</motion.h1>
-            <motion.section className="CharacterCard-Description-Text">
-                {tabDescriptionData.species?.flavor_text_entries.map(item => {
-                    if(item.language.name === "en" && !auxDesc){
-                        auxDesc = true;
-                        return (
-                            <p key={item.flavor_text} ><b>Description: </b> {transformString(item.flavor_text)}</p>
-                        )
-                    }
-                })}
-            </motion.section>
-            <motion.section className="CharacterCard-Description-Text">
-                <h4>{selectedTab.general.types.length > 1 ? ('Types:') : ('Type')}</h4>
-                {selectedTab.general.types.map((item) => (
-                    item?.typeIcon({ width: "60", height: "23", key: item.logo })
-                ))}
-            </motion.section>
-            <motion.section className="CharacterCard-Description-Text">
-                <b>Weight:</b>
-                <p>{transformWeight(pokemonData[0].general.weight)} kg</p>
-            </motion.section>
-            <motion.section className="CharacterCard-Description-Text">
-                <b>Height:</b>
-                <p>{pokemonData[0].general.height}0 cm</p>
-            </motion.section>
-            {(tabDescriptionData.species?.capture_rate) && (
-                <motion.section className="CharacterCard-Description-Text">
-                    <p><b>Capture Rate:</b>{tabDescriptionData.species?.capture_rate}/255</p>
-                </motion.section>
-            )}
-            {(tabDescriptionData.species?.base_happiness) && (
-                <motion.section className="CharacterCard-Description-Text">
-                    <p><b>Base happiness:</b>{tabDescriptionData.species?.base_happiness}/255</p>
-                </motion.section>
-            )}
-            {(tabDescriptionData.species?.is_legendary || tabDescriptionData.species?.is_mythical) && (
-                <motion.section className="CharacterCard-Description-Text">
-                    <p><b>Legendary:</b>{(tabDescriptionData.species?.is_legendary || tabDescriptionData.species?.is_mythical) ? "Yes" : "No"}</p>
-                </motion.section>
-            )}
-            {(tabDescriptionData.species?.is_mythical) && (
-                <motion.section className="CharacterCard-Description-Text">
-                    <p><b>Mythical:</b>{(tabDescriptionData.species?.is_mythical) ? "Yes" : "No"}</p>
-                </motion.section>
-            )}
-            <motion.section className="CharacterCard-Description-Text">
-                <p><b>Pseudo Legendary: </b>{(pseudoLegendary) ? "Yes" : "No"}</p>
-            </motion.section>
-            {(tabDescriptionData.species?.generation?.name) && (
-                <motion.section className="CharacterCard-Description-Text">
-                    <p><b>Generation:</b>{toUpperCaseIndex(tabDescriptionData.species?.generation?.name)}</p>
-                </motion.section>
-            )}
-            {(tabDescriptionData.species?.evolves_from_species) && (
-                <motion.section className="CharacterCard-Description-Text">
-                    <p><b>Pre-evolution:</b>{toUpperCaseIndex(tabDescriptionData.species?.evolves_from_species?.name)}</p>
-                </motion.section>
-            )}
-            {(tabDescriptionData.species?.shape?.name) && (
-                <motion.section className="CharacterCard-Description-Text">
-                    <p><b>Shape:</b>{toUpperCaseIndex(tabDescriptionData.species?.shape.name)}</p>
-                </motion.section>
-            )}
-            {tabDescriptionData.species?.egg_groups?.length > 0 && (
-                <motion.section className="CharacterCard-Description-Text">
-                    <p><b>{(tabDescriptionData.species.egg_groups.length > 1) ? 'Egg groups:' : 'Egg group:'}</b>{getEggGroups(tabDescriptionData.species.egg_groups)}</p>
-                </motion.section>
-            )}
-            {tabDescriptionData.species?.egg_groups?.length > 0 && (
-                <motion.section className="CharacterCard-Description-Text">
-                    <p><b>Grouth Rate: </b>{toUpperCaseIndex(tabDescriptionData.species?.growth_rate.name)}</p>
-                </motion.section>
-            )}
+            <section className="CharacterCard-Description-Title" style={{backgroundColor: pokemonBackground.secondary, borderBottom: `1px ${pokemonBackground.primary} solid`}}>
+                <motion.h1>{toUpperCaseIndex(tabTitle)}</motion.h1> 
+                <p>{selectedTab.description}</p>
+            </section>
+            <div className="CharacterCard-Description-Body">
+                <ul className='General-Description_list'>
+                    {tabDescriptionData?.species?.flavor_text_entries.map(item => {
+                        if(item.language.name === "en" && !auxDesc){
+                            auxDesc = true;
+                            return (
+                                <DescriptionItem 
+                                    key={item.flavor_text} 
+                                    backgroundColor={pokemonBackground.secondary} 
+                                    borderColor={pokemonBackground.primary} 
+                                    name={'Description'}
+                                    data={transformString(item.flavor_text)}
+                                />
+                            )
+                        }
+                    })}
+                    <DescriptionItem 
+                        backgroundColor={pokemonBackground.secondary} 
+                        borderColor={pokemonBackground.primary} 
+                        name={selectedTab.general.types.length > 1 ? ('Types') : ('Type')}
+                        typesContainer={true}
+                    >
+                        <div className="Description-Item_content">
+                            {selectedTab.general.types.map((item) => (
+                                <div key={item.color.name} className="Pokemon-type_Icon" style={{ backgroundColor: item.color.primary }}>
+                                    <p>{item.color.name}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </DescriptionItem>
+                    <DescriptionItem 
+                        backgroundColor={pokemonBackground.secondary} 
+                        borderColor={pokemonBackground.primary} 
+                        name={'Weight'}
+                        data={`${transformWeight(pokemonData[0].general.weight)} kg`}
+                    />
+                    <DescriptionItem 
+                        backgroundColor={pokemonBackground.secondary} 
+                        borderColor={pokemonBackground.primary} 
+                        name={'Height'}
+                        data={`${pokemonData[0].general.height}0 cm`}
+                    />
+                    <DescriptionItem 
+                        backgroundColor={pokemonBackground.secondary} 
+                        borderColor={pokemonBackground.primary} 
+                        name={'Capture Rate'}
+                        data={`${tabDescriptionData?.species?.capture_rate ? (tabDescriptionData.species?.capture_rate) : 0 }/255`}
+                    />
+                    <DescriptionItem 
+                        backgroundColor={pokemonBackground.secondary} 
+                        borderColor={pokemonBackground.primary} 
+                        name={'Capture Rate'}
+                        data={`${tabDescriptionData?.species?.capture_rate ? (tabDescriptionData.species?.capture_rate) : 0 }/255`}
+                    />
+                    <DescriptionItem 
+                        backgroundColor={pokemonBackground.secondary} 
+                        borderColor={pokemonBackground.primary} 
+                        name={'Base happiness'}
+                        data={`${tabDescriptionData?.species?.base_happiness ? (tabDescriptionData?.species?.base_happiness) : 0 }/255`}
+                    />
+                    <DescriptionItem 
+                        backgroundColor={pokemonBackground.secondary} 
+                        borderColor={pokemonBackground.primary} 
+                        name={'Legendary'}
+                        data={(tabDescriptionData?.species?.is_legendary || tabDescriptionData?.species?.is_mythical) ? "Yes" : "No"}
+                    />
+                    <DescriptionItem 
+                        backgroundColor={pokemonBackground.secondary} 
+                        borderColor={pokemonBackground.primary} 
+                        name={'Mythical'}
+                        data={(tabDescriptionData?.species?.is_mythical) ? "Yes" : "No"}
+                    />
+                    <DescriptionItem 
+                        backgroundColor={pokemonBackground.secondary} 
+                        borderColor={pokemonBackground.primary} 
+                        name={'Pseudo Legendary'}
+                        data={(pseudoLegendary) ? "Yes" : "No"}
+                    />
+                    {tabDescriptionData?.species?.generation?.name && (
+                        <DescriptionItem 
+                            backgroundColor={pokemonBackground.secondary} 
+                            borderColor={pokemonBackground.primary} 
+                            name={'Generation'}
+                            data={toUpperCaseIndex(tabDescriptionData.species?.generation?.name)}
+                        />
+                    )}
+                    {tabDescriptionData?.species?.evolves_from_species && (
+                        <DescriptionItem 
+                            backgroundColor={pokemonBackground.secondary} 
+                            borderColor={pokemonBackground.primary} 
+                            name={'Pre-evolution'}
+                            data={toUpperCaseIndex(tabDescriptionData.species?.evolves_from_species?.name)}
+                        />
+                    )}
+                    {tabDescriptionData?.species?.shape?.name && (
+                        <DescriptionItem 
+                            backgroundColor={pokemonBackground.secondary} 
+                            borderColor={pokemonBackground.primary} 
+                            name={'Shape'}
+                            data={toUpperCaseIndex(tabDescriptionData.species?.shape.name)}
+                        />
+                    )}
+                    {tabDescriptionData?.species?.egg_groups?.length > 0 && (
+                        <DescriptionItem 
+                            backgroundColor={pokemonBackground.secondary} 
+                            borderColor={pokemonBackground.primary} 
+                            name={(tabDescriptionData.species.egg_groups.length > 1) ? 'Egg groups' : 'Egg group'}
+                            data={getEggGroups(tabDescriptionData.species.egg_groups)}
+                        />
+                    )}
+                    {tabDescriptionData?.species?.egg_groups?.length > 0 && (
+                        <DescriptionItem 
+                            backgroundColor={pokemonBackground.secondary} 
+                            borderColor={pokemonBackground.primary} 
+                            name={'Grouth Rate'}
+                            data={toUpperCaseIndex(tabDescriptionData.species?.growth_rate.name)}
+                        />
+                    )}
+                </ul>
+            </div>
         </React.Fragment>
     )
 };

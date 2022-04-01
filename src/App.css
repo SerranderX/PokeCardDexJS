@@ -5,28 +5,10 @@
   padding: 0;
   margin: 0;
   height: auto;
-  background-color: var(--background);
+  background: var(--background);
   color: var(--text-primary);
-  
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.Dark-theme {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(353deg) brightness(100%) contrast(100%);
-}
-
-.Light-theme {
-  filter: invert(0%) sepia(96%) saturate(18%) hue-rotate(312deg) brightness(99%) contrast(104%);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .App-header {
@@ -40,27 +22,29 @@
   color: white;
 }
 
+.Dark-theme {
+  filter: var(--filter);
+}
+
+.Light-theme {
+  filter: var(--filter);
+}
+
 .App-link {
   color: #61dafb;
-}
-
-.Header {
-  margin : 0 0 2em 0;
-}
-
-.Header h1 {
-  margin: 0;
-  padding: 20px;
 }
 
 body::-webkit-scrollbar {
   width: 0;
 }
 
-/* pOKEMON INFO*/
-
-.CharacterCard-Description-Text-Stat p em {
-  font-size: 1em;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: rgba(255, 255, 255, 0.692);
+p {
+  font-size: var(--font-size-base);
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .App {
+    transition: all 0.5s ease-in-out;
+  }
+}
+

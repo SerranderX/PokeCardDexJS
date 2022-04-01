@@ -3,8 +3,6 @@ import './Loading.css';
 
 const Loading = () => {
 
-    console.log(window)
-
     return (
         <div className="Loading-container">
             <div className="load">
@@ -16,4 +14,4 @@ const Loading = () => {
     );
 };
 
-export default Loading;
+export { Loading };

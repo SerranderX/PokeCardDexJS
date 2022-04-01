@@ -11,7 +11,7 @@ const variantsNav = ({closedType}) => ({
   }
 });
 
-const Navigation = ({children, subMenu, parentIndex, expanded}) => {
+const Navigation = ({children, subMenu}) => {
 
   if(subMenu === true) {
     return (

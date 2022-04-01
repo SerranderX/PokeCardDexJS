@@ -1,43 +1,53 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { toUpperCaseIndex } from '../../shared/Utils';
+import { InfoBox } from '../InfoBox/InfoBox';
 import './CardAbilitiesDescription.css';
+import { InfoBoxItem } from '../InfoBoxItem/InfoBoxItem';
 
-const CardAbilitiesDescription = ({tabTitle, tabDescriptionData, selectedTab, pokemonData}) => {
+const CardAbilitiesDescription = ({tabTitle, tabDescriptionData, pokemonBackground, selectedTab }) => {
     const abilities = tabDescriptionData?.abilities ?? null;
     var aux = false;
 
     return (
         <React.Fragment>
-            <motion.h1 className="CharacterCard-Description-Title">{toUpperCaseIndex(tabTitle)}</motion.h1>
-            {abilities?.map((item, index) => {
-                aux = false;
-                return (
-                    <motion.section key={item.name} className="CharacterCard-Description-Text-Ability">
-                        <h3>{index + 1}. {toUpperCaseIndex(item.name)}</h3>
-                        <ul className='CharacterCard-Description-Text-Ability-Detail'>
-                            {item.data.flavor_text_entries.forEach(flavorText => {
+            <section className="CharacterCard-Description-Title" style={{backgroundColor: pokemonBackground.secondary, borderBottom: `1px ${pokemonBackground.primary} solid`}}>
+                <motion.h1>{toUpperCaseIndex(tabTitle)}</motion.h1> 
+                <p>{selectedTab.description}</p>
+            </section>
+            <div className="CharacterCard-Description-Body">
+                {abilities?.map(item => {
+                    aux = false;
+                    return (
+                        <InfoBox key={item.name} title={item.name} pokemonBackground={pokemonBackground}>
+                            {item.data.flavor_text_entries.map( flavorText => {
                                 if(flavorText.language.name === "en" && !aux){
                                     aux = true;
                                     return (
-                                        <li key={flavorText.flavor_text} ><em>• Description: </em>{flavorText.flavor_text}</li>
+                                        <InfoBoxItem pokemonBackground={pokemonBackground} key={flavorText.flavor_text} content={flavorText.flavor_text}>
+                                            <h3>{'Description'}</h3>
+                                        </InfoBoxItem>
                                     )
                                 }
                             })}
-                            {item.data.effect_entries.forEach(effect => {
+                            {item.data.effect_entries.map( effect => {
                                 if(effect.language.name === "en"){
                                     return (
                                         <React.Fragment key={effect.effect}>
-                                            <li><em>• Effect short description: </em>{effect.short_effect}</li>
-                                            <li><em>• Effect detail: </em>{effect.effect}</li>
+                                            <InfoBoxItem pokemonBackground={pokemonBackground} content={effect.short_effect}>
+                                                <h3>{'Effect short description'}</h3>
+                                            </InfoBoxItem>
+                                            <InfoBoxItem pokemonBackground={pokemonBackground} content={effect.effect}>
+                                                <h3>{'Effect full description'}</h3>
+                                            </InfoBoxItem>
                                         </React.Fragment> 
                                     )
                                 }
                             })}
-                        </ul>
-                    </motion.section>
+                        </InfoBox>
+                    )}
                 )}
-            )}
+            </div>
         </React.Fragment>
     );
 };

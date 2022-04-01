@@ -48,9 +48,9 @@ const variantsNavbar = {
   },
   closed: {
       height: "10%",
-      width: "4em",
+      width: "5em",
       transition: {
-          delay: 1.5,
+          delay: .8,
       }
   }
 };
@@ -73,4 +73,43 @@ const varaintsThemeAnimation = (opacityVar) => ({
   }
 });
 
-export { whileHoverCard, whileHoverCardExit, whileHoverSpriteImage, variantsCardAnimation, variantsSlideSideVar, varaintsThemeAnimation, variantsNavbar};
+const titleNavBarVariant = {
+  open: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        y: { stiffness: 1000, velocity: -100 },
+        delay: 0.2
+      }
+    },
+    closed: {
+      y: 50,
+      opacity: 0,
+      transition: {
+        y: { stiffness: 1000 }
+      }
+    }
+}
+
+const variantsSlide = {
+  enter: (direction) => {
+      return {
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+      };
+  },
+  center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+  },
+  exit: (direction) => {
+      return {
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+      };
+  }
+};
+
+export { variantsSlide, whileHoverCard, whileHoverCardExit, whileHoverSpriteImage, variantsCardAnimation, variantsSlideSideVar, varaintsThemeAnimation, variantsNavbar, titleNavBarVariant};

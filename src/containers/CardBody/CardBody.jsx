@@ -8,7 +8,7 @@ import CardLocationsDescription from '../../components/CardLocationsDescription/
 import CardMovesDescription from '../../components/CardMovesDescription/CardMovesDescription';
 import './CardBody.css';
 
-const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemonData, onLoadDescription, logoType, shinny, famale, tabDescriptionData, pokemonBackground, versions }) => {
+const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemonData, onLoadDescription, logoType, shinny, famale, tabDescriptionData, pokemonBackground, generacion}) => {
 
     const imagen = () => {
         if (shinny && famale) {
@@ -25,16 +25,17 @@ const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemon
     const tabKey = (selectedTab != null) ? selectedTab.key : ""; 
 
     return (
-        <motion.div className="CharacterCard-Body">
-            <motion.div className="CharacterCard-Image" >
-                <motion.img src={imagen()} alt={selectedId.name} />
-            </motion.div>
-            <motion.div className="CharacterCard-Description">
-                <nav>
-                    <ul>
+        <div className="CharacterCard-Body" >
+            <div className="CharacterCard-Image" >
+                <img src={imagen()} alt={selectedId.name} />
+            </div>
+            <div className="CharacterCard-Description" >
+                <nav className="CharacterCard-Description-nav">
+                    <ul className="CharacterCard-Description-ul">
                         {pokemonData.map((item) => (
                             <li key={item.key}
                                 className={item === selectedTab ? "selected" : ""}
+                                style={{backgroundColor: item === selectedTab ? pokemonData[0].general.types[0].color.primary : "transparent"}}
                                 onClick={() => changeSelectedTab(item)}
                             >
                                 {item.key.charAt(0).toUpperCase()}{item.key.slice(1)}
@@ -56,26 +57,26 @@ const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemon
                             className="CharacterCard-Description-Content-Display"
                         >
                             {onLoadDescription && (<CardLoadDescription logoType={logoType} />)}
-                            {(!onLoadDescription && tabKey === "general") && (
-                                <CardGeneralDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab} pokemon={pokemon}/>
+                            {(!onLoadDescription && tabDescriptionData && tabKey === "general") && (
+                                <CardGeneralDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab} pokemon={pokemon} pokemonBackground={pokemonBackground}/>
                             )}
-                            {(!onLoadDescription && tabKey === "stats") && (
-                                <CardStatsDescription pokemonBackground={pokemonBackground} tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemon={pokemon} pokemonData={pokemonData} selectedTab={selectedTab}/>
+                            {(!onLoadDescription && tabDescriptionData && tabKey === "stats") && (
+                                <CardStatsDescription pokemonBackground={pokemonBackground} tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemon={pokemon} pokemonData={pokemonData} selectedTab={selectedTab} pokemonBackground={pokemonBackground} />
                             )}
-                            {(!onLoadDescription && tabKey === "abilities") && (
-                                <CardAbilitiesDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab}/>
+                            {(!onLoadDescription && tabDescriptionData && tabKey === "abilities") && (
+                                <CardAbilitiesDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab} pokemonBackground={pokemonBackground} />
                             )}
-                            {(!onLoadDescription && tabKey === "moves") && (
-                                <CardMovesDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab}/>
+                            {(!onLoadDescription && tabDescriptionData && tabKey === "moves") && (
+                                <CardMovesDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab} pokemonBackground={pokemonBackground} pokemon={pokemon} generacion={generacion} />
                             )} 
-                            {(!onLoadDescription && tabKey === "locations") && (
-                                <CardLocationsDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab} versions={versions}/>
+                            {(!onLoadDescription && tabDescriptionData && tabKey === "locations") && (
+                                <CardLocationsDescription tabTitle={tabKey} tabDescriptionData={tabDescriptionData} pokemonData={pokemonData} selectedTab={selectedTab} pokemonBackground={pokemonBackground}/>
                             )} 
                         </motion.div>
                     </AnimatePresence>
                 </main>
-            </motion.div>
-        </motion.div>
+            </div>
+        </div>
     );
 };
 

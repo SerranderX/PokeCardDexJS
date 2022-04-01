@@ -1,6 +1,6 @@
 import React from "react";
 
-function Icon(theme) {
+function Icon({theme}) {
 
   return (
     <svg

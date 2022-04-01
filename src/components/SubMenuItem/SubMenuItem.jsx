@@ -20,16 +20,16 @@ const variants = {
     }
   }
 
-const SubMenuItem = ({ data, getGeneracion }) => {
+const SubMenuItem = ({ index, data, getGeneracion, generacion }) => {
     return (
         <motion.li
             variants={variants}
-            className="sub-menu-item"
+            className={`sub-menu-item ${(index === generacion) ? 'sub-menu-item-active' : ''}`}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={getGeneracion}
         >
-            <div className="sub-icon-placeholder"><motion.img src={data.icons[0].url} /></div>
+            <div className="sub-icon-placeholder"><motion.img src={data.icons[0].url} alt={data.icons[0].url}/></div>
             <div className="sub-text-placeholder">{data.name}</div>
         </motion.li>
     );

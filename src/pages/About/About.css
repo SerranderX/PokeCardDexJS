@@ -1,0 +1,59 @@
+@import url('../../styles/_var.scss');
+
+.About-container {
+    width: 100%;
+	height: 100%;
+	min-height: 100vh;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 120px 50% auto;
+	grid-template-areas: "Title" "Image" "Text";
+	gap: 10px;
+}
+
+.About-Title {
+	grid-area: Title;
+	align-self: center;
+	color: var(--text-primary);
+}
+
+.About-Title h1 {
+	font-size: 2.5em;
+	font-weight: bold;
+	color: var(--text-primary);
+	text-align: center;
+	margin: 0;
+}
+
+.About-Text {
+	grid-area: Text;
+	font-size: 1.2em;
+    margin: 1% 5% 1% 5%;
+    text-align: justify;
+	color: var(--text-primary);
+	padding: 1% 5%;
+    text-rendering: optimizespeed;
+    white-space: break-spaces;
+	line-height: 115%;
+}
+
+.About-Image {
+	grid-area: Image;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+}
+
+.About-Image img {
+	max-width: 45%;
+	max-height: 100%;
+}
+
+@media (max-width: 768px) {
+	.About-Image img {
+		max-width: 100%;
+	}
+
+
+}

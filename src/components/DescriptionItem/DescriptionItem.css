@@ -1,0 +1,11 @@
+.Description-Item b {
+    align-self: center;
+}
+
+.Types-Container {
+    display: inline-flex;
+}
+
+.Description-Item_content {
+    display: inline-flex;
+}

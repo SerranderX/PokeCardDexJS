@@ -8,7 +8,9 @@ const CardLoadDescription = ({logoType}) => {
             <motion.img className="Loading-Logo" 
                         src={logoType} 
                         animate={{ rotate: 360, scale: [1, 1.3, 1] }} 
-                        transition={{ duration: 3, repeat: Infinity }}/>
+                        transition={{ duration: 3, repeat: Infinity }}
+                        alt={logoType}
+            />
             <h2>Cargando...</h2>
         </motion.div>
     );

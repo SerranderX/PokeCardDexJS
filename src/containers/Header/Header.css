@@ -1,75 +1,94 @@
-@import url('../../styles/_var.scss');
+@import url("../../styles/_var.scss");
+
+.Header-containerlogo {
+  padding: 2em 0 1em 0;
+}
+
+.Header-containerlogo h2 {
+  margin: 0 0 20px 0;
+  top: -10px;
+  left: 8px;
+  position: relative;
+}
 
 .Header-navigator {
-    position: relative;
-    border-radius: 1%;
-    height: auto;
-    padding: 10px 1px 10px 1px;
-    background: var(--background-section);
+  position: relative;
+  border-radius: 1%;
+  height: auto;
+  padding: 10px 1px 10px 1px;
+  background: var(--background-section);
 }
 
 .Header-Button {
-    width: 150px;
-    height: 79px;
-    border: none 20px;
-    border-radius: 4%;
-    background-color: var(--background-section-shadow);
-    font-size: larger;
-    font-weight: bold;
-    color: var(--text-primary);
-    cursor: pointer;
-    margin: 7px;
+  width: 150px;
+  height: 79px;
+  border: none 20px;
+  border-radius: 4%;
+  background-color: var(--background-section-shadow);
+  font-size: larger;
+  font-weight: bold;
+  color: var(--text-primary);
+  cursor: pointer;
+  margin: 7px;
 }
 
 .Header-Button p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .Theme-button {
-    background-color: #f6f6f600;
-    border: none;
-    position: absolute;
-    right: 2%;
-    top: 2.3%;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
+  background-color: var(--background-button);
+  border: none;
+  position: absolute;
+  right: 2%;
+  top: 2.3%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+
 }
 
 .navBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 22em;
-    padding: none !important;
-    border-radius: none !important;
-    border-bottom: none;
-    background: none;
-    overflow: scroll;
-    overflow-x: hidden;
-    height: 62em;
-    z-index: 9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 22em;
+  padding: none !important;
+  border-radius: none !important;
+  border-bottom: none;
+  background: none;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 62em;
+  z-index: 9;
 }
 
+.navBar-title {
+  position: relative;
+  left: 8px;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: var(--text-primary);
+}
 
 .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 22em;
-    z-index: -1;
-    position: fixed;
-    background: var(--background);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 22em;
+  z-index: -1;
+  position: fixed;
+  background: var(--background);
 }
 
 @media (max-width: 768px) {
-    .Theme-button {
-        left: 285px !important;
-        z-index: 10;
-        position: fixed;
-    }
-
+  .Theme-button {
+    left: 285px !important;
+    z-index: 10;
+    position: fixed;
+  }
 }

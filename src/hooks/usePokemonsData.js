@@ -3,15 +3,20 @@ import axios from 'axios';
 
 const API_URL = 'https://pokeapi.co/api/v2/pokemon';
 
-const versions = [{"id":0,"version":{"name":"red-blue","url":"https://pokeapi.co/api/v2/version-group/1/"}},{"id":1,"version":{"name":"yellow","url":"https://pokeapi.co/api/v2/version-group/2/"}},{"id":2,"version":{"name":"gold-silver","url":"https://pokeapi.co/api/v2/version-group/3/"}},{"id":3,"version":{"name":"crystal","url":"https://pokeapi.co/api/v2/version-group/4/"}},{"id":4,"version":{"name":"ruby-sapphire","url":"https://pokeapi.co/api/v2/version-group/5/"}},{"id":5,"version":{"name":"emerald","url":"https://pokeapi.co/api/v2/version-group/6/"}},{"id":6,"version":{"name":"firered-leafgreen","url":"https://pokeapi.co/api/v2/version-group/7/"}},{"id":7,"version":{"name":"diamond-pearl","url":"https://pokeapi.co/api/v2/version-group/8/"}},{"id":8,"version":{"name":"platinum","url":"https://pokeapi.co/api/v2/version-group/9/"}},{"id":9,"version":{"name":"heartgold-soulsilver","url":"https://pokeapi.co/api/v2/version-group/10/"}},{"id":10,"version":{"name":"black-white","url":"https://pokeapi.co/api/v2/version-group/11/"}},{"id":11,"version":{"name":"colosseum","url":"https://pokeapi.co/api/v2/version-group/12/"}},{"id":12,"version":{"name":"xd","url":"https://pokeapi.co/api/v2/version-group/13/"}},{"id":13,"version":{"name":"black-2-white-2","url":"https://pokeapi.co/api/v2/version-group/14/"}},{"id":14,"version":{"name":"x-y","url":"https://pokeapi.co/api/v2/version-group/15/"}},{"id":15,"version":{"name":"omega-ruby-alpha-sapphire","url":"https://pokeapi.co/api/v2/version-group/16/"}},{"id":16,"version":{"name":"sun-moon","url":"https://pokeapi.co/api/v2/version-group/17/"}},{"id":17,"version":{"name":"ultra-sun-ultra-moon","url":"https://pokeapi.co/api/v2/version-group/18/"}},{"id":18,"version":{"name":"lets-go-pikachu-lets-go-eevee","url":"https://pokeapi.co/api/v2/version-group/19/"}},{"id":19,"version":{"name":"sword-shield","url":"https://pokeapi.co/api/v2/version-group/20/"}}];
-
 const usePokemonsData = () => {
+
     const [state, dispatch] = useReducer(reducer, initialState({ initialState }));
-    const { characters, generacion, loading, error, offSet } = state;
+    const { characters, generacion, loading, error, offSet, pokedexPage, search } = state;
+
+    const handleSearch = (event) => {
+        setSearch(event.target.value);
+    }
 
     //ACTION CREATORS
     const cargarPokemons = (data) => dispatch({ type: actionTypes.CARGAR_POKEMONS, payload: data });
     const setGeneracion = (data) => dispatch({ type: actionTypes.SET_GENERACION, payload: data });
+    const setPokedexPage = (data) => dispatch({ type: actionTypes.SET_POKEDEX_PAGE, payload: data });
+    const setSearch = (data) => dispatch({ type: actionTypes.SET_SEARCH, payload: data });
 
     useEffect(() => {
         const getPokemons = async () => {
@@ -57,20 +62,30 @@ const usePokemonsData = () => {
 
             try {
                 const response = await axios.get(`${API_URL}?limit=${limit}&offset=${offSet}`);
-                cargarPokemons({ characters: response.data.results, offSet: offSet});
-            } catch(error) {
+                cargarPokemons({ characters: response.data.results, offSet: offSet });
+            } catch (error) {
                 console.error("Error: ", error);
-            } 
+            }
         }
 
         getPokemons();
     }, [generacion]);
 
     const getGeneration = (genReq) => {
-        if(genReq !== generacion) { setGeneracion(genReq) };
+        if (genReq !== generacion) { setGeneracion(genReq) }
     }
 
-    return { characters, generacion, loading, error, getGeneration, offSet, versions };
+    return { 
+        characters,
+        generacion, 
+        loading, 
+        error, 
+        getGeneration, 
+        offSet, 
+        setPokedexPage, 
+        pokedexPage, 
+        search, 
+        handleSearch };
 };
 
 const initialState = () => ({
@@ -78,12 +93,16 @@ const initialState = () => ({
     loading: true,
     error: false,
     generacion: 1,
-    offSet: 0
+    offSet: 0,
+    pokedexPage: false,
+    search: '',
 });
 
 const reducerObject = (state, payload) => ({
-    [actionTypes.CARGAR_POKEMONS]: { ...state, characters: payload.characters, offSet: payload.offSet, loading: false },
+    [actionTypes.CARGAR_POKEMONS]: { ...state, characters: payload.characters, offSet: payload.offSet, loading: false, search: '' },
     [actionTypes.SET_GENERACION]: { ...state, generacion: payload, loading: true },
+    [actionTypes.SET_POKEDEX_PAGE]: { ...state, pokedexPage: payload },
+    [actionTypes.SET_SEARCH]: { ...state, search: payload },
 });
 
 const reducer = (state, action) => {
@@ -92,7 +111,9 @@ const reducer = (state, action) => {
 
 const actionTypes = {
     CARGAR_POKEMONS: 'CARGAR_POKEMONS',
-    SET_GENERACION: 'SET_GENERACION'
+    SET_GENERACION: 'SET_GENERACION',
+    SET_POKEDEX_PAGE: 'SET_POKEDEX_PAGE',
+    SET_SEARCH: 'SET_SEARCH',
 }
 
 export { usePokemonsData };

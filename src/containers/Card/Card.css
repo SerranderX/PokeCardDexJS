@@ -18,14 +18,9 @@
   inherits: false;
 }
 
-:root {
-  --card-height: 65vh;
-  --card-width: calc(var(--card-height) / 1.5);
-}
-
 .CharacterCard-Description-Title {
   text-align: center;
-  margin: 4% 0 4% 0;
+  padding: 1px;
 }
 
 .CharacterCard-Description-Text {
@@ -50,16 +45,6 @@
 }
 
 
-.CharacterCard-Button {
-  width: auto;
-  height: auto;
-  max-height: 45px;
-  max-width: 50px;
-  min-height: 25px;
-  min-width: 30px;
-}
-
-
 .CharacterCard {
   background-color: #626970;
   border: 10px solid #e7e430f3;
@@ -73,13 +58,13 @@
   min-width: 400px;
   position: fixed;
   left: calc(50% - 250px);
-  top: 20px;
+  top: 30px;
   background-clip: padding-box;
   box-shadow: 40px 40px 40px black;
   z-index: 9;
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-template-rows: 13% 85% 2%;
+  grid-template-rows: 11% 85% 4%;
   gap: 5px;
 }
 
@@ -99,7 +84,7 @@
   top: -1.5%;
   left: -2.1%;
   animation: spin 2.5s linear infinite, opacity 1.5s;
-  opacity: .4;
+  opacity: .33;
 }
 
 .Legendary::after {
@@ -115,35 +100,24 @@
   transform: scale(0.8);
   filter: blur(calc(var(--card-height) / 6));
   background-image: linear-gradient(
-    var(--rotate)
-    , #5ddcff, #3c67e3 43%, #4e00c2);
+    var(--rotate), 
+    #5ddcff, #3c67e3 43%, #4e00c2);
     opacity: .4;
     animation: spin 2.5s linear infinite, opacity 1.5s;
   }
   
   
   
-  @media (max-width: 768px) {
+  @media (max-width: 380px){
     .CharacterCard {
-      min-height: 450px;
-      min-width: 320px;
+      min-height: 520px;
+      min-width: 310px;
       left: calc(50% - 210px);
-      top: calc(-28% + 210px);
+      top: calc(-25% + 210px);
     }
   
     .CharacterCard-Head {
       border-bottom: none;
-    }
-  
-    .CharacterCard-Title {
-      border-bottom: #424242 2px solid;
-      width: -webkit-fill-available;
-      margin: 5% 2% 5% 2%;
-    }
-  
-    .CharacterCard-Description li {
-      padding: 5px 8px !important;
-      text-align: center;
     }
   
     .CharacterCard-Description nav {
@@ -154,24 +128,26 @@
       content-visibility: auto;
       height: auto;
     }
-  
-    .CharacterCard-Sprite {
-      width: auto;
-      height: auto;
-      max-height: 45px;
-      max-width: 50px;
-      min-height: 25px;
-      min-width: 30px;
-    }
-  
-    .CharacterCard-Sprite-img {
-      width: auto;
-      height: auto;
-      max-height: 50px;
-      max-width: 50px;
-      min-height: 25px;
-      min-width: 25px;
-      top: -10%;
-      left: -20%;
+}
+
+@media (min-width: 380px) and (max-width: 768px){
+  .CharacterCard {
+    min-height: 520px;
+    min-width: 310px;
+    left: calc(50% - 210px);
+    top: calc(-25% + 310px);
+  }
+
+  .CharacterCard-Head {
+    border-bottom: none;
+  }
+
+  .CharacterCard-Description nav {
+    height: auto;
+  }
+
+  .CharacterCard-Description {
+    content-visibility: auto;
+    height: auto;
   }
 }

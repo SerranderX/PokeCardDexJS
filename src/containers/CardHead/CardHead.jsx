@@ -33,15 +33,18 @@ const CardHead = ({pokemon, selectedId, logoType, handleCloseCard, whileHoverCar
                     src={imagen()} 
                     name="sprite"
                     className="CharacterCard-Sprite-img" 
+                    alt="CharacterCard-Sprite-img"
                 />
-                <motion.label className="CharacterCard-Sprite-label">Sound</motion.label>
+                <label>Sound</label>
             </motion.div>
-            <motion.h2 className="CharacterCard-Title">{selectedId.name.charAt(0).toUpperCase()}{selectedId.name.slice(1)} <em>#{pokemon.id}</em></motion.h2>
+            <motion.div className="CharacterCard-Title">
+                <h2>{selectedId.name.charAt(0).toUpperCase()}{selectedId.name.slice(1)} <em>#{pokemon.id}</em></h2>
+            </motion.div>
             <motion.button 
                 onClick={() => handleCloseCard()}
                 className="CharacterCard-Button"
             >
-                <motion.img whileHover={whileHoverCardExit} className="CharacterCard-Icon-Type" src={logoType} />
+                <motion.img whileHover={whileHoverCardExit} className="CharacterCard-Icon-Type" src={logoType} alt="CharacterCard-Icon-Type"/>
                 <motion.label>Back</motion.label>
             </motion.button>
         </motion.div>

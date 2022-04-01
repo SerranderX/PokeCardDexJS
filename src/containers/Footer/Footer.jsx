@@ -5,6 +5,7 @@ import GitHubIcon from "./../../assets/icons/social/github";
 import LinkedinIcon from "./../../assets/icons/social/linkedin";
 import TwitterIcon from "./../../assets/icons/social/twitter";
 import FacebookIcon from "./../../assets/icons/social/facebook";
+import { ENV } from "../../shared/Env";
 import './Footer.css';
 
 
@@ -14,18 +15,18 @@ const Footer = () => {
     return (
         <footer className="Footer-distributed">
 			<div className="Footer-right">
-				<motion.a whileHover={{scale: 1.1}} whileTap={{scale: .9}} href="#"><i className="fa fa-facebook">{FacebookIcon(theme)}</i></motion.a>
-				<motion.a whileHover={{scale: 1.1}} whileTap={{scale: .9}} href="#"><i className="fa fa-twitter">{TwitterIcon(theme)}</i></motion.a>
-				<motion.a whileHover={{scale: 1.1}} whileTap={{scale: .9}} href="#"><i className="fa fa-linkedin">{LinkedinIcon(theme)}</i></motion.a>
-				<motion.a whileHover={{scale: 1.1}} whileTap={{scale: .9}} href="#"><i className="fa fa-github">{GitHubIcon(theme)}</i></motion.a>
+				<motion.a whileHover={{scale: 1.1}} whileTap={{scale: .9}} href={ENV.developerData.facebook}><i className="fa fa-facebook">{FacebookIcon({theme})}</i></motion.a>
+				<motion.a whileHover={{scale: 1.1}} whileTap={{scale: .9}} href={ENV.developerData.twitter}><i className="fa fa-twitter">{TwitterIcon({theme})}</i></motion.a>
+				<motion.a whileHover={{scale: 1.1}} whileTap={{scale: .9}} href={ENV.developerData.linkedin}><i className="fa fa-linkedin">{LinkedinIcon({theme})}</i></motion.a>
+				<motion.a whileHover={{scale: 1.1}} whileTap={{scale: .9}} href={ENV.developerData.gitHub}><i className="fa fa-github">{GitHubIcon({theme})}</i></motion.a>
 			</div>
 			<div className="Footer-left">
 				<p className="Footer-links">
-					<a className="link-1" href="#">Home</a>
-					<a href="#">About</a>
-					<a href="#">Contact</a>
+					<a href="/">Home</a>
+					<a href="/pokedex">Pokedex</a>
+					<a href="/about">About</a>
 				</p>
-				<p>Company Name &copy; 2015</p>
+				<p>{ENV.developerData.signature} &copy; 2015</p>
 			</div>
 		</footer>
     );

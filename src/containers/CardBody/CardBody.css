@@ -26,14 +26,13 @@
   min-width: 50%;
 }
 
-.CharacterCard-Description {
-  margin-bottom: 7px;
+.CharacterCard-Description-Content {
+  background-color: #424242de;
+  border-radius: 0 0 3% 3%;
 }
 
-.CharacterCard-Description-Content {
-  background-color: #424242a3;
-  border-radius: 0 0 3% 3%;
-  padding: 0% 1% 0% 2%;
+.CharacterCard-Description-Body{
+  margin: 0 3%;
 }
 
 .CharacterCard-Description-Content-Display {
@@ -65,12 +64,12 @@
 }
 
 .CharacterCard-Description main {
-  height: 84%;
+  height: 85%;
   position: relative;
   top: -.3%;
 }
 
-.CharacterCard-Description ul, li {
+.CharacterCard-Description-nav ul, li {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -79,29 +78,28 @@
   font-size: 14px;
 }
 
-.CharacterCard-Description ul {
+.CharacterCard-Description-ul {
   display: flex;
   width: 100%;
 }
 
-.CharacterCard-Description li {
-  padding: 10px;
-  border-radius: 7px;
+.CharacterCard-Description-ul li {
+  border-radius: 7px 7px 0px 0px;
   width: 100%;
-  padding: 10px 15px !important;
-  position: relative;
+  padding: 2% !important;
   cursor: pointer;
   height: 24px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  justify-content: center;
   align-items: center;
+  text-align: center;
   flex: 1;
   min-width: 0;
   position: relative;
   user-select: none;
 }
 
-.CharacterCard-Description li button {
+.CharacterCard-Description-ul li button {
   width: 20px;
   height: 20px;
   border: 0;
@@ -117,25 +115,30 @@
 }
 
 /* Descartado */
-.CharacterCard-Description li.selected {
+.CharacterCard-Description-ul li .selected {
   display: flex;
-  background: rgba(136, 124, 124, 0.3);
   top: -1px;
 }
 
-.CharacterCard-Description nav {
+.CharacterCard-Description-nav {
   padding: 5px 5px 0;
   border-radius: 10px 10px 0 0;
   border-bottom: 1px solid #ccc6c600;
-  background: rgba(136, 124, 124, 0.281);
+  background: rgba(136, 124, 124, 0.5);
   height: 44px;
 }
 
 .underline {
   position: absolute;
-  bottom: -2px;
+  bottom: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 3px;
   background: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .CharacterCard-Description-ul li {
+    font-size: 11px;
+  }
 }

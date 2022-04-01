@@ -1,0 +1,53 @@
+@import url("../../styles/_var.scss");
+
+.Pokedex-container {
+	min-height: 100vh;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 140px auto;
+  grid-template-areas: "Head" "Pokemons";
+  gap: 10px;
+}
+
+.Pokedex-container_head {
+  grid-area: Head;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px 0 10px;
+}
+
+.Pokedex-container_head p {
+  margin: 15px 5% 15px 5%;
+}
+
+.Pokedex-container_body {
+  grid-area: Pokemons;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* grid-template-rows: repeat(auto-fill, minmax(200px, 1fr)); */
+  grid-gap: 10px;
+}
+
+.Search-box {
+  width: 90%;
+  height: 45px;
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-size: larger;
+  box-sizing: border-box;
+  outline: none;
+  font-family: var(--font-family);
+  border:none;
+}
+
+.Search-box:focus {
+  border: 2px solid var(--background-section-selected);
+}
+
+.CardConainer {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+}

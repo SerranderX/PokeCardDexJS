@@ -12,7 +12,7 @@ const SlideButton = ({state, handler, label}) => {
 
     return (
         <React.Fragment>
-            <p style={{ marginLeft: "20px", marginRight: "2px", marginTop: "0px", marginBottom: "0px" }}>{label}</p>
+            <p>{label}</p>
             <div className="switch" data-on={state} onClick={toggleSwitch}>
                 <motion.div className="handle" layout transition={spring} />
             </div>
