@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Chart as ChartJS,
+    Chart,
     RadialLinearScale,
     PointElement,
     LineElement,
@@ -11,7 +11,7 @@ import {
 import { Radar } from 'react-chartjs-2';
 import { toUpperCaseIndex, transformString } from '../../shared/Utils';
 
-ChartJS.register(
+Chart.register(
     RadialLinearScale,
     PointElement,
     LineElement,

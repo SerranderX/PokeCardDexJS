@@ -26,7 +26,7 @@ const Footer = () => {
 					<a href="/pokedex">Pokedex</a>
 					<a href="/about">About</a>
 				</p>
-				<p>{ENV.developerData.signature} &copy; 2015</p>
+				<p>{ENV.developerData.signature} &copy; 2022</p>
 			</div>
 		</footer>
     );

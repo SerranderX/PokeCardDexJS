@@ -16,6 +16,7 @@
 .Pokemon-type_Icon {
     width: auto;
     height: 23px;
+    min-width: 61px;
     border-radius: 25px;
     text-align: center;
     margin: 0% 1% 0% 3%;

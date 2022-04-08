@@ -1,4 +1,5 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useCallback } from 'react';
+import { useToast } from './useToast';
 import axios from 'axios';
 
 const API_URL = 'https://pokeapi.co/api/v2/pokemon';
@@ -8,9 +9,9 @@ const usePokemonsData = () => {
     const [state, dispatch] = useReducer(reducer, initialState({ initialState }));
     const { characters, generacion, loading, error, offSet, pokedexPage, search } = state;
 
-    const handleSearch = (event) => {
+    const handleSearch = useCallback((event) => {
         setSearch(event.target.value);
-    }
+    }, []);
 
     //ACTION CREATORS
     const cargarPokemons = (data) => dispatch({ type: actionTypes.CARGAR_POKEMONS, payload: data });
@@ -64,23 +65,24 @@ const usePokemonsData = () => {
                 const response = await axios.get(`${API_URL}?limit=${limit}&offset=${offSet}`);
                 cargarPokemons({ characters: response.data.results, offSet: offSet });
             } catch (error) {
-                console.error("Error: ", error);
+                console.error(error);
+                useToast({
+                    message: 'Sorry but something was wrong with trying to get the pokemons data.',
+                    type: 'warning',
+                    color: 'red'
+                });
             }
         }
 
         getPokemons();
     }, [generacion]);
 
-    const getGeneration = (genReq) => {
-        if (genReq !== generacion) { setGeneracion(genReq) }
-    }
-
     return { 
         characters,
         generacion, 
         loading, 
         error, 
-        getGeneration, 
+        setGeneracion, 
         offSet, 
         setPokedexPage, 
         pokedexPage, 

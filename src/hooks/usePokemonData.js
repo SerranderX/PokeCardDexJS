@@ -1,12 +1,28 @@
-import { useEffect, useReducer} from 'react';
+import { useEffect, useReducer, useCallback} from 'react';
 import { pokemonTypeUtils } from '../shared/Utils';
+import { useToast } from "./useToast";
 import axios from 'axios';
 
 const API_URL = 'https://pokeapi.co/api/v2/';
 
 const usePokemonData = () => {
     const [state, dispatch] = useReducer(reducer, initialState({ initialState }));
-    const { selectedId, characterSelect, pokemon, logoType, pokemonBackground, selectedTab, pokemonData, onSound, onLoadDescription, tabDescriptionData, shinnyOn, famaleOn, infoShared } = state;
+    const { selectedId, 
+            characterSelect, 
+            pokemon, 
+            logoType, 
+            pokemonBackground, 
+            selectedTab, 
+            pokemonData, 
+            onSound, 
+            onLoadDescription, 
+            tabDescriptionData, 
+            shinnyOn, 
+            famaleOn, 
+            infoShared,
+            autoSound,
+            enableEffect
+        } = state;
 
     //Action Creators
     const setPokemonData = (data) => dispatch({ type: actionTypes.SET_POKEMON_DATA, payload: data });
@@ -17,6 +33,8 @@ const usePokemonData = () => {
     const changeLoading = (data) => dispatch({ type: actionTypes.CHANGE_LOADING, payload: data });
     const setShinnyOn = (data) => dispatch({ type: actionTypes.SET_SHINNY_ON, payload: data });
     const setFamaleOn = (data) => dispatch({ type: actionTypes.SET_FAMALE_ON, payload: data });
+    const setAutoSound = (data) => dispatch({ type: actionTypes.SET_AUTO_SOUND, payload: data });
+    const setEnableEffect = (data) => dispatch({ type: actionTypes.SET_ENABLE_EFFECT, payload: data });
 
     useEffect(() => {
         const getPokemon = async (name) => {
@@ -24,7 +42,7 @@ const usePokemonData = () => {
             const pokemon = pokemonTypeUtils[response.data.types[0].type.name];
             const pokemonTypesIcons = response.data.types.map(type => pokemonTypeUtils[type.type.name]);
 
-            const pkData = [
+            const pokemonData = [
                 { 'key': 'general', 'general': {
                     'height': response.data.height,
                     'weight': response.data.weight,
@@ -40,8 +58,8 @@ const usePokemonData = () => {
             
             setPokemonData({
                 characterSelect: characterSelect,
-                selectedTab: pkData[0],
-                pokemonData: pkData,
+                selectedTab: pokemonData[0],
+                pokemonData: pokemonData,
                 pokemonBackground: pokemon.color,
                 logoType: pokemon.logo,
                 pokemon: response.data,
@@ -52,11 +70,7 @@ const usePokemonData = () => {
                 }
             });
             
-            
-
-            playPokemonSound(0.1, response.data.name);
-            
-            document.body.style.overflow = "hidden";
+            if(autoSound) { playPokemonSound(0.1, response.data.name) }
         }
 
         const getPokemonGeneralData = async (id) => {
@@ -121,11 +135,9 @@ const usePokemonData = () => {
             closePokemonCard();
         }
     }
-    
-    const closePokemonCard = () => {
-        document.body.style.overflow = "";
-        setPokemonData({
-            selectedId: null,
+
+    const getPokemonCard = useCallback((item) => {
+        setPokemonData({selectedId: null,
             characterSelect: null,
             pokemon: null,
             logoType: null,
@@ -141,9 +153,30 @@ const usePokemonData = () => {
                 hasFamaleData: false
             }
         });
-    }
+        setCharacterSelect(item);
+    });
+    
+    const closePokemonCard = useCallback(() => {
+        document.body.style.overflow = "";
+        setPokemonData({selectedId: null,
+            characterSelect: null,
+            pokemon: null,
+            logoType: null,
+            pokemonBackground: null,
+            selectedTab: null,
+            onSound: false,
+            pokemonData: [],
+            onLoadDescription: false,
+            tabDescriptionData: null,
+            shinnyOn: false,
+            famaleOn: false,
+            infoShared: {
+                hasFamaleData: false
+            }
+        });
+    }, []);
 
-    const playPokemonSound = (volume, name) => {
+    const playPokemonSound = useCallback((volume, name) => {
         const audio = new Audio(`https://play.pokemonshowdown.com/audio/cries/${name}.mp3`);
         audio.volume = volume;
         audio.play().then(() => {
@@ -153,11 +186,14 @@ const usePokemonData = () => {
             } , 1000);
         }).catch(() => {
             if(volume !== 0.1){
-                //TODO Toast message for sound not found
-                console.log("Audio not played");
+                useToast({
+                    message: 'Sorry but we don`t have the sound of this pokemon.',
+                    type: 'warning',
+                    color: 'red'
+                });
             }
         });
-    }
+    }, []);
 
     return {
         openPokemonCard,
@@ -178,7 +214,12 @@ const usePokemonData = () => {
         shinnyOn,
         setFamaleOn,
         famaleOn,
-        infoShared
+        infoShared,
+        getPokemonCard,
+        autoSound,
+        setAutoSound,
+        enableEffect,
+        setEnableEffect
     };
 }
 
@@ -197,7 +238,9 @@ const initialState = () => ({
     famaleOn: false,
     infoShared: {
         hasFamaleData: false
-    }
+    },
+    autoSound: true,
+    enableEffect: true
 });
 
 const reducerObject = (state, payload) => ({
@@ -220,7 +263,9 @@ const reducerObject = (state, payload) => ({
     [actionTypes.SET_TAB_DESCRIPTION_DATA]: { ...state, tabDescriptionData: payload, onLoadDescription: false},
     [actionTypes.CHANGE_LOADING]: { ...state, onLoadDescription: payload },
     [actionTypes.SET_SHINNY_ON]: { ...state, shinnyOn: payload },
-    [actionTypes.SET_FAMALE_ON]: { ...state, famaleOn: payload }
+    [actionTypes.SET_FAMALE_ON]: { ...state, famaleOn: payload },
+    [actionTypes.SET_AUTO_SOUND]: { ...state, autoSound: payload },
+    [actionTypes.SET_ENABLE_EFFECT]: { ...state, enableEffect: payload }
 });
 
 const reducer = (state, action) => {
@@ -236,7 +281,9 @@ const actionTypes = {
     SET_TAB_DESCRIPTION_DATA: 'SET_TAB_DESCRIPTION_DATA',
     CHANGE_LOADING: 'CHANGE_LOADING',
     SET_SHINNY_ON: 'SET_SHINNY_ON',
-    SET_FAMALE_ON: 'SET_FAMALE_ON'
+    SET_FAMALE_ON: 'SET_FAMALE_ON',
+    SET_AUTO_SOUND: 'SET_AUTO_SOUND',
+    SET_ENABLE_EFFECT: 'SET_ENABLE_EFFECT'
 }
 
 export { usePokemonData };

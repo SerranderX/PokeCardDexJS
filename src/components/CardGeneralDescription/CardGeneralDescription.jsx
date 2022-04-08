@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { toUpperCaseIndex, transformString } from '../../shared/Utils';
 import { DescriptionItem } from '../DescriptionItem/DescriptionItem';
@@ -6,39 +6,43 @@ import './CardGeneralDescription.css';
 
 const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, pokemonData, pokemon, pokemonBackground}) => {
     let auxDesc = false;
-    let pseudoLegendary = false;
-
-    if (pokemon) { 
-        var sum = 0;
-        pokemon.stats.forEach(item => sum += item.base_stat); 
-        if(sum === 600){
-            pseudoLegendary = true;
+    const pseudoLegendary = useCallback((pokemon) => {
+        if(pokemon){
+            var sum = 0;
+            pokemon.stats.forEach(item => sum += item.base_stat); 
+            if(sum === 600){
+                return true;
+            } else {
+                return false;
+            }
         }
-    }
+    }, [pokemon]);
 
-    const transformWeight = (weight) => {
+    const transformWeight = useCallback((weight) => {
         let weightStr = weight.toString();
         let length = weightStr.length;
         if (length >= 2) {
             return weightStr.slice(0, length - 1) + '.' + weightStr.slice(length - 1);
         }
         return `0.${weightStr}`;
-    }
+    }, []);
 
 
-    const getEggGroups = (eggGroups) => {
+    const getEggGroups = useCallback((eggGroups) => {
         let result = "";
-        eggGroups.forEach((item, index) => {
-            result += toUpperCaseIndex(item.name);
-            if ((index + 1) === eggGroups.length) {
-                result += ".";
-            } else {
-                result += ", ";
-            }
-        })
+        if(eggGroups){
+            eggGroups.forEach((item, index) => {
+                result += toUpperCaseIndex(item.name);
+                if ((index + 1) === eggGroups.length) {
+                    result += ".";
+                } else {
+                    result += ", ";
+                }
+            })
+        }
         return result;
-    }
-    
+    }, []);
+
     return (
         <React.Fragment>
             <section className="CharacterCard-Description-Title" style={{backgroundColor: pokemonBackground.secondary, borderBottom: `1px ${pokemonBackground.primary} solid`}}>
@@ -121,7 +125,7 @@ const CardGeneralDescription = ({tabTitle, tabDescriptionData, selectedTab, poke
                         backgroundColor={pokemonBackground.secondary} 
                         borderColor={pokemonBackground.primary} 
                         name={'Pseudo Legendary'}
-                        data={(pseudoLegendary) ? "Yes" : "No"}
+                        data={(pseudoLegendary(pokemon)) ? "Yes" : "No"}
                     />
                     {tabDescriptionData?.species?.generation?.name && (
                         <DescriptionItem 

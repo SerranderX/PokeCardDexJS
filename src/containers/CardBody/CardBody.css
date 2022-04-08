@@ -12,11 +12,20 @@
 
 .CharacterCard-Image {
   border-radius: 2%;
-  background-image: url("../../assets/images/forest.jpg");
   background-size: 100% 100%;
   clear: both;
   border-bottom: #3b3b3b 3px solid;
   border-top: #3b3b3b 3px solid;
+}
+
+.CharacterCard-Background_Button {
+  position: absolute;
+  right: 6.5%;
+  height: 3.5%;
+  border-radius: 50%;
+  border: none;
+  width: 5%;
+  margin-top: .5%;
 }
 
 .CharacterCard-Image img {
@@ -24,6 +33,7 @@
   max-width: 100%;
   min-height: 50%;
   min-width: 50%;
+  pointer-events: none;
 }
 
 .CharacterCard-Description-Content {
@@ -64,7 +74,7 @@
 }
 
 .CharacterCard-Description main {
-  height: 85%;
+  height: 84%;
   position: relative;
   top: -.3%;
 }
@@ -140,5 +150,9 @@
 @media (max-width: 768px) {
   .CharacterCard-Description-ul li {
     font-size: 11px;
+  }
+
+  .CharacterCard-Description main {
+    height: 83%;
   }
 }

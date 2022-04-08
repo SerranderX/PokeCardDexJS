@@ -1,3 +1,5 @@
+@import url("../../styles/_var.scss");
+
 @keyframes spin {
   0% {
     --rotate: 0deg;
@@ -51,21 +53,33 @@
   color: white;
   border-radius: 10%;
   padding: 20px;
-  margin: 15px;
-  height: var(--card-height);
-  width: var(--card-width);
   min-height: 550px;
   min-width: 400px;
-  position: fixed;
-  left: calc(50% - 250px);
-  top: 30px;
   background-clip: padding-box;
-  box-shadow: 40px 40px 40px black;
   z-index: 9;
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-rows: 11% 85% 4%;
   gap: 5px;
+}
+
+.Pokedex-card_dimensions {
+  height: var(--card-height);
+  width: var(--card-width);
+  box-shadow: 20px 20px 20px black;
+}
+
+.Home-card_dimensions {
+  height: var(--card-height-home);
+  width: var(--card-width-home);
+  box-shadow: 15px 15px 15px black;
+  position: relative;
+}
+
+.PokedexPosition {
+    position: fixed;
+    left: calc(50% - 250px); 
+    top: 30px;
 }
 
 .Legendary::before {
@@ -87,33 +101,54 @@
   opacity: .33;
 }
 
-.Legendary::after {
+.Legendary_Pokedex::after {
   position: absolute;
   content: "";
-  top: calc(var(--card-height) / 6);
-  left: 0;
+  top: -30%;
+  left: -20%;
   right: 0;
   z-index: -1;
-  height: 100%;
-  width: 100%;
   margin: 0 auto;
   transform: scale(0.8);
+  height: var(--card-height);
+  width: var(--card-width);
   filter: blur(calc(var(--card-height) / 6));
   background-image: linear-gradient(
     var(--rotate), 
     #5ddcff, #3c67e3 43%, #4e00c2);
-    opacity: .4;
+    opacity: .3;
     animation: spin 2.5s linear infinite, opacity 1.5s;
   }
-  
+
+.Legendary_Home::after{
+  position: absolute;
+  content: "";
+  top: -15%;
+  left: -22%;
+  right: 0;
+  z-index: -1;
+  margin: 0 auto;
+  transform: scale(0.8);
+  height: 135%;
+  width: 140%;
+  filter: blur(calc(var(--card-height-home) / 6));
+  background-image: linear-gradient(
+    var(--rotate), 
+    #5ddcff, #3c67e3 43%, #4e00c2);
+    opacity: .3;
+    animation: spin 2.5s linear infinite, opacity 1.5s;
+}
   
   
   @media (max-width: 380px){
     .CharacterCard {
       min-height: 520px;
       min-width: 310px;
-      left: calc(50% - 210px);
-      top: calc(-25% + 210px);
+    }
+
+    .PokedexPosition {
+      position: fixed;
+      left: 0;
     }
   
     .CharacterCard-Head {
@@ -134,8 +169,11 @@
   .CharacterCard {
     min-height: 520px;
     min-width: 310px;
-    left: calc(50% - 210px);
-    top: calc(-25% + 310px);
+  }
+
+  .PokedexPosition {
+    position: fixed;
+    left: 0;
   }
 
   .CharacterCard-Head {

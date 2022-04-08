@@ -1,12 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { whileHoverSpriteImage } from '../../shared/Animations'; 
+import { useToast } from '../../hooks/useToast';
 import './CardHead.css';
 
-const CardHead = ({pokemon, selectedId, logoType, handleCloseCard, whileHoverCardExit, playPokemonSound, shinny, famale}) => {
+const CardHead = ({pokemon, selectedId, logoType, whileHoverCardExit, closePokemonCard, playPokemonSound, shinny, famale, pokedexPage}) => {
 
     const soundToggle = (name) => {
-        playPokemonSound(0.4, name);
+        playPokemonSound(0.2, name);
+    }
+
+
+    const handleCloseCard = () => {
+        if(pokedexPage) {
+            closePokemonCard();
+        } else {
+            useToast({
+                message: 'Close function is not available in home page.',
+                type: 'info',
+                bkgColor: 'rgba(255,241,88,1)'
+            });
+        }
     }
 
     const imagen = () => {
@@ -44,7 +58,10 @@ const CardHead = ({pokemon, selectedId, logoType, handleCloseCard, whileHoverCar
                 onClick={() => handleCloseCard()}
                 className="CharacterCard-Button"
             >
-                <motion.img whileHover={whileHoverCardExit} className="CharacterCard-Icon-Type" src={logoType} alt="CharacterCard-Icon-Type"/>
+                <motion.img
+                    whileHover={whileHoverCardExit} 
+                    className="CharacterCard-Icon-Type" 
+                    src={logoType} alt="CharacterCard-Icon-Type"/>
                 <motion.label>Back</motion.label>
             </motion.button>
         </motion.div>

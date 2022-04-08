@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { variantsCardAnimation, 
     whileHoverCardExit 
@@ -28,37 +28,39 @@ const Card = ({
         infoShared,
         setShinnyOn,
         setFamaleOn,
-        generacion
+        generacion,
+        enableEffect,
+        setEnableEffect,
+        pokedexPage
     }) => {
 
-    let legendary = false; 
+    const legendary = useCallback((pokemon) => { 
+        if(!pokemon) return false;
 
-    const handleCloseCard = () => {
-        closePokemonCard();
-    }
-
-    if (pokemon) { 
         var sum = 0;
         pokemon.stats.forEach(item => sum += item.base_stat); 
         if(sum === 600){
-            legendary = true;
+            return true;
         }
 
         if(tabDescriptionData){
             if(tabDescriptionData?.species?.is_legendary == true && !legendary){
-                legendary = true;
+                return true;
             }
 
             if(tabDescriptionData?.species?.is_mythical == true && !legendary){
-                legendary = true;
+                return true;
             }
         }
-    }
-    
+    }, [pokemon]);
+
     return (
         <motion.div
             layoutId={selectedId.name} 
-            className={`CharacterCard ${pokemonBackground.name} ${legendary ? 'Legendary' : ''}`} 
+            className={`CharacterCard ${pokemonBackground.name} 
+                        ${(enableEffect && legendary) && `${(pokedexPage) ? 'Legendary Legendary_Pokedex' : 'Legendary Legendary_Home'}`} 
+                        ${(pokedexPage) ? 'PokedexPosition Pokedex-card_dimensions' : 'Home-card_dimensions'}
+                    `} 
             animate={onSound ? "play" : "stop"}
             variants={variantsCardAnimation}
         >
@@ -66,9 +68,10 @@ const Card = ({
                 selectedId={selectedId}
                 pokemon={pokemon}
                 logoType={logoType}
-                handleCloseCard={handleCloseCard}
                 whileHoverCardExit={whileHoverCardExit}
                 playPokemonSound={playPokemonSound}
+                closePokemonCard={closePokemonCard}
+                pokedexPage={pokedexPage}
                 shinny={shinnyOn}
             />
             <CardBody 
@@ -92,6 +95,9 @@ const Card = ({
                     setFamale={setFamaleOn}
                     famale={famaleOn}
                     infoShared={infoShared}
+                    enableEffect={enableEffect}
+                    setEnableEffect={setEnableEffect}
+                    legendary={legendary}
                 />)
             }
         </motion.div>

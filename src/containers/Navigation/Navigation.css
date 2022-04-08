@@ -23,11 +23,7 @@ li {
   color: var(--text-primary);
   text-decoration: none;
   border-radius: 7px;
-  width: 100%;
-  padding: 10px 15px !important;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
   flex: 1;
   min-width: 0;
   position: relative;

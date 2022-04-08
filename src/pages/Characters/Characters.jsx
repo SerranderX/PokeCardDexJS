@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useEffect, useContext, useMemo} from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AppContext } from '../../context/AppContext';
 import { Card } from '../../containers/Card/Card';
@@ -35,17 +35,22 @@ const Characters = () => {
         setFamaleOn,
         famaleOn,
         infoShared,
-        tabDescriptionData
+        tabDescriptionData,
+        enableEffect,
+        setEnableEffect,
     } = useContext(AppContext);
-    const [pokemons, setPokemons] = useState([]);
 
     useEffect(() => {
         if(!pokedexPage) { setPokedexPage(true) }
-        if(search.length > 0){
-            const filteredPokemons = characters.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
-            setPokemons(filteredPokemons);
+    }, []);
+
+    const filtredPokemons = useMemo(() => {
+        const regex = /\d+/g;
+        const matches = search.toLowerCase().match(regex);
+        if(!matches) {
+            return characters.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
         } else {
-            setPokemons(characters);
+            return characters.filter(item => item.url.split("/")[6].includes(matches[0]));
         }
     }, [search, characters]);
 
@@ -57,7 +62,7 @@ const Characters = () => {
                     <p>Search any pokemon and click on the miniature to display the pokemon card data and pictures.</p>
                 </div>
                 <motion.div className="Pokedex-container_body">
-                    {pokemons.map(( character, index ) => ( 
+                    {filtredPokemons.map(( character, index ) => ( 
                         <MiniCard key={character.name} selectedId={selectedId} character={character} index={index} offSet={offSet} openPokemonCard={openPokemonCard} />
                     ))}
 
@@ -82,6 +87,9 @@ const Characters = () => {
                                 infoShared={infoShared}
                                 tabDescriptionData={tabDescriptionData}
                                 generacion={generacion}
+                                pokedexPage={pokedexPage}
+                                enableEffect={enableEffect}
+                                setEnableEffect={setEnableEffect}
                             />
                         )}
                     </AnimatePresence>

@@ -1,21 +1,28 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 function Icon({theme}) {
   return (
-    <motion.svg
+    <svg
       xmlns="http://www.w3.org/2000/svg"
-      x="0"
-      y="0"
-      enableBackground="new 0 0 455 455"
-      version="1.1"
-      viewBox="0 0 455 455"
-      xmlSpace="preserve"
-      animate={{opacity: .5}}
+      width="11"
+      height="20"
+      viewBox="0 0 11 20"
       className={`${(theme === 'dark') ? 'Dark-theme' : 'Light-theme'}`}
     >
-      <path d="M227.5 0C101.855 0 0 101.855 0 227.5S101.855 455 227.5 455 455 353.145 455 227.5 353.145 0 227.5 0zm-28.024 355.589l-21.248-21.178L284.791 227.5 178.228 120.589l21.248-21.178L327.148 227.5 199.476 355.589z"></path>
-    </motion.svg>
+      <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
+        <g transform="translate(-345 -3434)">
+          <g transform="translate(100 3378)">
+            <g transform="translate(238 54)">
+              <path d="M24 24L0 24 0 0 24 0z" opacity="0.87"></path>
+              <path
+                fill="#1D1D1D"
+                d="M7.38 21.01c.49.49 1.28.49 1.77 0l8.31-8.31a.996.996 0 000-1.41L9.15 2.98a1.25 1.25 0 00-1.77 0 1.25 1.25 0 000 1.77L14.62 12l-7.25 7.25c-.48.48-.48 1.28.01 1.76z"
+              ></path>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
   );
 }
 

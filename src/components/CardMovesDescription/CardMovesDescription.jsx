@@ -13,7 +13,7 @@ const CardMovesDescription = ({tabTitle, pokemonBackground, pokemon, selectedTab
 
     const handleChange = (event) => {
         setVersion(event.target.value);
-    }
+    };
 
     useEffect(() => {
         if(pokemonVersions.length == 0){

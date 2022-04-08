@@ -59,11 +59,10 @@
 }
 
 .CharacterCard-Title {
-    display: grid;
-    text-align: left;
-    width: max-content;
+    font-size: 95%;
+    width: 95%;
     height: max-content;
-    margin: 6% 8%;
+    margin: 6% 3%;
 }
 
 .CharacterCard-Title h2 {

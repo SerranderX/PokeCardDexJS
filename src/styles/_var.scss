@@ -19,6 +19,8 @@
   /* Dimensions */
   --card-height: 75vh;
   --card-width: calc(var(--card-height) / 1.5);
+  --card-height-home: 62vh;
+  --card-width-home: calc(var(--card-height-home) / 1.5);
   --background-button: rgb(0, 0, 0, .07);
 }
 
@@ -41,5 +43,6 @@
   :root {
     --card-width: calc(var(--card-height) / 2.2);
     --card-height: 60vh;
+    --font-size-base: 16px;
   }
 }

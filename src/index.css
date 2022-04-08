@@ -7,6 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  width: -webkit-fill-available;
+html,body{
+  overflow-x: hidden;
 }

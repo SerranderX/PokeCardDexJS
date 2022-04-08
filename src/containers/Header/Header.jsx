@@ -12,22 +12,23 @@ import { navMenu } from '../../shared/Utils';
 import SubMenuItem from '../../components/SubMenuItem/SubMenuItem';
 import PokemonLogo  from '../../assets/images/pokemon_logo.jsx';
 import { ENV } from '../../shared/Env';
-import { variantsSlideSideVar, varaintsThemeAnimation, variantsNavbar, titleNavBarVariant } from '../../shared/Animations';
+import { variantsSlideSideVar, varaintsThemeAnimation, variantsNavbar, titleNavBarVariant, variantsNavSlideButton } from '../../shared/Animations';
 import './Header.css';
+import { SlideButton } from '../../components/SlideButton/SlideButton';
 
 const Header = () => {
-    const { toggleTheme, theme, getGeneration, generacion, pokedexPage, closePokemonCard } = useContext(AppContext);
+    const { toggleTheme, theme, getGeneration, generacion, pokedexPage, closePokemonCard, autoSound, setAutoSound } = useContext(AppContext);
 
     const [isOpen, toggleOpen] = useCycle(false, true);
     const containerSideMenuRef = useRef(null);
     const { sideMenuRef } = useDimensions(containerSideMenuRef);
-    const [expanded, setExpanded] = useState(0);
+    const [expanded, setExpanded] = useState(false);
     const containerHeader = useRef(null);
     const { width } = useDimensions(containerHeader);
     
     const handleNavIconClick = () => {
         toggleOpen();
-        if(expanded != false) { setExpanded(false) }
+        (isOpen) ? setExpanded(false) : setExpanded(1);
     }
 
     const handleGetGeneration = (generation) => {
@@ -80,6 +81,7 @@ const Header = () => {
                             </MenuItem>
                         )
                     })}
+                    <SlideButton show={isOpen} state={autoSound} handler={setAutoSound} label={(autoSound) ? 'Auto card sound enabled' : 'Auto card sound disabled'} style={{ alignItems: 'center', margin: '5% 8%' }} variants={variantsNavSlideButton} />
                 </Navigation>
                 <MenuToggle toggle={() => handleNavIconClick()} />
                 { (width <= 768 && isOpen) && (

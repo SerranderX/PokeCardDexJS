@@ -8,7 +8,7 @@ function useAppInitialState() {
 
     const {
         characters,
-        getGeneration, 
+        setGeneracion, 
         generacion, 
         loading, 
         error, 
@@ -37,8 +37,18 @@ function useAppInitialState() {
         setFamaleOn,
         famaleOn,
         infoShared,
-        tabDescriptionData
+        tabDescriptionData,
+        getPokemonCard,
+        autoSound,
+        setAutoSound,
+        enableEffect,
+        setEnableEffect,
     } = usePokemonData();
+
+    const getGeneration = (genReq) => {
+        if (genReq !== generacion) { setGeneracion(genReq) }
+    }
+
 
     const toggleTheme = () => {
         const newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -76,7 +86,12 @@ function useAppInitialState() {
         setFamaleOn,
         famaleOn,
         infoShared,
-        tabDescriptionData
+        tabDescriptionData,
+        getPokemonCard,
+        autoSound,
+        setAutoSound,
+        enableEffect,
+        setEnableEffect,
     };
 }
 

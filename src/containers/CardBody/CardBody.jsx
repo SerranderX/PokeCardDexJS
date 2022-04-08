@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CardGeneralDescription from '../../components/CardGeneralDescription/CardGeneralDescription';
 import CardLoadDescription from '../../components/CardLoadDescription/CardLoadDescription';
@@ -6,9 +6,18 @@ import CardStatsDescription from '../../components/CardStatsDescription/CardStat
 import CardAbilitiesDescription from '../../components/CardAbilitiesDescription/CardAbilitiesDescription';
 import CardLocationsDescription from '../../components/CardLocationsDescription/CardLocationsDescription';
 import CardMovesDescription from '../../components/CardMovesDescription/CardMovesDescription';
+import { toUpperCaseIndex, backgroundCardImages } from '../../shared/Utils';
 import './CardBody.css';
 
 const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemonData, onLoadDescription, logoType, shinny, famale, tabDescriptionData, pokemonBackground, generacion}) => {
+
+    const [indexBkg, setIndexBkg] = useState(0);
+    const [indexBkgColor, setIndexBkgColor] = useState(1);
+
+    const handleBackground = () => {
+        setIndexBkg( (indexBkg === (backgroundCardImages.length - 1)) ? 0 : indexBkg + 1);
+        setIndexBkgColor( indexBkgColor === (backgroundCardImages.length - 1) ? 1 : indexBkgColor + 1);
+    }
 
     const imagen = () => {
         if (shinny && famale) {
@@ -23,11 +32,12 @@ const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemon
     }
 
     const tabKey = (selectedTab != null) ? selectedTab.key : ""; 
-
+    
     return (
         <div className="CharacterCard-Body" >
-            <div className="CharacterCard-Image" >
+            <div className="CharacterCard-Image" style={{backgroundImage: `url('${backgroundCardImages[indexBkg].img}')`}} >
                 <img src={imagen()} alt={selectedId.name} />
+                <button className='CharacterCard-Background_Button' style={{backgroundColor: backgroundCardImages[indexBkgColor].color}} type='button' onClick={handleBackground} />
             </div>
             <div className="CharacterCard-Description" >
                 <nav className="CharacterCard-Description-nav">
@@ -38,9 +48,9 @@ const CardBody = ({ pokemon, selectedTab, changeSelectedTab, selectedId, pokemon
                                 style={{backgroundColor: item === selectedTab ? pokemonData[0].general.types[0].color.primary : "transparent"}}
                                 onClick={() => changeSelectedTab(item)}
                             >
-                                {item.key.charAt(0).toUpperCase()}{item.key.slice(1)}
+                                {toUpperCaseIndex(item.key)}
                                 {item === selectedTab ? (
-                                    <motion.div className="underline" layoutId="underline" />
+                                    <motion.div className="underline" layoutId="underline" animate={{opacity:[0, 1], transition: { delay: .2 } }}/>
                                 ) : null}
                             </li>
                         ))}

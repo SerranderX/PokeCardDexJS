@@ -8,6 +8,7 @@ import { NotFound } from './pages/NotFound/NotFound';
 import { About } from './pages/About/About';
 import { Home } from './pages/Home/Home';
 import { Layout } from './containers/Layout/Layout';
+import 'izitoast-react/dist/iziToast.css';
 
 function App() {
   const initialState = useAppInitialState();

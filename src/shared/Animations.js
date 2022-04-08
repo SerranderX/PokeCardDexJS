@@ -94,8 +94,8 @@ const titleNavBarVariant = {
 const variantsSlide = {
   enter: (direction) => {
       return {
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0
+        x: direction > 0 ? 1000 : -1000,
+        opacity: 0
       };
   },
   center: {
@@ -105,11 +105,29 @@ const variantsSlide = {
   },
   exit: (direction) => {
       return {
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0
+        zIndex: 0,
+        x: direction < 0 ? 1000 : -1000,
+        opacity: 0
       };
   }
 };
 
-export { variantsSlide, whileHoverCard, whileHoverCardExit, whileHoverSpriteImage, variantsCardAnimation, variantsSlideSideVar, varaintsThemeAnimation, variantsNavbar, titleNavBarVariant};
+const variantsNavSlideButton = {
+  open: {
+    y: 0,
+    opacity: [0, 1],
+    transition: {
+      y: { stiffness: 1000, velocity: -100 },
+      default: { duration: 0.7 }
+    }
+  },
+  closed: {
+    y: 50,
+    opacity: 0,
+    transition: {
+      y: { stiffness: 1000 }
+    }
+  }
+}
+
+export { variantsSlide, whileHoverCard, whileHoverCardExit, whileHoverSpriteImage, variantsCardAnimation, variantsNavSlideButton, variantsSlideSideVar, varaintsThemeAnimation, variantsNavbar, titleNavBarVariant};

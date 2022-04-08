@@ -1,47 +1,24 @@
 .CharacterCard-Footer {
     width: 90%;
-    height: 95%;
+    margin: 0 5%;
+    height: 100%;
     font-family: 'Courier New', Courier, monospace;
     box-sizing: border-box;
-    display: flex;
+    display: grid;
     justify-content: left;
     align-items: center;
     grid-column-start: 1;
     grid-column-end: 5;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    column-gap: 2%;
 }
 
 .CharacterCard-Footer p {
-    margin: 0px 5px 0px 20px;
+    margin: 0;
     font-weight: bold;
 }
 
 .CharacterCard-Footer-Left p{
     width: 4em;
-}
-
-.switch {
-    max-width: 35px;
-    min-width: 25px;
-    width: auto;
-    max-height: 11px;
-    min-height: 8px;
-    height: auto;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 50px;
-    padding: 5px 4px 5px 4px;
-    cursor: pointer;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.switch[data-on="true"] {
-    justify-content: flex-end;
-}
-
-.handle {
-    width: 17px;
-    height: 17px;
-    background-color: white;
-    border-radius: 40px;
 }

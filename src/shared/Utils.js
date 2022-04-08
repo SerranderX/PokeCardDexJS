@@ -1,3 +1,4 @@
+
 import AboutIcon from "../assets/icons/about.jsx";
 import PokedexIcon from "../assets/icons/pokeball.jsx";
 import HomeIcon from "../assets/icons/home.jsx";
@@ -26,6 +27,18 @@ import NormalLogo from '../assets/icons/Types/Normal_Type_Icon.svg';
 import WaterLogo from '../assets/icons/Types/Water_Type_Icon.svg';
 import RockLogo from '../assets/icons/Types/Rock_Type_Icon.svg';
 import SteelLogo from '../assets/icons/Types/Steel_Type_Icon.svg';
+import ForestBKG from '../assets/images/forest.jpg';
+import Grass1BKG from '../assets/images/grass1.jpg';
+import Grass2BKG from '../assets/images/grass2.jpg';
+import Night1BKG from '../assets/images/night1.jpg';
+import Night2BKG from '../assets/images/night2.jpg';
+import Sky1BKG from '../assets/images/sky1.jpg';
+import Sky2BKG from '../assets/images/sky2.jpg';
+import Fire1BKG from '../assets/images/fire1.jpg';
+import Fire2BKG from '../assets/images/fire2.jpg';
+import Water1BKG from '../assets/images/water1.jpg';
+import Water2BKG from '../assets/images/water2.jpg';
+import WSXP from '../assets/images/WSXP.jpg';
 
 const toUpperCaseIndex = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -258,7 +271,7 @@ const navMenu = [
 const pokemonTypeUtils = {
     'normal': { 'logo': NormalLogo, 'color': { name: 'Normal', primary: 'rgba(145, 154, 162, 0.7)', secondary: 'rgba(145, 154, 162, 0.1)' }},
     'fighting': { 'logo': FightingLogo, 'color': { name: 'Fighting', primary: 'rgba(224, 48, 106, 0.7)', secondary: 'rgba(224, 48, 106, 0.1)' }},
-    'flying': { 'logo': FlyingLogo, 'color': { name: 'Flying', primary: 'rgba(137 170 227, 0.7)', secondary: 'rgba(137 170 227, 0.1)' }},
+    'flying': { 'logo': FlyingLogo, 'color': { name: 'Flying', primary: 'rgba(137, 170, 227, 0.7)', secondary: 'rgba(137, 170, 227, 0.1)' }},
     'poison': { 'logo': PoisonLogo, 'color': { name: 'Poison', primary: 'rgba(181, 103, 206, 0.7)', secondary: 'rgba(181, 103, 206, 0.1)' }},
     'ground': { 'logo': GroundLogo, 'color': { name: 'Ground', primary: 'rgba(232, 114, 54, 0.7)', secondary: 'rgba(232, 114, 54, 0.1)' }},
     'rock': { 'logo': RockLogo, 'color': { name: 'Rock', primary: 'rgba(200, 182, 134, 0.7)', secondary: 'rgba(200, 182, 134, 0.1)' }},
@@ -471,4 +484,19 @@ const powerTypes = [
     { name: 'status', src: statusIcon },
 ];
 
-export { toUpperCaseIndex, transformString, transformVerString, navMenu, learnedMethods, powerTypes, pokemonTypeUtils, versions };
+const backgroundCardImages = [
+    {img: ForestBKG, color: "#727a46"},
+    {img: Grass1BKG, color: "#afb72a"},
+    {img: Grass2BKG, color: "#72ab0a"},
+    {img: Water1BKG, color: "#017e9b"},
+    {img: Water2BKG, color: "#0945b2"},
+    {img: Sky1BKG, color: "#9fc8ee"},
+    {img: Sky2BKG, color: "#c18b99"},
+    {img: Night1BKG, color: "#060604"},
+    {img: Night2BKG, color: "#2f1957"},
+    {img: Fire1BKG, color: "#c83402"},
+    {img: Fire2BKG, color: "#c89202"},
+    {img: WSXP, color: "#3a5415"},
+];
+
+export { toUpperCaseIndex, transformString, transformVerString, navMenu, learnedMethods, powerTypes, pokemonTypeUtils, versions, backgroundCardImages };
