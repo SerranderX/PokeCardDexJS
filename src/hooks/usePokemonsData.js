@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useCallback } from 'react'
 import { useToast } from '@hooks/useToast'
-import ENV from '@shared/Env'
+import { ENV } from '@shared/Env'
 import axios from 'axios'
 
 const usePokemonsData = () => {
