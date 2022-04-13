@@ -7,6 +7,7 @@ const TerserPlugin = require('terser-webpack-plugin');  // optimizacion de javas
 const DotEnv = require('dotenv-webpack'); // plugin de configuracion - variables de entorno 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); 
 
+
 module.exports = {
   entry: './src/index.js',
   output: {
