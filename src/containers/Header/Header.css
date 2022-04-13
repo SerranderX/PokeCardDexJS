@@ -1,4 +1,4 @@
-@import url("../../styles/_var.scss");
+@import url("@styles/_var.scss");
 
 .Header-containerlogo {
   padding: 2em 0 1em 0;
@@ -9,6 +9,7 @@
   top: -10px;
   left: 8px;
   position: relative;
+  color: var(--text-primary);
 }
 
 .Header-navigator {

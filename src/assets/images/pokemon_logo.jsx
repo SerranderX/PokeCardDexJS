@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 function Icon() {
   return (
@@ -415,7 +415,7 @@ function Icon() {
       </g>
       <g
         transform="matrix(.93944 0 0 .93944 14.793 6.43)"
-        style={{ lineHeight: "125%", InkscapeFontSpecification: "Arial" }}
+        style={{ lineHeight: '125%', InkscapeFontSpecification: 'Arial' }}
         fill="#000"
         fillOpacity="1"
         stroke="none"
@@ -432,7 +432,7 @@ function Icon() {
         <path d="M255.805 90.905v-2.863h.57l.678 2.027c.062.189.108.33.136.424.033-.104.084-.257.153-.46l.685-1.991h.51v2.863h-.365v-2.397l-.832 2.397h-.342l-.828-2.438v2.438z"></path>
       </g>
     </svg>
-  );
+  )
 }
 
-export default Icon;
+export default Icon

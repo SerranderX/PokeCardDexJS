@@ -1,4 +1,4 @@
-@import url('./styles/_var.scss');
+@import url('@styles/_var.scss');
 
 .App {
   text-align: center;
@@ -51,9 +51,16 @@ h3 {
   color: var(--text-primary);
 } 
 
+a {
+  color: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App {
     transition: all 0.5s ease-in-out;
   }
 }
+
 

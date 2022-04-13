@@ -1,6 +1,6 @@
 const env = {
-    urlLinkedin: 'https://www.linkedin.com/in/',
-    urlGithub: '',
+  urlLinkedin: 'https://www.linkedin.com/in/',
+  urlGithub: '',
 }
 
-export {env}
+export { env }

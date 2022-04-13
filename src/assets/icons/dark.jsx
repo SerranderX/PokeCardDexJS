@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react'
 
-function Icon({theme}) {
+function Icon({ theme }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
       viewBox="0 0 512 512"
-      className={`${(theme === 'dark') ? 'Dark-theme' : 'Light-theme'}`}
+      className={`${theme === 'dark' ? 'Dark-theme' : 'Light-theme'}`}
     >
       <path d="M257.05 490.667c-129.975 0-235.717-105.742-235.717-235.717a235.752 235.752 0 01202.75-233.41 21.333 21.333 0 0117.364 36.86 150.577 150.577 0 00-48.817 110.8c0 82.8 67.37 150.17 150.17 150.17a150.577 150.577 0 00110.8-48.817 21.333 21.333 0 0136.862 17.364 235.752 235.752 0 01-233.41 202.75zM170.7 82.33C107.089 114.377 64 180.578 64 254.95 64 361.4 150.6 448 257.05 448c74.372 0 140.573-43.089 172.62-106.7a192.964 192.964 0 01-86.87 20.736c-106.332 0-192.841-86.508-192.841-192.841A192.964 192.964 0 01170.7 82.33z"></path>
     </svg>
-  );
+  )
 }
 
-export default Icon;
+export default Icon

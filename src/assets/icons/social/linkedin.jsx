@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-function Icon({theme}) {
+function Icon({ theme }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,7 @@ function Icon({theme}) {
       height="35"
       fill="none"
       viewBox="1 1 48 48"
-      className={`${(theme === 'dark') ? 'Dark-theme' : 'Light-theme'}`}
+      className={`${theme === 'dark' ? 'Dark-theme' : 'Light-theme'}`}
     >
       <path
         fill="#000"
@@ -17,7 +17,7 @@ function Icon({theme}) {
         clipRule="evenodd"
       ></path>
     </svg>
-  );
+  )
 }
 
-export default Icon;
+export default Icon

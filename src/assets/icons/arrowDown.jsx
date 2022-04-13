@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react'
 
-function Icon({theme}) {
+function Icon({ theme }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="35"
       height="36"
       viewBox="0 0 12 5"
-      className={`${(theme === 'dark') ? 'Dark-theme' : 'Light-theme'}`}
+      className={`${theme === 'dark' ? 'Dark-theme' : 'Light-theme'}`}
     >
       <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
         <g transform="translate(-616 -2467)">
@@ -23,7 +23,7 @@ function Icon({theme}) {
         </g>
       </g>
     </svg>
-  );
+  )
 }
 
-export default Icon;
+export default Icon

@@ -1,116 +1,116 @@
 // While Hover Animations
-const whileHoverCard = { 
-  scale: 0.9, 
-  opacity: 0.7 
-};
+const whileHoverCard = {
+  scale: 0.9,
+  opacity: 0.7,
+}
 
-const whileHoverCardExit = { 
-  scale: 1.1, 
-  rotate: 360 
-};
+const whileHoverCardExit = {
+  scale: 1.1,
+  rotate: 360,
+}
 
 const variantsCardAnimation = {
   play: { x: [-3, 3, -3, 3, -3, 3, -3, 0] },
-  stop: { x: 0 }
-};
+  stop: { x: 0 },
+}
 
 const whileHoverSpriteImage = {
   scale: [1, 1.2, 1.2, 1.2, 1.2, 1.2, 1],
   x: [3, -3, 3, -3, 3, -3, 3],
-  transition: { duration: 0.5, ease: "easeInOut" }
-};
+  transition: { duration: 0.5, ease: 'easeInOut' },
+}
 
 // Variants Animations
 const variantsSlideSideVar = {
   open: (height = 1000) => ({
-      clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-      transition: {
-          type: "spring",
-          stiffness: 20,
-          restDelta: 2
-      }
+    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    transition: {
+      type: 'spring',
+      stiffness: 20,
+      restDelta: 2,
+    },
   }),
   closed: {
-      clipPath: "circle(30px at 40px 40px)",
-      transition: {
-          delay: 0.5,
-          type: "spring",
-          stiffness: 400,
-          damping: 40
-      }
-  }
-};
+    clipPath: 'circle(30px at 40px 40px)',
+    transition: {
+      delay: 0.5,
+      type: 'spring',
+      stiffness: 400,
+      damping: 40,
+    },
+  },
+}
 
 const variantsNavbar = {
   open: {
-      height: "100%",
-      width: "22em",
+    height: '100%',
+    width: '22em',
   },
   closed: {
-      height: "10%",
-      width: "5em",
-      transition: {
-          delay: .8,
-      }
-  }
-};
+    height: '10%',
+    width: '5em',
+    transition: {
+      delay: 0.8,
+    },
+  },
+}
 
 const varaintsThemeAnimation = (opacityVar) => ({
   whileTap: {
-      scale: 0.7,
-      transition: {
-          duration: .3,
-          ease: "easeInOut"
-      }
+    scale: 0.7,
+    transition: {
+      duration: 0.3,
+      ease: 'easeInOut',
+    },
   },
   animate: {
-      scale: 1,
-      opacity: opacityVar,
-      transition: {
-          duration: .5,
-          ease: "easeInOut"
-      }
-  }
-});
+    scale: 1,
+    opacity: opacityVar,
+    transition: {
+      duration: 0.5,
+      ease: 'easeInOut',
+    },
+  },
+})
 
 const titleNavBarVariant = {
   open: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        y: { stiffness: 1000, velocity: -100 },
-        delay: 0.2
-      }
+    y: 0,
+    opacity: 1,
+    transition: {
+      y: { stiffness: 1000, velocity: -100 },
+      delay: 0.2,
     },
-    closed: {
-      y: 50,
-      opacity: 0,
-      transition: {
-        y: { stiffness: 1000 }
-      }
-    }
+  },
+  closed: {
+    y: 50,
+    opacity: 0,
+    transition: {
+      y: { stiffness: 1000 },
+    },
+  },
 }
 
 const variantsSlide = {
   enter: (direction) => {
-      return {
-        x: direction > 0 ? 1000 : -1000,
-        opacity: 0
-      };
+    return {
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+    }
   },
   center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
   },
   exit: (direction) => {
-      return {
-        zIndex: 0,
-        x: direction < 0 ? 1000 : -1000,
-        opacity: 0
-      };
-  }
-};
+    return {
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+    }
+  },
+}
 
 const variantsNavSlideButton = {
   open: {
@@ -118,16 +118,27 @@ const variantsNavSlideButton = {
     opacity: [0, 1],
     transition: {
       y: { stiffness: 1000, velocity: -100 },
-      default: { duration: 0.7 }
-    }
+      default: { duration: 0.7 },
+    },
   },
   closed: {
     y: 50,
     opacity: 0,
     transition: {
-      y: { stiffness: 1000 }
-    }
-  }
+      y: { stiffness: 1000 },
+    },
+  },
 }
 
-export { variantsSlide, whileHoverCard, whileHoverCardExit, whileHoverSpriteImage, variantsCardAnimation, variantsNavSlideButton, variantsSlideSideVar, varaintsThemeAnimation, variantsNavbar, titleNavBarVariant};
+export {
+  variantsSlide,
+  whileHoverCard,
+  whileHoverCardExit,
+  whileHoverSpriteImage,
+  variantsCardAnimation,
+  variantsNavSlideButton,
+  variantsSlideSideVar,
+  varaintsThemeAnimation,
+  variantsNavbar,
+  titleNavBarVariant,
+}

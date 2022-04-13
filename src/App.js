@@ -1,20 +1,20 @@
-import './App.css';
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AppContext } from './context/AppContext';
-import { useAppInitialState } from './hooks/useAppInitialState'; 
-import { Characters } from './pages/Characters/Characters';
-import { NotFound } from './pages/NotFound/NotFound';
-import { About } from './pages/About/About';
-import { Home } from './pages/Home/Home';
-import { Layout } from './containers/Layout/Layout';
-import 'izitoast-react/dist/iziToast.css';
+import '@/App.css'
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { AppContext } from '@context/AppContext'
+import { useAppInitialState } from '@hooks/useAppInitialState'
+import { Characters } from '@pages/Characters/Characters'
+import { NotFound } from '@pages/NotFound/NotFound'
+import { About } from '@pages/About/About'
+import { Home } from '@pages/Home/Home'
+import { Layout } from '@containers/Layout/Layout'
+import 'izitoast-react/dist/iziToast.css'
 
 function App() {
-  const initialState = useAppInitialState();
+  const initialState = useAppInitialState()
 
   return (
-    <AppContext.Provider value={initialState} >
+    <AppContext.Provider value={initialState}>
       <BrowserRouter>
         <Layout theme={initialState.theme}>
           <Routes>
@@ -26,7 +26,7 @@ function App() {
         </Layout>
       </BrowserRouter>
     </AppContext.Provider>
-  );
+  )
 }
 
-export default App;
+export default App

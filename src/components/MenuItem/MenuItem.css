@@ -1,4 +1,4 @@
-@import url('../../styles/_var.scss');
+@import url('@styles/_var.scss');
 
 .menu-item {
     list-style: none !important;

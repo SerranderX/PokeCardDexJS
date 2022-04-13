@@ -1,4 +1,4 @@
-@import url('../../styles/_var.scss');
+@import url('@styles/_var.scss');
 
 .Home-container {
   width: 100%;
@@ -15,7 +15,7 @@
   align-self: center;
 }
 
-.Home-info_presentation a {
+.Home-info_presentation div {
   display: inline-flex;
   color: var(--text-primary);
   padding: 10px 15px;

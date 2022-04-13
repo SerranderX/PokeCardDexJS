@@ -1,11 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-const PokemonTypeBox = ({text}) => {
-    return (
-        <div>
-            {text}
-        </div>
-    );
-};
+const PokemonTypeBox = ({ text }) => {
+  return <div>{text}</div>
+}
 
-export default PokemonTypeBox;
+export default PokemonTypeBox
