@@ -10,10 +10,7 @@ import './Footer.css'
 
 const Footer = () => {
   const { theme } = useContext(AppContext)
-  console.log("asdasdasd")
-  console.log(ENV.developerData)
-  console.log("asdasdasd")
-
+  
   return (
     <footer className="Footer-distributed">
       <div className="Footer-right">

@@ -54,12 +54,12 @@ const Header = () => {
 
   return (
     <div className="Header" ref={containerHeader}>
-      <Link to="/">
         <div className="Header-containerlogo">
-          <PokemonLogo />
+          <Link to="/">
+            <PokemonLogo />
+          </Link>
           <h2>{ENV.appTitle}</h2>
         </div>
-      </Link>
 
       {width > 768 && (
         <Button

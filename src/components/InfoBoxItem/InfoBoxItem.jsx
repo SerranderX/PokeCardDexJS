@@ -80,7 +80,7 @@ const InfoBoxItem = ({
           <motion.div
             className="InfoBox-item_icon"
             animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
           >
             <ArrowDown theme={'dark'} />
           </motion.div>

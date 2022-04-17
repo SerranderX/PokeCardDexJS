@@ -597,16 +597,23 @@ const versions = [
   },
 ]
 
-const learnedMethods = [
-  { name: 'level-up', src: lvlUpIcon },
-  { name: 'machine', src: machineIcon },
-  { name: 'egg', src: eggIcon },
-]
-
-const powerTypes = [
-  { name: 'physical', src: physicalIcon },
-  { name: 'special', src: specialIcon },
-  { name: 'status', src: statusIcon },
+const glosaryElements = [
+  {
+      name: 'Learned',
+      data: [
+        { name: 'level-up', src: lvlUpIcon },
+        { name: 'machine', src: machineIcon },
+        { name: 'egg', src: eggIcon },
+      ]
+  },
+  {
+      name: 'Move',
+      data: [
+        { name: 'physical', src: physicalIcon },
+        { name: 'special', src: specialIcon },
+        { name: 'status', src: statusIcon },
+      ]
+  }
 ]
 
 const backgroundCardImages = [
@@ -629,8 +636,7 @@ export {
   transformString,
   transformVerString,
   navMenu,
-  learnedMethods,
-  powerTypes,
+  glosaryElements,
   pokemonTypeUtils,
   versions,
   backgroundCardImages,

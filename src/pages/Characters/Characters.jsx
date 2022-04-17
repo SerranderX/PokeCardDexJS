@@ -1,9 +1,10 @@
-import React, { useEffect, useContext, useMemo } from 'react'
+import React, { useEffect, useContext, useMemo, Fragment } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { AppContext } from '@context/AppContext'
 import { Card } from '@containers/Card/Card'
 import { Loading } from '@components/Loading/Loading'
 import { MiniCard } from '@containers/MiniCard/MiniCard'
+import { HelmetSection } from '@components/HelmetSection/HelmetSection'
 import './Characters.css'
 
 const Characters = () => {
@@ -65,73 +66,84 @@ const Characters = () => {
 
   if (!loading && !error) {
     return (
-      <div className="Pokedex-container">
-        <div className="Pokedex-container_head">
-          <motion.input
-            type="text"
-            className="Search-box"
-            name="Search-box"
-            id="Search-box"
-            placeholder="Search pokemon by name."
-            value={search}
-            onChange={handleSearch}
-          />
-          <p>
-            Search any pokemon and click on the miniature to display the pokemon
-            card data and pictures.
-          </p>
-        </div>
-        <motion.div className="Pokedex-container_body">
-          {filtredPokemons.map((character, index) => (
-            <MiniCard
-              key={character.name}
-              selectedId={selectedId}
-              character={character}
-              index={index}
-              offSet={offSet}
-              openPokemonCard={openPokemonCard}
+      <Fragment>
+        <HelmetSection sectionName={"Pokedex"} />
+        <div className="Pokedex-container">
+          <div className="Pokedex-container_head">
+            <motion.input
+              type="text"
+              className="Search-box"
+              name="Search-box"
+              id="Search-box"
+              placeholder="Search pokemon by name."
+              value={search}
+              onChange={handleSearch}
             />
-          ))}
-
-          <AnimatePresence>
-            {selectedId && (
-              <Card
+            <p>
+              Search any pokemon and click on the miniature to display the pokemon
+              card data and pictures.
+            </p>
+          </div>
+          <motion.div className="Pokedex-container_body">
+            {filtredPokemons.map((character, index) => (
+              <MiniCard
+                key={character.name}
                 selectedId={selectedId}
-                pokemon={pokemon}
-                onSound={onSound}
-                logoType={logoType}
-                pokemonBackground={pokemonBackground}
-                closePokemonCard={closePokemonCard}
-                playPokemonSound={playPokemonSound}
-                shinnyOn={shinnyOn}
-                setShinnyOn={setShinnyOn}
-                selectedTab={selectedTab}
-                changeSelectedTab={changeSelectedTab}
-                pokemonData={pokemonData}
-                onLoadDescription={onLoadDescription}
-                setFamaleOn={setFamaleOn}
-                famaleOn={famaleOn}
-                infoShared={infoShared}
-                tabDescriptionData={tabDescriptionData}
-                generacion={generacion}
-                pokedexPage={pokedexPage}
-                enableEffect={enableEffect}
-                setEnableEffect={setEnableEffect}
-                legendary={legendary}
+                character={character}
+                index={index}
+                offSet={offSet}
+                openPokemonCard={openPokemonCard}
               />
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </div>
+            ))}
+
+            <AnimatePresence>
+              {selectedId && (
+                <Card
+                  selectedId={selectedId}
+                  pokemon={pokemon}
+                  onSound={onSound}
+                  logoType={logoType}
+                  pokemonBackground={pokemonBackground}
+                  closePokemonCard={closePokemonCard}
+                  playPokemonSound={playPokemonSound}
+                  shinnyOn={shinnyOn}
+                  setShinnyOn={setShinnyOn}
+                  selectedTab={selectedTab}
+                  changeSelectedTab={changeSelectedTab}
+                  pokemonData={pokemonData}
+                  onLoadDescription={onLoadDescription}
+                  setFamaleOn={setFamaleOn}
+                  famaleOn={famaleOn}
+                  infoShared={infoShared}
+                  tabDescriptionData={tabDescriptionData}
+                  generacion={generacion}
+                  pokedexPage={pokedexPage}
+                  enableEffect={enableEffect}
+                  setEnableEffect={setEnableEffect}
+                  legendary={legendary}
+                />
+              )}
+            </AnimatePresence>
+          </motion.div>
+        </div>
+      </Fragment>
     )
   } else if (!loading && error) {
     return (
-      <div className="Pokedex-container">
-        <h1>Ha ocurrido un error...</h1>
-      </div>
+      <Fragment>
+        <HelmetSection sectionName={"Pokedex"} />
+        <div className="Pokedex-container">
+          <h1>Ha ocurrido un error...</h1>
+        </div>
+      </Fragment>
     )
   } else {
-    return <Loading />
+    return (
+      <Fragment>
+        <HelmetSection sectionName={"Pokedex"} />
+        <Loading />
+      </Fragment>
+    )  
   }
 }
 

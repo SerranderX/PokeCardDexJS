@@ -11,6 +11,7 @@
     background-color: var(--background-section);
     padding-right: 40px;
     padding: 10px 15px;
+    border-radius: 7px;
 }
   
 .sub-items {

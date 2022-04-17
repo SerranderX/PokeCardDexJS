@@ -7,7 +7,8 @@ import {
 } from '@shared/Utils'
 import { InfoBox } from '@components/InfoBox/InfoBox'
 import { InfoBoxItem } from '@components/InfoBoxItem/InfoBoxItem'
-import { learnedMethods, powerTypes, versions } from '@shared/Utils'
+import { glosaryElements, versions } from '@shared/Utils'
+import { Glosary } from '@components/Glosary/Glosary'
 import './CardMovesDescription.css'
 
 const CardMovesDescription = ({
@@ -52,9 +53,10 @@ const CardMovesDescription = ({
           (moveName) => moveName.name === item.move.name
         )
 
+        console.log(item)
         if (filterVer.length > 0 && filterName.length === 0) {
           auxMove.push({ name: item.move.name })
-          const filtredLearnMethod = learnedMethods.filter(
+          const filtredLearnMethod = glosaryElements[0].data.filter(
             (method) => filterVer[0].move_learn_method.name === method.name
           )
           item.learnedMethod = filtredLearnMethod ? filtredLearnMethod[0] : null
@@ -63,6 +65,7 @@ const CardMovesDescription = ({
           return []
         }
       })
+
 
       setMoves(movesFiltered)
     }
@@ -95,48 +98,12 @@ const CardMovesDescription = ({
           </select>
         </div>
         <p style={{ marginTop: '.5em' }}>Select the pokemon game version.</p>
-        <div
-          className="Glosary"
-          style={{ border: `3px ${pokemonBackground.primary} solid` }}
-        >
-          <h3 className="Glosary-title"> Glosary </h3>
-          <div
-            className="Glosary-types Learned-type"
-            style={{ borderTop: `1px ${pokemonBackground.primary} solid` }}
-          >
-            <h4>Learned type</h4>
-            <div className="Glosary_item">
-              <img src={learnedMethods[0].src} alt={learnedMethods[0].name} />
-              <p>{toUpperCaseIndex(transformString(learnedMethods[0].name))}</p>
-            </div>
-            <div className="Glosary_item">
-              <img src={learnedMethods[1].src} alt={learnedMethods[1].name} />
-              <p>{toUpperCaseIndex(transformString(learnedMethods[1].name))}</p>
-            </div>
-            <div className="Glosary_item">
-              <img src={learnedMethods[2].src} alt={learnedMethods[2].name} />
-              <p>{toUpperCaseIndex(transformString(learnedMethods[2].name))}</p>
-            </div>
-          </div>
-          <div
-            className="Glosary-types Move-type"
-            style={{ borderTop: `1px ${pokemonBackground.primary} solid` }}
-          >
-            <h4>Power type</h4>
-            <div className="Glosary_item">
-              <img src={powerTypes[0].src} alt={powerTypes[0].name} />
-              <p>{toUpperCaseIndex(transformString(powerTypes[0].name))}</p>
-            </div>
-            <div className="Glosary_item">
-              <img src={powerTypes[1].src} alt={powerTypes[1].name} />
-              <p>{toUpperCaseIndex(transformString(powerTypes[1].name))}</p>
-            </div>
-            <div className="Glosary_item">
-              <img src={powerTypes[2].src} alt={powerTypes[2].name} />
-              <p>{toUpperCaseIndex(transformString(powerTypes[2].name))}</p>
-            </div>
-          </div>
-        </div>
+        {glosaryElements && 
+          <Glosary 
+            pokemonPaletteColors={pokemonBackground} 
+            glosaryElements={glosaryElements}
+          />
+        }
       </section>
       <div className="CharacterCard-Description-Body">
         <InfoBox
@@ -150,7 +117,7 @@ const CardMovesDescription = ({
               key={move.move.name}
               pokemonBackground={pokemonBackground}
               endPoint={move.move.url}
-              powerTypes={powerTypes}
+              powerTypes={glosaryElements[1].data}
               learnedMethod={move.learnedMethods}
               movesItem={true}
             >

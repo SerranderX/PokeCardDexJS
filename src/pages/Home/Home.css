@@ -41,7 +41,8 @@
 }
 
 .Home-slide {
-  min-height: var(--card-height-home);
+  min-height: calc(var(--card-height-home) * 1.2);
+  width: 100vw;
 	position: relative;
 	display: flex;
 	justify-content: center;

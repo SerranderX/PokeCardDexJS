@@ -23,6 +23,7 @@ const ENV = {
         My name is Felipe Diaz, originary from Chile, latinamerican country. Developer by work and as a hobbie since almost 5 years ago while I was undergoing my universitary studies. This is my first formal proyect, made exclusively by me, using ReactJS Freamework (which i'm still learning to use), from which i've learned plenty. I hope this site to be of your liking as much as it was for me to design it. Deep inside i'm still a big Pokemon fan and as a software developer it was an interesting challenge on which I poured all previous knowledge learned from a Frontend developer's point of view.`,
   },
   pokeApiURL: String(process.env.POKEAPI),
+  domain: String(process.env.DOMAIN),
 }
 
 export { ENV }
