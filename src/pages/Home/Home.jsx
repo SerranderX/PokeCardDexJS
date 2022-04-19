@@ -66,7 +66,7 @@ const Home = () => {
       <div className="Home-info_presentation">
         <h2>{ENV.appPresentationTitle}</h2>
         <h3>{ENV.appPresentation}</h3>
-        <Link to="/pokedex">
+        <Link to="/pokedex" name="link-to-pokedex">
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

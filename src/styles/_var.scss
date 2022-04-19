@@ -1,6 +1,7 @@
 :root {
   /* Colors */
   --background: linear-gradient(333deg, rgba(179,110,226,1) 0%, rgba(155,186,255,1) 68%, rgba(204,219,253,1) 100%);
+  --background-navbar: linear-gradient(333deg, rgba(179,110,226,1) -37%, rgba(155,186,255,1) 52%, rgba(204,219,253,1) 100%);
   --background-section: #EDF2FB;
   --background-section-selected: #c678ff;
   --background-section-shadow: #E2EAFC;
@@ -26,6 +27,7 @@
 
 [data-theme='dark'] {
   --background: linear-gradient(333deg, rgba(17,24,39,1) 0%, rgb(12 54 145) 64%, rgba(17,24,39,1) 100%);
+  --background-navbar: linear-gradient(333deg, rgba(17,24,39,1) -41%, rgb(12 54 145) 49%, rgba(17,24,39,1) 100%);
   --background-section: #253555;
   --background-section-selected: #679bec;
   --background-section-shadow: #33455C;

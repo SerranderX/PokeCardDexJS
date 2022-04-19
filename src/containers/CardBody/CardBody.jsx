@@ -58,6 +58,7 @@ const CardBody = ({
         <img src={imagen()} alt={selectedId.name} />
         <button
           className="CharacterCard-Background_Button"
+          name="background-change-button"
           style={{ backgroundColor: backgroundCardImages[indexBkgColor].color }}
           type="button"
           onClick={handleBackground}
@@ -123,7 +124,6 @@ const CardBody = ({
                     pokemon={pokemon}
                     pokemonData={pokemonData}
                     selectedTab={selectedTab}
-                    pokemonBackground={pokemonBackground}
                   />
                 )}
               {!onLoadDescription &&

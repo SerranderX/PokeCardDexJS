@@ -27,17 +27,18 @@ const usePokemonData = () => {
   } = state
 
   //Action Creators
+  const changeLoading = (data) => dispatch({ type: actionTypes.CHANGE_LOADING, payload: data })
+  const changeSelectedTab = (data) => dispatch({ type: actionTypes.SET_SELECTED_TAB, payload: data })
   const setPokemonData = (data) => dispatch({ type: actionTypes.SET_POKEMON_DATA, payload: data })
   const setCharacterSelect = (data) => dispatch({ type: actionTypes.SET_CHARACTER_SELECT, payload: data })
-  const changeSelectedTab = (data) => dispatch({ type: actionTypes.SET_SELECTED_TAB, payload: data })
   const setOnSound = (data) => dispatch({ type: actionTypes.SET_ON_SOUND, payload: data })
   const setTabDescriptionData = (data) => dispatch({ type: actionTypes.SET_TAB_DESCRIPTION_DATA, payload: data })
-  const changeLoading = (data) => dispatch({ type: actionTypes.CHANGE_LOADING, payload: data })
   const setShinnyOn = (data) => dispatch({ type: actionTypes.SET_SHINNY_ON, payload: data })
   const setFamaleOn = (data) => dispatch({ type: actionTypes.SET_FAMALE_ON, payload: data })
   const setAutoSound = (data) => dispatch({ type: actionTypes.SET_AUTO_SOUND, payload: data })
   const setEnableEffect = (data) => dispatch({ type: actionTypes.SET_ENABLE_EFFECT, payload: data })
   const setLegendary = (data) => dispatch({ type: actionTypes.SET_LEGENDARY, payload: data })
+  const loadPokemonCard = (data) => dispatch({ type: actionTypes.LOAD_POKEMON_CARD, payload: data })
 
   useEffect(() => {
     const getPokemon = async (name) => {
@@ -85,7 +86,7 @@ const usePokemonData = () => {
 
       const isSeudoLegendary = response.data.stats.map(item => item.base_stat ).reduce((a,b) => a + b, 0) === 600
 
-      setPokemonData({
+      loadPokemonCard({
         characterSelect: characterSelect,
         selectedTab: pokemonData[0],
         pokemonData: pokemonData,
@@ -93,7 +94,6 @@ const usePokemonData = () => {
         logoType: pokemon.logo,
         pokemon: response.data,
         selectedId: characterSelect,
-        tabDescriptionData: null,
         infoShared: {
           hasFamaleData: hasFamaleData,
         },
@@ -365,6 +365,18 @@ const reducerObject = (state, payload) => ({
   [actionTypes.SET_AUTO_SOUND]: { ...state, autoSound: payload },
   [actionTypes.SET_ENABLE_EFFECT]: { ...state, enableEffect: payload },
   [actionTypes.SET_LEGENDARY]: { ...state, legendary: payload },
+  [actionTypes.LOAD_POKEMON_CARD]: { 
+    ...state, 
+    characterSelect: payload.characterSelect,
+    selectedTab: payload.selectedTab,
+    pokemonData: payload.pokemonData,
+    pokemonBackground: payload.pokemonBackground,
+    logoType: payload.logoType,
+    pokemon: payload.pokemon,
+    selectedId: payload.selectedId,
+    infoShared: payload.infoShared,
+    legendary: payload.legendary
+   },
 })
 
 const reducer = (state, action) => {
@@ -383,7 +395,8 @@ const actionTypes = {
   SET_FAMALE_ON: 'SET_FAMALE_ON',
   SET_AUTO_SOUND: 'SET_AUTO_SOUND',
   SET_ENABLE_EFFECT: 'SET_ENABLE_EFFECT',
-  SET_LEGENDARY: 'SET_LEGENDARY'
+  SET_LEGENDARY: 'SET_LEGENDARY',
+  LOAD_POKEMON_CARD: 'LOAD_POKEMON_CARD'
 }
 
 export { usePokemonData }

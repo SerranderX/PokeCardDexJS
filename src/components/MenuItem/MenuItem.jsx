@@ -39,7 +39,7 @@ export const MenuItem = ({
   if (hasSubMenu === false) {
     return (
       <Fragment>
-        <Link to={data.link}>
+        <Link to={data.link} name={data.name}>
           <motion.div
             className="menu-item"
             variants={variants}

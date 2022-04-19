@@ -29,7 +29,6 @@ const CardAbilitiesDescription = ({
       <div className="CharacterCard-Description-Body">
         {(abilities != null) && abilities?.map((item) => {
           aux = false
-          console.log(item)
           return (
             <InfoBox
               key={item.name}

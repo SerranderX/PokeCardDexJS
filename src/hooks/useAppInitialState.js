@@ -49,6 +49,8 @@ function useAppInitialState() {
     legendary
   } = usePokemonData()
 
+  console.log(`shinnyOn: ${shinnyOn}`)
+
   const getGeneration = (genReq) => {
     if (genReq !== generacion) {
       setGeneracion(genReq)

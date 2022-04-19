@@ -34,7 +34,7 @@ const Card = ({
   pokedexPage,
   legendary
 }) => {
-  
+
   return (
     <motion.div
       layoutId={selectedId.name}
@@ -68,18 +68,16 @@ const Card = ({
         pokemonBackground={pokemonBackground}
         generacion={generacion}
       />
-      {!onLoadDescription && (
-        <CardFooter
-          setShinny={setShinnyOn}
-          shinny={shinnyOn}
-          setFamale={setFamaleOn}
-          famale={famaleOn}
-          infoShared={infoShared}
-          enableEffect={enableEffect}
-          setEnableEffect={setEnableEffect}
-          legendary={legendary}
-        />
-      )}
+      <CardFooter
+        setShinny={setShinnyOn}
+        shinny={shinnyOn}
+        setFamale={setFamaleOn}
+        famale={famaleOn}
+        infoShared={infoShared}
+        enableEffect={enableEffect}
+        setEnableEffect={setEnableEffect}
+        legendary={legendary}
+      />
     </motion.div>
   )
 }

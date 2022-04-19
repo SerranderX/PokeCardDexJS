@@ -58,6 +58,8 @@ const InfoBoxItem = ({
     }
   }, [isOpenEndPoint])
 
+  console.log(contentRes);
+
   return (
     <Fragment>
       <motion.li
@@ -130,7 +132,7 @@ const InfoBoxItem = ({
                 >
                   <p>
                     <b>Type: </b>{' '}
-                    {getPowerTypeIcon(contentRes.damage_class.name)}{' '}
+                    {getPowerTypeIcon(contentRes.damage_class?.name)}{' '}
                   </p>
                 </li>
                 <li
@@ -143,26 +145,30 @@ const InfoBoxItem = ({
                     {transformString(contentRes.effect_entries[0].short_effect)}
                   </p>
                 </li>
-                <li
-                  style={{
-                    borderBottom: `1px ${pokemonBackground.primary} solid`,
-                  }}
-                >
-                  <p>
-                    <b>Contest type: </b>
-                    {toUpperCaseIndex(contentRes.contest_type.name)}
-                  </p>
-                </li>
-                <li
-                  style={{
-                    borderBottom: `1px ${pokemonBackground.primary} solid`,
-                  }}
-                >
-                  <p>
-                    <b>Target: </b>
-                    {toUpperCaseIndex(contentRes.target.name)}
-                  </p>
-                </li>
+                {contentRes.contest_type?.name && (
+                  <li
+                    style={{
+                      borderBottom: `1px ${pokemonBackground.primary} solid`,
+                    }}
+                  >
+                    <p>
+                      <b>Contest type: </b>
+                      {toUpperCaseIndex(contentRes.contest_type?.name)}
+                    </p>
+                  </li>
+                )}
+                {contentRes.contest_type?.name && (
+                  <li
+                    style={{
+                      borderBottom: `1px ${pokemonBackground.primary} solid`,
+                    }}
+                  >
+                    <p>
+                      <b>Target: </b>
+                      {toUpperCaseIndex(contentRes.target?.name)}
+                    </p>
+                  </li>
+                )}
                 <li>
                   <p>
                     <b>Description: </b>

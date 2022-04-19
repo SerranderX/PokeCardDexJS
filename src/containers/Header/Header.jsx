@@ -55,14 +55,15 @@ const Header = () => {
   return (
     <div className="Header" ref={containerHeader}>
         <div className="Header-containerlogo">
-          <Link to="/">
+          <Link to="/" name="link-to-home">
             <PokemonLogo />
+            <h2 className="Logo-text">{ENV.appTitle}</h2>
           </Link>
-          <h2>{ENV.appTitle}</h2>
         </div>
 
       {width > 768 && (
         <Button
+          name="change-theme-button"
           classType={`Theme-button`}
           toggle={() => toggleTheme()}
           animation={varaintsThemeAnimation(1)}
@@ -133,9 +134,10 @@ const Header = () => {
             variants={variantsNavSlideButton}
           />
         </Navigation>
-        <MenuToggle toggle={() => handleNavIconClick()} />
+        <MenuToggle name="navigation-button" toggle={() => handleNavIconClick()} />
         {width <= 768 && isOpen && (
           <Button
+            name="change-theme-button"
             classType={`Theme-button`}
             toggle={() => toggleTheme()}
             animation={varaintsThemeAnimation([0.0, 1])}

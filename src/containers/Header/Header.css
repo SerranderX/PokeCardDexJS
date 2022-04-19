@@ -1,11 +1,18 @@
 @import url("@styles/_var.scss");
 
+.Header {
+  text-align: -webkit-center;
+}
+
 .Header-containerlogo {
+  width: fit-content;
+  text-align: -webkit-center;
   padding: 2em 0 1em 0;
 }
 
 .Header-containerlogo h2 {
-  margin: 0 0 20px 0;
+  margin: 0;
+  width: fit-content;
   top: -10px;
   left: 8px;
   position: relative;
@@ -83,7 +90,11 @@
   width: 22em;
   z-index: -1;
   position: fixed;
-  background: var(--background);
+  background: var(--background-navbar);
+}
+
+.Logo-text {
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

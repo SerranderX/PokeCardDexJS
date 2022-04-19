@@ -15,6 +15,8 @@ const CardFooter = ({
 }) => {
   const { hasFamaleData } = infoShared
 
+  console.log(shinny)
+
   return (
     <motion.div
       className="CharacterCard-Footer"
@@ -25,7 +27,9 @@ const CardFooter = ({
         delay: 0.8,
       }}
     >
-      <SlideButton state={shinny} handler={setShinny} label={'Shinny'} />
+      {(shinny != undefined) && (
+        <SlideButton state={shinny} handler={setShinny} label={'Shinny'} />
+      )}
       {hasFamaleData && (
         <SlideButton state={famale} handler={setFamale} label={'Female'} />
       )}

@@ -53,7 +53,6 @@ const CardMovesDescription = ({
           (moveName) => moveName.name === item.move.name
         )
 
-        console.log(item)
         if (filterVer.length > 0 && filterName.length === 0) {
           auxMove.push({ name: item.move.name })
           const filtredLearnMethod = glosaryElements[0].data.filter(
