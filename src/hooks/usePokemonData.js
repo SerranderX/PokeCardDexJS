@@ -272,6 +272,7 @@ const usePokemonData = () => {
             message: 'Sorry but we don`t have the sound of this pokemon.',
             type: 'warning',
             color: 'red',
+            bkgColor: '#a83632'
           })
         }
       })
