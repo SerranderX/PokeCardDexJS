@@ -27,8 +27,20 @@
 }
 
 .About-container p {
+	font-size: 1.3em;
+	line-height: 1.5em;
 	white-space: pre-line;
 	line-break: anywhere;
+}
+
+.About-container a {
+	text-decoration: underline;
+	color: var(--text-primary);
+}
+
+.About-container a:hover {
+	color: var(--text-secondary);
+	transition: .2s;
 }
 
 .About-Content {

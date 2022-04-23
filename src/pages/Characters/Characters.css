@@ -27,6 +27,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 15px;
+  margin-bottom: 35px;
 }
 
 .Search-box {

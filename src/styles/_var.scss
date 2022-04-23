@@ -1,7 +1,7 @@
 :root {
   /* Colors */
-  --background: linear-gradient(333deg, rgba(179,110,226,1) 0%, rgba(155,186,255,1) 68%, rgba(204,219,253,1) 100%);
-  --background-navbar: linear-gradient(333deg, rgba(179,110,226,1) -37%, rgba(155,186,255,1) 52%, rgba(204,219,253,1) 100%);
+  --background: linear-gradient(333deg, rgb(217 161 255) 0%, rgb(157 187 254) 68%, rgba(204,219,253,1) 100%);
+  --background-navbar: linear-gradient(333deg, rgb(217 161 255) -37%, rgb(157 187 254) 52%, rgba(204,219,253,1) 100%);
   --background-section: #EDF2FB;
   --background-section-selected: #c678ff;
   --background-section-shadow: #E2EAFC;
@@ -38,6 +38,7 @@
   --background-section-light: #E5E9EA;
   --text-primary: #FEFEFD;
   --text-primary-shadow: #c5c5ccb7;
+  --text-secondary: #679bec;
   --accent: darkred;
   --primary-color: #708BB6;
   --filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(353deg) brightness(100%) contrast(100%);
