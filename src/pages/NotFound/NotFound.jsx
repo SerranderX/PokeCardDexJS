@@ -1,13 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from '@context/AppContext'
 import './NotFound.css'
 
 const NotFound = () => {
   const { pokedexPage, setPokedexPage } = useContext(AppContext)
 
-  if (pokedexPage) {
-    setPokedexPage(false)
-  }
+  useEffect(() => {
+    if(pokedexPage) { setPokedexPage(false) }
+  }, [])
 
   return (
     <div className="NotFound-container">

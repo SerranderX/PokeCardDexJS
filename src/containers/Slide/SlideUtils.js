@@ -46,4 +46,11 @@ const pokemonCard = [
     },
   }
 
-export {variantsSlide, pokemonCard, swipePower, swipeConfidenceThreshold};
+const slideButtonTapVariants = { scale: 0.9, opacity: 0.8 };
+
+const transitionSlideVariants = {
+  x: { type: 'spring', stiffness: 300, damping: 30 },
+  opacity: { duration: 0.2 },
+}
+
+export {variantsSlide, pokemonCard, swipePower, swipeConfidenceThreshold, slideButtonTapVariants, transitionSlideVariants};

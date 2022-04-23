@@ -15,7 +15,6 @@ const CardFooter = ({
 }) => {
   const { hasFamaleData } = infoShared
 
-  console.log(shinny)
 
   return (
     <motion.div

@@ -1,4 +1,4 @@
-import React, { useContext, Fragment } from 'react'
+import React, { useContext, Fragment, useEffect } from 'react'
 import { AppContext } from '@context/AppContext'
 import { HelmetSection } from '@components/HelmetSection/HelmetSection'
 import DevelopmentImage from '@images/development.png'
@@ -8,21 +8,25 @@ import './About.css'
 const About = () => {
   const { pokedexPage, setPokedexPage } = useContext(AppContext)
 
-  if (pokedexPage) {
-    setPokedexPage(false)
-  }
+  useEffect(() => {
+    if(pokedexPage) { setPokedexPage(false) }
+  }, [])
 
   return (
     <Fragment>
       <HelmetSection sectionName={"About site and author"} />
       <div className="About-container">
         <div className="About-Title">
-          <h1>{ENV.about.title}</h1>
+          <h1>{ENV.about.titlePage}</h1>
         </div>
         <div className="About-Image">
           <img src={DevelopmentImage} alt="About-image" />
         </div>
-        <p className="About-Text">{ENV.about.description}</p>
+        <div className="About-Content">
+          <p className="About-Content_site">{ENV.about.descriptionPage}</p>
+          <h1 className="About-Content_author-title">{ENV.about.titleAuthor}</h1>
+          <p className="About-Content_author">{ENV.about.descriptionAuthor}</p>
+        </div>
       </div>
     </Fragment>
   )

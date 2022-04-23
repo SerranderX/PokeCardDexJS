@@ -35,6 +35,7 @@ const Card = ({
   legendary
 }) => {
 
+
   return (
     <motion.div
       layoutId={selectedId.name}

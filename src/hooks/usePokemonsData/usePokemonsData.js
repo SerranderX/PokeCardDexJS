@@ -1,4 +1,7 @@
 import { useEffect, useReducer, useCallback } from 'react'
+import { actionTypes } from '@hooks/usePokemonsData/actionTypes'
+import { initialState } from '@hooks/usePokemonsData/initialState'
+import { reducer } from '@hooks/usePokemonsData/reducer'
 import { useToast } from '@hooks/useToast'
 import { ENV } from '@shared/Env'
 import axios from 'axios'
@@ -101,44 +104,6 @@ const usePokemonsData = () => {
     search,
     handleSearch,
   }
-}
-
-const initialState = () => ({
-  characters: [],
-  loading: true,
-  error: false,
-  generacion: 1,
-  offSet: 0,
-  pokedexPage: false,
-  search: '',
-})
-
-const reducerObject = (state, payload) => ({
-  [actionTypes.CARGAR_POKEMONS]: {
-    ...state,
-    characters: payload.characters,
-    offSet: payload.offSet,
-    loading: false,
-    search: '',
-  },
-  [actionTypes.SET_GENERACION]: {
-    ...state,
-    generacion: payload,
-    loading: true,
-  },
-  [actionTypes.SET_POKEDEX_PAGE]: { ...state, pokedexPage: payload },
-  [actionTypes.SET_SEARCH]: { ...state, search: payload },
-})
-
-const reducer = (state, action) => {
-  return reducerObject(state, action.payload)?.[action.type] ?? state
-}
-
-const actionTypes = {
-  CARGAR_POKEMONS: 'CARGAR_POKEMONS',
-  SET_GENERACION: 'SET_GENERACION',
-  SET_POKEDEX_PAGE: 'SET_POKEDEX_PAGE',
-  SET_SEARCH: 'SET_SEARCH',
 }
 
 export { usePokemonsData }

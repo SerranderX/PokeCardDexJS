@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Fragment, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { AppContext } from '@context/AppContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import './MenuItem.css'
 
@@ -34,24 +35,31 @@ export const MenuItem = ({
   hasSubMenu,
   theme,
 }) => {
+  const navigate = useNavigate()
   const isOpen = i === expanded
+  
+  const {selectedId, closePokemonCard } = useContext(AppContext);
+
+  const handleClick = (link) => {
+    if(selectedId) { closePokemonCard() }
+    navigate(link)
+  }
 
   if (hasSubMenu === false) {
     return (
       <Fragment>
-        <Link to={data.link} name={data.name}>
           <motion.div
             className="menu-item"
             variants={variants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95, opacity: [0.5, 1] }}
+            onClick={() => handleClick(data.link)}
           >
             <div className="icon-placeholder icon-first">
               {data.icon({ theme })}
             </div>
             <div className="text-placeholder">{data.name}</div>
           </motion.div>
-        </Link>
       </Fragment>
     )
   } else {

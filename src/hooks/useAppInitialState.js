@@ -1,6 +1,6 @@
 import useLocalStorage from 'use-local-storage'
-import { usePokemonsData } from '@hooks/usePokemonsData'
-import { usePokemonData } from '@hooks/usePokemonData'
+import { usePokemonsData } from '@hooks/usePokemonsData/usePokemonsData'
+import { usePokemonData } from '@hooks/usePokemonData/usePokemonData'
 
 function useAppInitialState() {
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -46,10 +46,11 @@ function useAppInitialState() {
     setAutoSound,
     enableEffect,
     setEnableEffect,
-    legendary
+    legendary,
+    characterSelect,
+    validateCardToClose
   } = usePokemonData()
 
-  console.log(`shinnyOn: ${shinnyOn}`)
 
   const getGeneration = (genReq) => {
     if (genReq !== generacion) {
@@ -100,7 +101,9 @@ function useAppInitialState() {
     setAutoSound,
     enableEffect,
     setEnableEffect,
-    legendary
+    legendary,
+    characterSelect,
+    validateCardToClose
   }
 }
 

@@ -1,0 +1,52 @@
+.Slide {
+    min-height: calc(var(--card-height-home) * 1.2);
+    width: 100vw;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  /* Prueba */
+  .next,
+  .prev {
+    top: calc(50% - 40px);
+    position: absolute;
+    color: var(--text-primary);
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 60px;
+    z-index: 2;
+  }
+  
+  .next {
+    right: 4%;
+    top: 28%;
+  }
+  
+  .prev {
+    left: 4%;
+    top: 28%;
+  }
+  
+  .refresh {
+    padding: 10px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }

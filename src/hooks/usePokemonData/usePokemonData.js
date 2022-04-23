@@ -1,9 +1,11 @@
 import { useEffect, useReducer, useCallback } from 'react'
 import { pokemonTypeUtils } from '@shared/Utils'
 import { useToast } from '@hooks/useToast'
+import { initialState } from '@hooks/usePokemonData/initialState'
+import { actionTypes } from '@hooks/usePokemonData/actionTypes'
+import { reducer } from '@hooks/usePokemonData/reducer'
+import { ENV } from '@shared/Env'
 import axios from 'axios'
-
-const API_URL = 'https://pokeapi.co/api/v2/'
 
 const usePokemonData = () => {
   const [state, dispatch] = useReducer(reducer, initialState({ initialState }))
@@ -42,7 +44,7 @@ const usePokemonData = () => {
 
   useEffect(() => {
     const getPokemon = async (name) => {
-      const response = await axios.get(`${API_URL}pokemon/${name}`)
+      const response = await axios.get(`${ENV.pokeApiURL}/${name}`)
       const pokemon = pokemonTypeUtils[response.data.types[0].type.name]
       const pokemonTypesIcons = response.data.types.map(
         (type) => pokemonTypeUtils[type.type.name]
@@ -107,13 +109,13 @@ const usePokemonData = () => {
 
     const getPokemonGeneralData = async (id) => {
       if (tabDescriptionData === null) {
-        const evolutionTriggers = await axios.get(`${API_URL}evolution-trigger/${id}`)
+        const evolutionTriggers = await axios.get(`${ENV.pokeApiURL}/evolution-trigger/${id}`)
           .then((response) => response.data)
           .catch(() => null)
-        const encounterMethod = await axios.get(`${API_URL}encounter-method/${id}`)
+        const encounterMethod = await axios.get(`${ENV.pokeApiURL}/encounter-method/${id}`)
           .then((response) => response.data)
           .catch(() => null)
-        const species = await axios.get(`${API_URL}pokemon-species/${id}`)
+        const species = await axios.get(`${ENV.pokeApiURL}/pokemon-species/${id}`)
           .then((response) => response.data)
           .catch(() => null)
         const location = await axios.get(pokemon.location_area_encounters)
@@ -209,6 +211,12 @@ const usePokemonData = () => {
     }
   }
 
+  const validateCardToClose = () => {
+    if (selectedId != null) {
+      closePokemonCard()
+    }
+  }
+
   const getPokemonCard = useCallback((item) => {
     setPokemonData({
       selectedId: null,
@@ -232,7 +240,6 @@ const usePokemonData = () => {
   })
 
   const closePokemonCard = useCallback(() => {
-    document.body.style.overflow = ''
     setPokemonData({
       selectedId: null,
       characterSelect: null,
@@ -255,7 +262,7 @@ const usePokemonData = () => {
 
   const playPokemonSound = useCallback((volume, name) => {
     const audio = new Audio(
-      `https://play.pokemonshowdown.com/audio/cries/${name}.mp3`
+      `${ENV.pokemonShowdown}/audio/cries/${name}.mp3`
     )
     audio.volume = volume
     audio
@@ -303,101 +310,10 @@ const usePokemonData = () => {
     setAutoSound,
     enableEffect,
     setEnableEffect,
-    legendary
+    legendary,
+    characterSelect,
+    validateCardToClose
   }
-}
-
-const initialState = () => ({
-  selectedId: null,
-  characterSelect: null,
-  pokemon: null,
-  logoType: null,
-  pokemonBackground: null,
-  selectedTab: null,
-  onSound: false,
-  pokemonData: [],
-  onLoadDescription: false,
-  tabDescriptionData: null,
-  shinnyOn: false,
-  famaleOn: false,
-  infoShared: {
-    hasFamaleData: false,
-  },
-  autoSound: true,
-  enableEffect: true,
-  legendary: false,
-})
-
-const reducerObject = (state, payload) => ({
-  [actionTypes.SET_POKEMON_DATA]: {
-    ...state,
-    characterSelect: payload.characterSelect,
-    selectedTab: payload.selectedTab,
-    pokemonData: payload.pokemonData,
-    pokemonBackground: payload.pokemonBackground,
-    logoType: payload.logoType,
-    pokemon: payload.pokemon,
-    selectedId: payload.selectedId,
-    tabDescriptionData: payload.tabDescriptionData,
-    infoShared: payload.infoShared,
-    shinnyOn: payload.shinnyOn,
-    famaleOn: payload.famaleOn,
-    legendary: payload.legendary,
-  },
-  [actionTypes.SET_CHARACTER_SELECT]: {
-    ...state,
-    characterSelect: payload,
-    onLoadDescription: true,
-  },
-  [actionTypes.SET_SELECTED_TAB]: {
-    ...state,
-    selectedTab: payload,
-    onLoadDescription: true,
-  },
-  [actionTypes.SET_ON_SOUND]: { ...state, onSound: payload },
-  [actionTypes.SET_TAB_DESCRIPTION_DATA]: {
-    ...state,
-    tabDescriptionData: payload,
-    onLoadDescription: false,
-  },
-  [actionTypes.CHANGE_LOADING]: { ...state, onLoadDescription: payload },
-  [actionTypes.SET_SHINNY_ON]: { ...state, shinnyOn: payload },
-  [actionTypes.SET_FAMALE_ON]: { ...state, famaleOn: payload },
-  [actionTypes.SET_AUTO_SOUND]: { ...state, autoSound: payload },
-  [actionTypes.SET_ENABLE_EFFECT]: { ...state, enableEffect: payload },
-  [actionTypes.SET_LEGENDARY]: { ...state, legendary: payload },
-  [actionTypes.LOAD_POKEMON_CARD]: { 
-    ...state, 
-    characterSelect: payload.characterSelect,
-    selectedTab: payload.selectedTab,
-    pokemonData: payload.pokemonData,
-    pokemonBackground: payload.pokemonBackground,
-    logoType: payload.logoType,
-    pokemon: payload.pokemon,
-    selectedId: payload.selectedId,
-    infoShared: payload.infoShared,
-    legendary: payload.legendary
-   },
-})
-
-const reducer = (state, action) => {
-  return reducerObject(state, action.payload)?.[action.type] ?? state
-}
-
-const actionTypes = {
-  SET_POKEMON_DATA: 'SET_POKEMON_DATA',
-  SET_CHARACTER_SELECT: 'SET_CHARACTER_SELECT',
-  SET_SELECTED_TAB: 'SET_SELECTED_TAB',
-  SET_ON_SOUND: 'SET_ON_SOUND',
-  SET_ON_LOAD_DESCRIPTION: 'SET_ON_LOAD_DESCRIPTION',
-  SET_TAB_DESCRIPTION_DATA: 'SET_TAB_DESCRIPTION_DATA',
-  CHANGE_LOADING: 'CHANGE_LOADING',
-  SET_SHINNY_ON: 'SET_SHINNY_ON',
-  SET_FAMALE_ON: 'SET_FAMALE_ON',
-  SET_AUTO_SOUND: 'SET_AUTO_SOUND',
-  SET_ENABLE_EFFECT: 'SET_ENABLE_EFFECT',
-  SET_LEGENDARY: 'SET_LEGENDARY',
-  LOAD_POKEMON_CARD: 'LOAD_POKEMON_CARD'
 }
 
 export { usePokemonData }

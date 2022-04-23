@@ -13,13 +13,13 @@ const HelmetSection = ({sectionName}) => {
         <meta name="twitter:description" content={ENV.appTitle}/>
         <meta
             name="twitter:image"
-            content="https://pbs.twimg.com/profile_images/1437247846768590850/_vUSOeGj_400x400.jpg"
+            content="https://res.cloudinary.com/pokecarddexjs-com/image/upload/v1650743750/Screenshot_15_asin6n.png"
         />
         <meta property="og:title" content={ENV.appTitle}/>
         <meta property="og:description" content={ENV.appTitle}/>
         <meta
             property="og:image"
-            content="https://pbs.twimg.com/profile_images/1437247846768590850/_vUSOeGj_400x400.jpg"
+            content="https://res.cloudinary.com/pokecarddexjs-com/image/upload/v1650743750/Screenshot_15_asin6n.png"
         />
         <meta property="og:url" content={ENV.domain} />
         <meta property="og:site_name" content={ENV.appTitle} />

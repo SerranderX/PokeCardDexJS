@@ -1,10 +1,10 @@
 .MiniCard {
     background-color: var(--background-section);
-    margin: 15px;
+    margin: auto;
+    padding: 15px 75px;
     border-radius: 10%;
     cursor: pointer;
-    max-width: 340px;
-    max-height: 220px;
+    min-width: 150px;
   }
   
 .MiniCard-Selected {

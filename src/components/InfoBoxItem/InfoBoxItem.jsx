@@ -11,7 +11,7 @@ const InfoBoxItem = ({
   pokemonBackground,
   endPoint,
   powerTypes,
-  movesItem,
+  movesItem
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenEndPoint, setIsOpenEndPoint] = useState(false)
@@ -58,7 +58,6 @@ const InfoBoxItem = ({
     }
   }, [isOpenEndPoint])
 
-  console.log(contentRes);
 
   return (
     <Fragment>

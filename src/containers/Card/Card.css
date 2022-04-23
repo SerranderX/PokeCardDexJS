@@ -21,8 +21,16 @@
 }
 
 .CharacterCard-Description-Title {
+  color: var(--text-secondary);
   text-align: center;
-  padding: 1px;
+  padding: 10px;
+}
+
+.CharacterCard-Description-Title h1 {
+  font-size: var(--font-size-title);
+  color: var(--text-secondary);
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
 }
 
 .CharacterCard-Description-Text {

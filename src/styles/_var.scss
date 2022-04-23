@@ -16,13 +16,16 @@
   --filter: brightness(0) saturate(100%) invert(14%) sepia(3%) saturate(431%) hue-rotate(314deg) brightness(101%) contrast(79%);
   /* Fonts */
   --font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-size-title: 2em;
   --font-size-base: 18px;
+  --font-size-small: 14px;
   /* Dimensions */
   --card-height: 75vh;
   --card-width: calc(var(--card-height) / 1.5);
   --card-height-home: 62vh;
   --card-width-home: calc(var(--card-height-home) / 1.5);
   --background-button: rgb(0, 0, 0, .07);
+  --loading-color: #4d0cc7;
 }
 
 [data-theme='dark'] {
@@ -39,6 +42,7 @@
   --primary-color: #708BB6;
   --filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(353deg) brightness(100%) contrast(100%);
   --background-button: rgba(255, 255, 255, .04);
+  --loading-color: #FEFEFD;
 }
 
 @media (max-width: 768px) {

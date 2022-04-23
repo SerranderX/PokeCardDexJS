@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { motion } from 'framer-motion'
+import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '@context/AppContext'
 import GitHubIcon from '@icons/social/github'
 import LinkedinIcon from '@icons/social/linkedin'
@@ -9,7 +10,18 @@ import { ENV } from '@shared/Env'
 import './Footer.css'
 
 const Footer = () => {
-  const { theme } = useContext(AppContext)
+  const { theme, selectedId, validateCardToClose } = useContext(AppContext)
+  const navigate = useNavigate();
+
+  const handleHomeButton = () => {
+    if(selectedId) { validateCardToClose() }
+    navigate('/')
+  }
+
+  const handlePokedexButton = () => {
+    if(selectedId) { validateCardToClose() }
+    navigate('/pokedex')
+  }
   
   return (
     <footer className="Footer-distributed">
@@ -45,9 +57,9 @@ const Footer = () => {
       </div>
       <div className="Footer-left">
         <p className="Footer-links">
-          <a href="/">Home</a>
-          <a href="/pokedex">Pokedex</a>
-          <a href="/about">About</a>
+          <a onClick={handleHomeButton}>Home</a>
+          <a onClick={handlePokedexButton}>Pokedex</a>
+          <Link to="/about">About</Link>
         </p>
         <p>{ENV.developerData.signature} &copy; 2022</p>
       </div>

@@ -39,15 +39,12 @@ const Characters = () => {
     tabDescriptionData,
     enableEffect,
     setEnableEffect,
-    legendary
+    legendary,
+    characterSelect
   } = useContext(AppContext)
 
   useEffect(() => {
-    if (!pokedexPage) {
-      setPokedexPage(true)
-    }
-
-    if (selectedId) { closePokemonCard() }
+    if(!pokedexPage) { setPokedexPage(true) }
   }, [])
 
   const filtredPokemons = useMemo(() => {
@@ -93,6 +90,7 @@ const Characters = () => {
                 index={index}
                 offSet={offSet}
                 openPokemonCard={openPokemonCard}
+                characterSelect={characterSelect}
               />
             ))}
 
@@ -141,7 +139,7 @@ const Characters = () => {
     return (
       <Fragment>
         <HelmetSection sectionName={"Pokedex"} />
-        <Loading />
+        <Loading pokedexPage={true} />
       </Fragment>
     )  
   }
