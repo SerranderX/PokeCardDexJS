@@ -22,9 +22,11 @@ const CardBody = ({
   tabDescriptionData,
   pokemonBackground,
   generacion,
+  cardHeight
 }) => {
   const [indexBkg, setIndexBkg] = useState(0)
   const [indexBkgColor, setIndexBkgColor] = useState(1)
+  const mainWidth = (cardHeight < 700) ? cardHeight * 0.395 : '83%';
 
   const handleBackground = () => {
     setIndexBkg(indexBkg === backgroundCardImages.length - 1 ? 0 : indexBkg + 1)
@@ -91,7 +93,7 @@ const CardBody = ({
             ))}
           </ul>
         </nav>
-        <main className="CharacterCard-Description-Content">
+        <main className="CharacterCard-Description-Content" style={{height:mainWidth}}>
           <AnimatePresence exitBeforeEnter>
             <motion.div
               key={selectedTab ? selectedTab.key : 'empty'}

@@ -61,8 +61,6 @@
   color: white;
   border-radius: 10%;
   padding: 20px;
-  min-height: 550px;
-  min-width: 400px;
   background-clip: padding-box;
   z-index: 9;
   display: grid;
@@ -72,21 +70,16 @@
 }
 
 .Pokedex-card_dimensions {
-  height: var(--card-height);
-  width: var(--card-width);
   box-shadow: 20px 20px 20px black;
 }
 
 .Home-card_dimensions {
-  height: var(--card-height-home);
-  width: var(--card-width-home);
   box-shadow: 15px 15px 15px black;
   position: relative;
 }
 
 .PokedexPosition {
     position: fixed;
-    left: calc(50% - 250px); 
     top: 30px;
 }
 
@@ -146,54 +139,9 @@
     opacity: .3;
     animation: spin 2.5s linear infinite, opacity 1.5s;
 }
-  
-  
-  @media (max-width: 380px){
-    .CharacterCard {
-      min-height: 520px;
-      min-width: 310px;
-    }
 
-    .PokedexPosition {
-      position: fixed;
-      left: 0;
-    }
-  
-    .CharacterCard-Head {
-      border-bottom: none;
-    }
-  
-    .CharacterCard-Description nav {
-      height: auto;
-    }
-  
-    .CharacterCard-Description {
-      content-visibility: auto;
-      height: auto;
-    }
-}
-
-@media (min-width: 380px) and (max-width: 768px){
-  .CharacterCard {
-    min-height: 520px;
-    min-width: 310px;
-  }
-
+@media (min-width: 768px){
   .PokedexPosition {
-    position: fixed;
-    left: 0;
-  }
-
-  .CharacterCard-Head {
-    border-bottom: none;
-  }
-
-  .CharacterCard-Description nav {
-    height: auto;
-  }
-
-  .CharacterCard-Description {
-    content-visibility: auto;
-    height: auto;
+    left: calc(50% - 250px); 
   }
 }

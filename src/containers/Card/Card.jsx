@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
   variantsCardAnimation,
@@ -9,6 +9,27 @@ import { CardHead } from '@containers/CardHead/CardHead'
 import { CardFooter } from '@containers/CardFooter/CardFooter'
 import '@styles/PokemonTypes.css'
 import './Card.css'
+
+const validateCardDimensions = (windowWidth, windowHeight) => {
+  let cardHeight = 700;
+  let cardWidth = 700 / 1.5;
+
+  if(windowWidth <= cardWidth){
+    cardWidth = windowWidth - 60;
+    cardHeight = cardWidth * 1.5;
+  }
+
+  if(windowHeight <= cardHeight){
+    console.log(`Entre windowHeight: ${windowHeight} y cardHeight: ${cardHeight}`)
+    cardHeight = windowHeight;
+    cardWidth = cardHeight / 1.5;
+  }
+
+  return {
+    cardWidth: cardWidth,
+    cardHeight: cardHeight
+  }
+}
 
 const Card = ({
   selectedId,
@@ -34,10 +55,37 @@ const Card = ({
   pokedexPage,
   legendary
 }) => {
+  const cardRef = useRef(null)
+  const [windowDimenion, detectHW] = useState({
+    winWidth: window.innerWidth,
+    winHeight: window.innerHeight,
+  })
+  const [cardDimensions, setCardDimensions] = useState(validateCardDimensions(windowDimenion.winWidth, windowDimenion.winHeight));
 
+  useEffect(() => {
+    window.addEventListener('resize', detectSize)
+
+    if(cardRef && detectSize){
+      const cardDimensions = validateCardDimensions(windowDimenion.winWidth, windowDimenion.winHeight)
+      setCardDimensions(cardDimensions)
+    }
+
+    return () => {
+      window.removeEventListener('resize', detectSize)
+    }
+  }, [windowDimenion])
+
+  const detectSize = () => {
+    detectHW({
+      winWidth: window.innerWidth,
+      winWidth: window.innerHeight,
+    })
+  }
 
   return (
     <motion.div
+      ref={cardRef}
+      style={{width: cardDimensions.cardWidth, height: cardDimensions.cardHeight}}
       layoutId={selectedId.name}
       className={`CharacterCard ${pokemonBackground.name} 
               ${ enableEffect && legendary && `${pokedexPage ? 'Legendary Legendary_Pokedex' : 'Legendary Legendary_Home'}`} 
@@ -56,6 +104,7 @@ const Card = ({
         shinny={shinnyOn}
       />
       <CardBody
+        cardHeight={cardDimensions.cardHeight}
         pokemon={pokemon}
         selectedTab={selectedTab}
         changeSelectedTab={changeSelectedTab}
