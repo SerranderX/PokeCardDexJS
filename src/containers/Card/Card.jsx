@@ -55,13 +55,14 @@ const Card = ({
   pokedexPage,
   legendary
 }) => {
+  
   const cardRef = useRef(null)
   const [windowDimenion, detectHW] = useState({
     winWidth: window.innerWidth,
     winHeight: window.innerHeight,
   })
   const [cardDimensions, setCardDimensions] = useState(validateCardDimensions(windowDimenion.winWidth, windowDimenion.winHeight));
-
+  
   useEffect(() => {
     window.addEventListener('resize', detectSize)
 
@@ -78,7 +79,7 @@ const Card = ({
   const detectSize = () => {
     detectHW({
       winWidth: window.innerWidth,
-      winWidth: window.innerHeight,
+      winHeight: window.innerHeight,
     })
   }
 

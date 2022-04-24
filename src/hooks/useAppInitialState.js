@@ -63,6 +63,21 @@ function useAppInitialState() {
     setTheme(newTheme)
   }
 
+
+  const openPokemonCardHandler = (item) => {
+    if(pokedexPage){
+      document.documentElement.style.overflow = "hidden";
+    }
+    openPokemonCard(item)
+  }
+
+  const closePokemonCardHandler = () => {
+    if(pokedexPage){
+      document.documentElement.style.overflow = "";
+    }
+    closePokemonCard()
+  }
+
   return {
     theme,
     toggleTheme,
@@ -78,8 +93,8 @@ function useAppInitialState() {
     search,
     handleSearch,
 
-    openPokemonCard,
-    closePokemonCard,
+    openPokemonCard: openPokemonCardHandler,
+    closePokemonCard: closePokemonCardHandler ,
     selectedId,
     pokemonBackground,
     logoType,
