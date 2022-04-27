@@ -105,7 +105,7 @@ const Card = ({
         shinny={shinnyOn}
       />
       <CardBody
-        cardHeight={cardDimensions.cardHeight}
+        cardDimensions={cardDimensions}
         pokemon={pokemon}
         selectedTab={selectedTab}
         changeSelectedTab={changeSelectedTab}

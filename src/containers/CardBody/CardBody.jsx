@@ -22,11 +22,11 @@ const CardBody = ({
   tabDescriptionData,
   pokemonBackground,
   generacion,
-  cardHeight
+  cardDimensions
 }) => {
   const [indexBkg, setIndexBkg] = useState(0)
   const [indexBkgColor, setIndexBkgColor] = useState(1)
-  const mainWidth = (cardHeight < 700) ? cardHeight * 0.395 : '83%';
+  const mainWidth = (cardDimensions.cardHeight < 700) ? cardDimensions.cardHeight * 0.395 : '83%';
 
   const handleBackground = () => {
     setIndexBkg(indexBkg === backgroundCardImages.length - 1 ? 0 : indexBkg + 1)
@@ -150,6 +150,7 @@ const CardBody = ({
                     pokemonBackground={pokemonBackground}
                     pokemon={pokemon}
                     generacion={generacion}
+                    cardDimensions={cardDimensions}
                   />
                 )}
               {!onLoadDescription &&

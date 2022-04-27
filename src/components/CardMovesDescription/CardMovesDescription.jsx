@@ -17,10 +17,13 @@ const CardMovesDescription = ({
   pokemon,
   selectedTab,
   generacion,
+  cardDimensions
 }) => {
   const [version, setVersion] = useState('')
   const [pokemonVersions, setPokemonVersions] = useState([])
   const [moves, setMoves] = useState([])
+  const selectVerWidth = (cardDimensions.cardHeight < 700) ? cardDimensions.cardWidth * 0.6 : '';
+
 
   const handleChange = (event) => {
     setVersion(event.target.value)
@@ -86,7 +89,7 @@ const CardMovesDescription = ({
           <select
             className="Pokemon-Version_select"
             onChange={handleChange}
-            style={{ backgroundColor: pokemonBackground.primary }}
+            style={{ backgroundColor: pokemonBackground.primary, width: selectVerWidth }}
           >
             {pokemonVersions.length > 0 &&
               pokemonVersions.map((version) => (
