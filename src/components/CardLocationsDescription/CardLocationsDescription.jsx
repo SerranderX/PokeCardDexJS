@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { toUpperCaseIndex } from '@shared/Utils'
 import CardDataNotFound from '@components/CardDataNotFound/CardDataNotFound'
+
 import './CardLocationsDescription.css'
 
 const CardLocationsDescription = ({
@@ -23,18 +24,11 @@ const CardLocationsDescription = ({
         <p>{selectedTab.description}</p>
       </section>
       <div className="CharacterCard-Description-Body">
-        {tabDescriptionData.location.length > 0 && (
-          <React.Fragment>
-            <p>asasdasd</p>
-            <select className="Versions-Select">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-            </select>
-          </React.Fragment>
+        {/* {tabDescriptionData.location.length > 0 && (
+
         )}
-        {tabDescriptionData.location.length === 0 && <CardDataNotFound />}
+        {tabDescriptionData.location.length === 0 && <CardDataNotFound />} */}
+        <CardDataNotFound />
       </div>
     </React.Fragment>
   )

@@ -1,24 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import './SubMenuItem.css'
-
-const variants = {
-  open: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      y: { stiffness: 1000, velocity: -100 },
-    },
-  },
-  collapsed: {
-    y: -20,
-    opacity: 0,
-    transition: {
-      y: { stiffness: 1000 },
-      duration: 0.2,
-    },
-  },
-}
+import { variants } from '@components/SubMenuItem/variants'
+import '@components/SubMenuItem/SubMenuItem.css'
 
 const SubMenuItem = ({ index, data, getGeneracion, generacion }) => {
   return (
