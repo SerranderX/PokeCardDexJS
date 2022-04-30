@@ -2,6 +2,8 @@
 
 This is my first personal proyect with ReactJS, and I made it with educative porpueses while I m still learning how to use (and practice) tools like Webpack, Framer motion, ChartJS, etc.
 
+You can access to the page in the follow link: https://pokecarddexjs.com
+
 ## Available Scripts
 
 In the project directory, you can run:
