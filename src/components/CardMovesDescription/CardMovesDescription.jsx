@@ -78,8 +78,8 @@ const CardMovesDescription = ({
       <section
         className="CharacterCard-Description-Title"
         style={{
-          backgroundColor: pokemonBackground.secondary,
-          borderBottom: `1px ${pokemonBackground.primary} solid`,
+          backgroundColor: pokemonBackground.primary('0.1'),
+          borderBottom: `1px ${pokemonBackground.primary()} solid`,
           paddingBottom: '1em',
         }}
       >
@@ -89,7 +89,7 @@ const CardMovesDescription = ({
           <select
             className="Pokemon-Version_select"
             onChange={handleChange}
-            style={{ backgroundColor: pokemonBackground.primary, width: selectVerWidth }}
+            style={{ backgroundColor: pokemonBackground.primary(), width: selectVerWidth }}
           >
             {pokemonVersions.length > 0 &&
               pokemonVersions.map((version) => (

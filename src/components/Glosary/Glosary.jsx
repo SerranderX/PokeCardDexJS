@@ -23,8 +23,8 @@ const Glosary = ({ pokemonPaletteColors, glosaryElements }) => {
           onClick={() => setCollapse(!collapse)}
           className={`Glosary`}
           style={{
-            border: `3px ${pokemonPaletteColors.primary} solid`,
-            backgroundColor: collapse ? 'transparent' : pokemonPaletteColors.primary,
+            border: `3px ${pokemonPaletteColors.primary()} solid`,
+            backgroundColor: collapse ? 'transparent' : pokemonPaletteColors.primary(),
           }}
         >
           <div className="Glosary-title-container">
@@ -48,7 +48,7 @@ const Glosary = ({ pokemonPaletteColors, glosaryElements }) => {
               <div
                 key={glosaryElement.name}
                 className={`Glosary-types ${glosaryElement.name}-type`}
-                style={{ borderTop: `1px ${pokemonPaletteColors.primary} solid` }}
+                style={{ borderTop: `1px ${pokemonPaletteColors.primary()} solid` }}
               >
                 <h4>{`${glosaryElement.name} type`}</h4>
                 {glosaryElement.data.map( item => (

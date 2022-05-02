@@ -25,6 +25,9 @@ import { SlideButton } from '@components/SlideButton/SlideButton'
 
 const Header = () => {
   const {
+    typesMiniCard,
+    setTypesMiniCard,
+
     toggleTheme,
     theme,
     getGeneration,
@@ -127,12 +130,19 @@ const Header = () => {
             show={isOpen}
             state={autoSound}
             handler={setAutoSound}
-            label={
-              autoSound ? 'Auto card sound enabled' : 'Auto card sound disabled'
-            }
-            style={{ alignItems: 'center', margin: '5% 8%' }}
+            label={`Auto card sound ${(autoSound) ? 'enabled' : 'disabled'}`}
+            style={{ alignItems: 'center', margin: '5% 8% 0% 8%' }}
             variants={variantsNavSlideButton}
           />
+          <SlideButton
+            show={isOpen}
+            state={typesMiniCard}
+            handler={setTypesMiniCard}
+            label={`Mini card types ${(typesMiniCard) ? 'enabled' : 'disabled'}`}
+            style={{ alignItems: 'center', margin: '0% 8%' }}
+            variants={variantsNavSlideButton}
+          />
+
         </Navigation>
         <MenuToggle name="navigation-button" toggle={() => handleNavIconClick()} />
         {width <= 768 && isOpen && (

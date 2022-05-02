@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { wrap } from 'popmotion'
-import { variantsSlide, pokemonCard, swipePower, swipeConfidenceThreshold, slideButtonTapVariants, transitionSlideVariants } from '@containers/Slide/SlideUtils.js'
+import { variantsSlide, swipePower, swipeConfidenceThreshold, slideButtonTapVariants, transitionSlideVariants } from '@containers/Slide/SlideUtils.js'
 import { AppContext } from '@context/AppContext'
 import Arrow from '@icons/arrowSlide.jsx'
 import "@containers/Slide/Slide.css";
@@ -12,15 +12,17 @@ const Slide = ({children}) => {
     setPokedexPage,
     getPokemonCard,
     theme,
-    selectedId
+    selectedId,
+    pokemonsHomePage
   } = useContext(AppContext)
 
   const [[page, direction], setPage] = useState([0, 0])
-  const pokemonCardIndex = wrap(0, pokemonCard.length, page)
+  const pokemonCardIndex = wrap(0, pokemonsHomePage.length, page)
 
   const paginate = (newDirection) => {
+    if(pokemonsHomePage[pokemonCardIndex]?.data == undefined) return;
     setPage([page + newDirection, newDirection])
-    getPokemonCard(pokemonCard[pokemonCardIndex])
+    getPokemonCard(pokemonsHomePage[pokemonCardIndex].data)
   }
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const Slide = ({children}) => {
     if (!selectedId) {
       paginate(1)
     }
-  }, [])
+  }, [pokemonsHomePage])
 
   return (
       <div className="Slide">

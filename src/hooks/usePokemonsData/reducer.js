@@ -15,6 +15,7 @@ const reducerObject = (state, payload) => ({
     },
     [actionTypes.SET_POKEDEX_PAGE]: { ...state, pokedexPage: payload },
     [actionTypes.SET_SEARCH]: { ...state, search: payload },
+    [actionTypes.CARGAR_POKEMONS_HOME_PAGE]: { ...state, pokemonsHomePage: payload },
 })
 
 export const reducer = (state, action) => {

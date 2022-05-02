@@ -6,4 +6,5 @@ export const initialState = () => ({
     offSet: 0,
     pokedexPage: false,
     search: '',
+    pokemonsHomePage: []
   })

@@ -2,6 +2,7 @@ import { useEffect, useReducer, useCallback } from 'react'
 import { actionTypes } from '@hooks/usePokemonsData/actionTypes'
 import { initialState } from '@hooks/usePokemonsData/initialState'
 import { reducer } from '@hooks/usePokemonsData/reducer'
+import { pokemonTypeUtils, pokemonHomeCardsReq } from '@shared/Utils'
 import { useToast } from '@hooks/useToast'
 import { ENV } from '@shared/Env'
 import axios from 'axios'
@@ -16,6 +17,7 @@ const usePokemonsData = () => {
     offSet,
     pokedexPage,
     search,
+    pokemonsHomePage
   } = state
 
   const handleSearch = useCallback((event) => {
@@ -25,6 +27,8 @@ const usePokemonsData = () => {
   //ACTION CREATORS
   const cargarPokemons = (data) =>
     dispatch({ type: actionTypes.CARGAR_POKEMONS, payload: data })
+  const cargarPokemonsHomePage = (data) =>
+    dispatch({ type: actionTypes.CARGAR_POKEMONS_HOME_PAGE, payload: data })
   const setGeneracion = (data) =>
     dispatch({ type: actionTypes.SET_GENERACION, payload: data })
   const setPokedexPage = (data) =>
@@ -34,6 +38,8 @@ const usePokemonsData = () => {
 
   useEffect(() => {
     const getPokemons = async () => {
+      if(!pokedexPage) return;
+
       let limit
       let offSet
 
@@ -78,7 +84,19 @@ const usePokemonsData = () => {
         const response = await axios.get(
           `${ENV.pokeApiURL}?limit=${limit}&offset=${offSet}`
         )
-        cargarPokemons({ characters: response.data.results, offSet: offSet })
+
+        const resultset = await Promise.all(response.data.results.map(async (pokemon) => {
+
+          const response = await axios.get(pokemon.url).then(res => res.data)
+
+          const pokemonTypesIcons = response.types.map(
+            (type) => pokemonTypeUtils[type.type.name]
+          )
+          
+          response.pokemonTypeUtils = pokemonTypesIcons
+          return response
+        }));
+        cargarPokemons({ characters: resultset, offSet: offSet })
       } catch (error) {
         useToast({
           message:
@@ -89,8 +107,21 @@ const usePokemonsData = () => {
       }
     }
 
+    const pokemonsHomePage = async () => {
+      if(pokemonsHomePage.length > 0) return;
+
+      const responsePokemons = await Promise.all(pokemonHomeCardsReq.map(async (item) => {
+        const response = await axios.get(item.url).then(res => res.data).catch(error => console.log("Error", error));
+        item.data = response;
+        return item
+      }))
+
+      cargarPokemonsHomePage(responsePokemons)
+    }
+
     getPokemons()
-  }, [generacion])
+    pokemonsHomePage()
+  }, [generacion, pokedexPage])
 
   return {
     characters,
@@ -103,6 +134,7 @@ const usePokemonsData = () => {
     pokedexPage,
     search,
     handleSearch,
+    pokemonsHomePage
   }
 }
 

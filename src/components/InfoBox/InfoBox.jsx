@@ -9,8 +9,8 @@ const InfoBox = ({ children, title, pokemonBackground }) => {
       <motion.section
         className="InfoBox"
         style={{
-          backgroundColor: pokemonBackground.secondary,
-          border: `1px ${pokemonBackground.primary} solid`,
+          backgroundColor: pokemonBackground.primary("0.1"),
+          border: `1px ${pokemonBackground.primary()} solid`,
         }}
       >
         <h2>{toUpperCaseIndex(title)}</h2>

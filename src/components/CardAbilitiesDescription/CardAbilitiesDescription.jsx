@@ -19,8 +19,8 @@ const CardAbilitiesDescription = ({
       <section
         className="CharacterCard-Description-Title"
         style={{
-          backgroundColor: pokemonBackground.secondary,
-          borderBottom: `1px ${pokemonBackground.primary} solid`,
+          backgroundColor: pokemonBackground.primary('0.1'),
+          borderBottom: `1px ${pokemonBackground.primary()} solid`,
         }}
       >
         <motion.h1>{toUpperCaseIndex(tabTitle)}</motion.h1>

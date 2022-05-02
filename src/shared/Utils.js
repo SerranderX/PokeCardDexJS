@@ -1,3 +1,4 @@
+import { ENV } from '@shared/Env'
 import AboutIcon from '@icons/about.jsx'
 import PokedexIcon from '@icons/pokeball.jsx'
 import HomeIcon from '@icons/home.jsx'
@@ -77,6 +78,23 @@ const transformVerString = (text) => {
 const transformString = (text) => {
   return text.replace(/(\r\n|\n|\r|\f|-)/gm, ' ')
 }
+
+const pokemonHomeCardsReq = [
+  { name: 'pikachu', url: `${ENV.pokeApiURL}/25/` },
+  { name: 'mew', url: `${ENV.pokeApiURL}/151/` },
+  { name: 'moltres', url: `${ENV.pokeApiURL}/146/` },
+  { name: 'aegislash-shield', url: `${ENV.pokeApiURL}/681/` },
+  { name: 'kyogre', url: `${ENV.pokeApiURL}/382/` },
+  { name: 'sylveon', url: `${ENV.pokeApiURL}/700/` },
+  { name: 'lucario', url: `${ENV.pokeApiURL}/448/` },
+  { name: 'buzzwole', url: `${ENV.pokeApiURL}/794/` },
+  { name: 'gengar-gmax', url: `${ENV.pokeApiURL}/10202/` },
+  { name: 'bouffalant', url: `${ENV.pokeApiURL}/626/` },
+  { name: 'toxicroak', url: `${ENV.pokeApiURL}/454/` },
+  { name: 'sableye', url: `${ENV.pokeApiURL}/302/` },
+  { name: 'tyranitar', url: `${ENV.pokeApiURL}/248/` },
+  { name: 'corvisquire', url: `${ENV.pokeApiURL}/822/` },
+]
 
 const navMenu = [
   {
@@ -272,144 +290,144 @@ const pokemonTypeUtils = {
     logo: NormalLogo,
     color: {
       name: 'Normal',
-      primary: 'rgba(145, 154, 162, 0.7)',
-      secondary: 'rgba(145, 154, 162, 0.1)',
+      primary: (opacity = '0.7') => `rgba(145, 154, 162, ${opacity})`,
+      secondary: 'rgb(72, 76, 79)',
     },
   },
   fighting: {
     logo: FightingLogo,
     color: {
       name: 'Fighting',
-      primary: 'rgba(224, 48, 106, 0.7)',
-      secondary: 'rgba(224, 48, 106, 0.1)',
+      primary: (opacity = '0.7') => `rgba(224, 48, 106, ${opacity})`,
+      secondary: 'rgb(93, 31, 50)',
     },
   },
   flying: {
     logo: FlyingLogo,
     color: {
       name: 'Flying',
-      primary: 'rgba(137, 170, 227, 0.7)',
-      secondary: 'rgba(137, 170, 227, 0.1)',
+      primary: (opacity = '0.7') => `rgba(137, 170, 227, ${opacity})`,
+      secondary: 'rgb(61, 73, 92)',
     },
   },
   poison: {
     logo: PoisonLogo,
     color: {
       name: 'Poison',
-      primary: 'rgba(181, 103, 206, 0.7)',
-      secondary: 'rgba(181, 103, 206, 0.1)',
+      primary: (opacity = '0.7') => `rgba(181, 103, 206, ${opacity})`,
+      secondary: 'rgb(83, 50, 94)',
     },
   },
   ground: {
     logo: GroundLogo,
     color: {
       name: 'Ground',
-      primary: 'rgba(232, 114, 54, 0.7)',
-      secondary: 'rgba(232, 114, 54, 0.1)',
+      primary: (opacity = '0.7') => `rgba(232, 114, 54, ${opacity})`,
+      secondary: 'rgb(95, 58, 37)',
     },
   },
   rock: {
     logo: RockLogo,
     color: {
       name: 'Rock',
-      primary: 'rgba(200, 182, 134, 0.7)',
-      secondary: 'rgba(200, 182, 134, 0.1)',
+      primary: (opacity = '0.7') => `rgba(200, 182, 134, ${opacity})`,
+      secondary: 'rgb(84, 77, 59)',
     },
   },
   bug: {
     logo: BugLogo,
     color: {
       name: 'Bug',
-      primary: 'rgba(131, 195, 0, 0.7)',
-      secondary: 'rgba(131, 195, 0, 0.1)',
+      primary: (opacity = '0.7') => `rgba(131, 195, 0, ${opacity})`,
+      secondary: 'rgb(62, 86, 10)',
     },
   },
   ghost: {
     logo: GhostLogo,
     color: {
       name: 'Ghost',
-      primary: 'rgba(76, 106, 178, 0.7)',
-      secondary: 'rgba(76, 106, 178, 0.1)',
+      primary: (opacity = '0.7') => `rgba(76, 106, 178, ${opacity})`,
+      secondary: 'rgb(48, 56, 80)',
     },
   },
   steel: {
     logo: SteelLogo,
     color: {
       name: 'Steel',
-      primary: 'rgba(90, 142, 162, 0.7)',
-      secondary: 'rgba(90, 142, 162, 0.1)',
+      primary: (opacity = '0.7') => `rgba(90, 142, 162, ${opacity})`,
+      secondary: 'rgb(46, 64, 67)',
     },
   },
   fire: {
     logo: FireLogo,
     color: {
       name: 'Fire',
-      primary: 'rgba(255, 151, 65, 0.7)',
-      secondary: 'rgba(255, 151, 65, 0.1)',
+      primary: (opacity = '0.7') => `rgba(255, 151, 65, ${opacity})`,
+      secondary: 'rgb(104, 66, 34)',
     },
   },
   water: {
     logo: WaterLogo,
     color: {
       name: 'Water',
-      primary: 'rgba(54, 146, 220, 0.7)',
-      secondary: 'rgba(54, 146, 220, 0.1)',
+      primary: (opacity = '0.7') => `rgba(54, 146, 220, ${opacity})`,
+      secondary: 'rgb(32, 65, 93)',
     },
   },
   grass: {
     logo: GrassLogo,
     color: {
       name: 'Grass',
-      primary: 'rgb(56, 191, 75, 0.7)',
-      secondary: 'rgba(58, 255, 86, 0.1)',
+      primary: (opacity = '0.7') => `rgba(56, 191, 75, ${opacity})`,
+      secondary: 'rgb(34, 84, 38)',
     },
   },
   electric: {
     logo: ElectricLogo,
     color: {
       name: 'Electric',
-      primary: 'rgb(220, 184, 2, 0.7)',
-      secondary: 'rgba(251, 209, 0, 0.1)',
+      primary: (opacity = '0.7') => `rgba(220, 184, 2, ${opacity})`,
+      secondary: 'rgb(92, 79, 10)',
     },
   },
   psychic: {
     logo: PsychicLogo,
     color: {
       name: 'Psychic',
-      primary: 'rgba(255, 102, 117, 0.7)',
-      secondary: 'rgba(255, 102, 117, 0.1)',
+      primary: (opacity = '0.7') => `rgba(255, 102, 117, ${opacity})`,
+      secondary: 'rgb(105, 50, 56)',
     },
   },
   ice: {
     logo: IceLogo,
     color: {
       name: 'Ice',
-      primary: 'rgba(76, 209, 192, 0.7)',
-      secondary: 'rgba(76, 209, 192, 0.1)',
+      primary: (opacity = '0.7') => `rgba(76, 209, 192, ${opacity})`,
+      secondary: 'rgb(40, 93, 87)',
     },
   },
   dragon: {
     logo: DragonLogo,
     color: {
       name: 'Dragon',
-      primary: 'rgba(0, 111, 201, 0.7)',
-      secondary: 'rgba(0, 111, 201, 0.1)',
+      primary: (opacity = '0.7') => `rgba(0, 111, 201, ${opacity})`,
+      secondary: 'rgb(11, 51, 85)',
     },
   },
   dark: {
     logo: DarkLogo,
     color: {
       name: 'Dark',
-      primary: 'rgba(255, 255, 255, 0.7)',
-      secondary: 'rgba(255, 255, 255, 0.1)',
+      primary: (opacity = '0.7') => `rgba(28, 28, 28, ${opacity})`,
+      secondary: 'rgb(52, 57, 69)',
     },
   },
   fairy: {
     logo: FairyLogo,
     color: {
       name: 'Fairy',
-      primary: 'rgb(220, 119, 206, 0.7)',
-      secondary: 'rgba(251, 137, 235, 0.1)',
+      primary: (opacity = '0.7') => `rgba(220, 119, 206, ${opacity})`,
+      secondary: 'rgb(94, 57, 90)',
     },
   },
 }
@@ -640,4 +658,5 @@ export {
   pokemonTypeUtils,
   versions,
   backgroundCardImages,
+  pokemonHomeCardsReq
 }

@@ -69,7 +69,7 @@ const InfoBoxItem = ({
       >
         <div
           className={`InfoBox-item_title`}
-          style={{ backgroundColor: pokemonBackground.primary }}
+          style={{ backgroundColor: pokemonBackground.primary() }}
         >
           <div
             className={`InfoBox-item_content ${
@@ -106,7 +106,7 @@ const InfoBoxItem = ({
               <ul className="Move-Data_ul">
                 <li
                   style={{
-                    borderBottom: `1px ${pokemonBackground.primary} solid`,
+                    borderBottom: `1px ${pokemonBackground.primary()} solid`,
                   }}
                 >
                   <p>
@@ -116,7 +116,7 @@ const InfoBoxItem = ({
                 </li>
                 <li
                   style={{
-                    borderBottom: `1px ${pokemonBackground.primary} solid`,
+                    borderBottom: `1px ${pokemonBackground.primary()} solid`,
                   }}
                 >
                   <p>
@@ -126,7 +126,7 @@ const InfoBoxItem = ({
                 </li>
                 <li
                   style={{
-                    borderBottom: `1px ${pokemonBackground.primary} solid`,
+                    borderBottom: `1px ${pokemonBackground.primary()} solid`,
                   }}
                 >
                   <p>
@@ -136,7 +136,7 @@ const InfoBoxItem = ({
                 </li>
                 <li
                   style={{
-                    borderBottom: `1px ${pokemonBackground.primary} solid`,
+                    borderBottom: `1px ${pokemonBackground.primary()} solid`,
                   }}
                 >
                   <p>
@@ -147,7 +147,7 @@ const InfoBoxItem = ({
                 {contentRes.contest_type?.name && (
                   <li
                     style={{
-                      borderBottom: `1px ${pokemonBackground.primary} solid`,
+                      borderBottom: `1px ${pokemonBackground.primary()} solid`,
                     }}
                   >
                     <p>
@@ -159,7 +159,7 @@ const InfoBoxItem = ({
                 {contentRes.contest_type?.name && (
                   <li
                     style={{
-                      borderBottom: `1px ${pokemonBackground.primary} solid`,
+                      borderBottom: `1px ${pokemonBackground.primary()} solid`,
                     }}
                   >
                     <p>

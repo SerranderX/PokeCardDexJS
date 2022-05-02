@@ -14,3 +14,9 @@ opacity: 0 !important;
 .MiniCard-Title em {
   opacity: 0.7;
 }
+
+.Types {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+}

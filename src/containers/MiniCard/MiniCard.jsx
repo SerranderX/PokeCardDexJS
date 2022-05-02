@@ -3,9 +3,10 @@ import { motion } from 'framer-motion'
 import { whileHoverCard } from '@shared/Animations'
 import { toUpperCaseIndex } from '@shared/Utils'
 import { Loading } from '@components/Loading/Loading'
+import { PokemonTypeBox } from '@components/PokemonTypeBox/PokemonTypeBox'
 import './MiniCard.css'
 
-const MiniCard = ({ selectedId, character, openPokemonCard, characterSelect }) => {
+const MiniCard = ({ selectedId, character, openPokemonCard, characterSelect, typesMiniCard }) => {
   const loadingCard = (characterSelect != null) ? characterSelect.name == character.name : false;
 
   const handleItem = (item) => {
@@ -25,15 +26,29 @@ const MiniCard = ({ selectedId, character, openPokemonCard, characterSelect }) =
     >
       <motion.h2 className="MiniCard-Title">
         {toUpperCaseIndex(character.name)}{' '}
-        <em>#{character.url.split('/')[6]}</em>
+        <em>#{character.id}</em>
       </motion.h2>
-      {loadingCard && <Loading miniCardLoading={true} />}
-      {!loadingCard && <motion.img
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-          character.url.split('/')[6]
-        }.png`}
-        alt={character.name}
-      />}
+      <section>
+        {loadingCard && <Loading miniCardLoading={true} />}
+        {!loadingCard && 
+          <motion.img
+            src={character.sprites.front_default}
+            alt={character.name}
+          />
+        }
+        {typesMiniCard && (
+          <div className="Types">
+            {character.types.map((item, index) => 
+              <PokemonTypeBox 
+                key={`${item.type.name}-${index}`}
+                name={item.type.name} 
+                backgroundColor={character.pokemonTypeUtils[index].color.primary()} 
+                border={`1px solid ${character.pokemonTypeUtils[index].color.primary("0.1")}`} 
+              />
+            )}
+          </div>
+        )}
+      </section>
     </motion.div>
   )
 }

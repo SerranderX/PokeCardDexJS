@@ -1,4 +1,5 @@
 import useLocalStorage from 'use-local-storage'
+import { useState } from 'react'
 import { usePokemonsData } from '@hooks/usePokemonsData/usePokemonsData'
 import { usePokemonData } from '@hooks/usePokemonData/usePokemonData'
 
@@ -8,6 +9,7 @@ function useAppInitialState() {
     'theme',
     defaultDark ? 'dark' : 'light'
   )
+  const [typesMiniCard, setTypesMiniCard] = useState(true);
 
   const {
     characters,
@@ -20,6 +22,7 @@ function useAppInitialState() {
     pokedexPage,
     search,
     handleSearch,
+    pokemonsHomePage
   } = usePokemonsData()
 
   const {
@@ -81,6 +84,8 @@ function useAppInitialState() {
   return {
     theme,
     toggleTheme,
+    typesMiniCard,
+    setTypesMiniCard,
 
     characters,
     getGeneration,
@@ -92,6 +97,7 @@ function useAppInitialState() {
     pokedexPage,
     search,
     handleSearch,
+    pokemonsHomePage,
 
     openPokemonCard: openPokemonCardHandler,
     closePokemonCard: closePokemonCardHandler ,

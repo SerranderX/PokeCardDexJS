@@ -40,8 +40,8 @@ const RadarGraph = ({ stats, pokemonBackground }) => {
       {
         label: 'Base',
         data: statsBase,
-        backgroundColor: pokemonBackground.secondary,
-        borderColor: pokemonBackground.primary,
+        backgroundColor: pokemonBackground.primary('0.1'),
+        borderColor: pokemonBackground.primary(),
         borderWidth: 1,
       },
     ],

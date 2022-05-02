@@ -9,6 +9,8 @@ import './Characters.css'
 
 const Characters = () => {
   const {
+    typesMiniCard,
+
     characters,
     offSet,
     loading,
@@ -89,6 +91,7 @@ const Characters = () => {
                 character={character}
                 index={index}
                 offSet={offSet}
+                typesMiniCard={typesMiniCard}
                 openPokemonCard={openPokemonCard}
                 characterSelect={characterSelect}
               />

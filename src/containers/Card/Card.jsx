@@ -20,7 +20,6 @@ const validateCardDimensions = (windowWidth, windowHeight) => {
   }
 
   if(windowHeight <= cardHeight){
-    console.log(`Entre windowHeight: ${windowHeight} y cardHeight: ${cardHeight}`)
     cardHeight = windowHeight;
     cardWidth = cardHeight / 1.5;
   }

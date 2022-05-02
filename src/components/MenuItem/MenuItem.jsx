@@ -65,7 +65,7 @@ export const MenuItem = ({
   } else {
     return (
       <Fragment>
-        <motion.li
+        <motion.div
           className={`menu-item sub-items ${isOpen ? 'sub-items-open' : ''}`}
           variants={variants}
           whileHover={{ scale: 1.02 }}
@@ -86,7 +86,7 @@ export const MenuItem = ({
           >
             {data.iconDrag({ theme })}
           </motion.div>
-        </motion.li>
+        </motion.div>
         <AnimatePresence initial={false}>
           {isOpen && (
             <motion.section

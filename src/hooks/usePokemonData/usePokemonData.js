@@ -44,9 +44,8 @@ const usePokemonData = () => {
 
   useEffect(() => {
     const getPokemon = async (name) => {
-      const response = await axios.get(`${ENV.pokeApiURL}/${name}`)
-      const pokemon = pokemonTypeUtils[response.data.types[0].type.name]
-      const pokemonTypesIcons = response.data.types.map(
+      const pokemon = pokemonTypeUtils[characterSelect.types[0].type.name]
+      const pokemonTypesIcons = characterSelect.types.map(
         (type) => pokemonTypeUtils[type.type.name]
       )
 
@@ -54,15 +53,15 @@ const usePokemonData = () => {
         {
           key: 'general',
           general: {
-            height: response.data.height,
-            weight: response.data.weight,
+            height: characterSelect.height,
+            weight: characterSelect.weight,
             types: pokemonTypesIcons,
           },
           description: 'Here you can see the general pokemon information.',
         },
         {
           key: 'stats',
-          stats: response.data.stats,
+          stats: characterSelect.stats,
           description: 'Here you can see check the pokemon stats.',
         },
         {
@@ -84,9 +83,9 @@ const usePokemonData = () => {
         },
       ]
 
-      const hasFamaleData = response.data.sprites.front_female === null ? false : true
+      const hasFamaleData = characterSelect.sprites.front_female === null ? false : true
 
-      const isSeudoLegendary = response.data.stats.map(item => item.base_stat ).reduce((a,b) => a + b, 0) === 600
+      const isSeudoLegendary = characterSelect.stats.map(item => item.base_stat ).reduce((a,b) => a + b, 0) === 600
 
       loadPokemonCard({
         characterSelect: characterSelect,
@@ -94,7 +93,7 @@ const usePokemonData = () => {
         pokemonData: pokemonData,
         pokemonBackground: pokemon.color,
         logoType: pokemon.logo,
-        pokemon: response.data,
+        pokemon: characterSelect,
         selectedId: characterSelect,
         infoShared: {
           hasFamaleData: hasFamaleData,
@@ -103,7 +102,7 @@ const usePokemonData = () => {
       })
 
       if (autoSound) {
-        playPokemonSound(0.1, response.data.name)
+        playPokemonSound(0.1, characterSelect.name)
       }
     }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { whileHoverSpriteImage } from '@shared/Animations'
+import { toUpperCaseIndex } from '@shared/Utils'
 import { useToast } from '@hooks/useToast'
 import './CardHead.css'
 
@@ -61,8 +62,7 @@ const CardHead = ({
       </motion.div>
       <motion.div className="CharacterCard-Title">
         <h2>
-          {selectedId.name.charAt(0).toUpperCase()}
-          {selectedId.name.slice(1)} <em>#{pokemon.id}</em>
+          {toUpperCaseIndex(selectedId.name)}{' '}<em>#{pokemon.id}</em>
         </h2>
       </motion.div>
       <motion.button

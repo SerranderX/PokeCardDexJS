@@ -15,8 +15,8 @@ const CardStatsDescription = ({
       <section
         className="CharacterCard-Description-Title"
         style={{
-          backgroundColor: pokemonBackground.secondary,
-          borderBottom: `1px ${pokemonBackground.primary} solid`,
+          backgroundColor: pokemonBackground.primary('0.1'),
+          borderBottom: `1px ${pokemonBackground.primary()} solid`,
         }}
       >
         <motion.h1>{toUpperCaseIndex(tabTitle)}</motion.h1>
@@ -33,8 +33,8 @@ const CardStatsDescription = ({
           <div
             className="Stat-Description-Table_head"
             style={{
-              backgroundColor: pokemonBackground.secondary,
-              border: `1px ${pokemonBackground.primary} solid`,
+              backgroundColor: pokemonBackground.primary('0.1'),
+              border: `1px ${pokemonBackground.primary()} solid`,
             }}
           >
             <table>
@@ -49,7 +49,7 @@ const CardStatsDescription = ({
           </div>
           <div
             className="Stat-Description-Table_body"
-            style={{ border: `1px ${pokemonBackground.primary} solid` }}
+            style={{ border: `1px ${pokemonBackground.primary()} solid` }}
           >
             <table>
               <tbody>
@@ -57,21 +57,21 @@ const CardStatsDescription = ({
                   <tr key={item.stat.name}>
                     <td
                       style={{
-                        borderBottom: `1px ${pokemonBackground.primary} solid`,
+                        borderBottom: `1px ${pokemonBackground.primary()} solid`,
                       }}
                     >
                       <b>{toUpperCaseIndex(item.stat.name)}</b>
                     </td>
                     <td
                       style={{
-                        borderBottom: `1px ${pokemonBackground.primary} solid`,
+                        borderBottom: `1px ${pokemonBackground.primary()} solid`,
                       }}
                     >
                       {item.base_stat}
                     </td>
                     <td
                       style={{
-                        borderBottom: `1px ${pokemonBackground.primary} solid`,
+                        borderBottom: `1px ${pokemonBackground.primary()} solid`,
                       }}
                     >
                       {item.effort}

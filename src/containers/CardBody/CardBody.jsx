@@ -76,7 +76,7 @@ const CardBody = ({
                 style={{
                   backgroundColor:
                     item === selectedTab
-                      ? pokemonData[0].general.types[0].color.primary
+                      ? pokemonData[0].general.types[0].color.primary()
                       : 'transparent',
                 }}
                 onClick={() => changeSelectedTab(item)}

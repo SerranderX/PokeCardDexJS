@@ -2,7 +2,8 @@ import React, { useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { toUpperCaseIndex, transformString } from '@shared/Utils'
 import { DescriptionItem } from '@components/DescriptionItem/DescriptionItem'
-import './CardGeneralDescription.css'
+import '@components/CardGeneralDescription/CardGeneralDescription.css'
+import { PokemonTypeBox } from '@components/PokemonTypeBox/PokemonTypeBox'
 
 const CardGeneralDescription = ({
   tabTitle,
@@ -57,8 +58,8 @@ const CardGeneralDescription = ({
       <section
         className="CharacterCard-Description-Title"
         style={{
-          backgroundColor: pokemonBackground.secondary,
-          borderBottom: `1px ${pokemonBackground.primary} solid`,
+          backgroundColor: pokemonBackground.primary('0.1'),
+          borderBottom: `1px ${pokemonBackground.primary()} solid`,
         }}
       >
         <motion.h1>{toUpperCaseIndex(tabTitle)}</motion.h1>
@@ -72,8 +73,8 @@ const CardGeneralDescription = ({
               return (
                 <DescriptionItem
                   key={item.flavor_text}
-                  backgroundColor={pokemonBackground.secondary}
-                  borderColor={pokemonBackground.primary}
+                  backgroundColor={pokemonBackground.primary("0.1")}
+                  borderColor={pokemonBackground.primary()}
                   name={'Description'}
                   data={transformString(item.flavor_text)}
                 />
@@ -81,38 +82,37 @@ const CardGeneralDescription = ({
             }
           })}
           <DescriptionItem
-            backgroundColor={pokemonBackground.secondary}
-            borderColor={pokemonBackground.primary}
+            backgroundColor={pokemonBackground.primary('0.1')}
+            borderColor={pokemonBackground.primary()}
             name={selectedTab.general.types.length > 1 ? 'Types' : 'Type'}
             typesContainer={true}
           >
             <div className="Description-Item_content">
-              {selectedTab.general.types.map((item) => (
-                <div
-                  key={item.color.name}
-                  className="Pokemon-type_Icon"
-                  style={{ backgroundColor: item.color.primary }}
-                >
-                  <p>{item.color.name}</p>
-                </div>
-              ))}
+              {selectedTab.general.types.map((item) => 
+                <PokemonTypeBox 
+                  key={`${item.color.name}-Card`}
+                  name={item.color.name} 
+                  backgroundColor={item.color.primary()}
+                  border={`1px solid ${item.color.secondary}`}
+                />
+              )}
             </div>
           </DescriptionItem>
           <DescriptionItem
-            backgroundColor={pokemonBackground.secondary}
-            borderColor={pokemonBackground.primary}
+            backgroundColor={pokemonBackground.primary('0.1')}
+            borderColor={pokemonBackground.primary()}
             name={'Weight'}
             data={`${transformWeight(pokemonData[0].general.weight)} kg`}
           />
           <DescriptionItem
-            backgroundColor={pokemonBackground.secondary}
-            borderColor={pokemonBackground.primary}
+            backgroundColor={pokemonBackground.primary('0.1')}
+            borderColor={pokemonBackground.primary()}
             name={'Height'}
             data={`${pokemonData[0].general.height}0 cm`}
           />
           <DescriptionItem
-            backgroundColor={pokemonBackground.secondary}
-            borderColor={pokemonBackground.primary}
+            backgroundColor={pokemonBackground.primary('0.1')}
+            borderColor={pokemonBackground.primary()}
             name={'Capture Rate'}
             data={`${
               tabDescriptionData?.species?.capture_rate
@@ -121,8 +121,8 @@ const CardGeneralDescription = ({
             }/255`}
           />
           <DescriptionItem
-            backgroundColor={pokemonBackground.secondary}
-            borderColor={pokemonBackground.primary}
+            backgroundColor={pokemonBackground.primary('0.1')}
+            borderColor={pokemonBackground.primary()}
             name={'Capture Rate'}
             data={`${
               tabDescriptionData?.species?.capture_rate
@@ -131,8 +131,8 @@ const CardGeneralDescription = ({
             }/255`}
           />
           <DescriptionItem
-            backgroundColor={pokemonBackground.secondary}
-            borderColor={pokemonBackground.primary}
+            backgroundColor={pokemonBackground.primary('0.1')}
+            borderColor={pokemonBackground.primary()}
             name={'Base happiness'}
             data={`${
               tabDescriptionData?.species?.base_happiness
@@ -141,8 +141,8 @@ const CardGeneralDescription = ({
             }/255`}
           />
           <DescriptionItem
-            backgroundColor={pokemonBackground.secondary}
-            borderColor={pokemonBackground.primary}
+            backgroundColor={pokemonBackground.primary('0.1')}
+            borderColor={pokemonBackground.primary()}
             name={'Legendary'}
             data={
               tabDescriptionData?.species?.is_legendary ||
@@ -152,21 +152,21 @@ const CardGeneralDescription = ({
             }
           />
           <DescriptionItem
-            backgroundColor={pokemonBackground.secondary}
-            borderColor={pokemonBackground.primary}
+            backgroundColor={pokemonBackground.primary('0.1')}
+            borderColor={pokemonBackground.primary()}
             name={'Mythical'}
             data={tabDescriptionData?.species?.is_mythical ? 'Yes' : 'No'}
           />
           <DescriptionItem
-            backgroundColor={pokemonBackground.secondary}
-            borderColor={pokemonBackground.primary}
+            backgroundColor={pokemonBackground.primary('0.1')}
+            borderColor={pokemonBackground.primary()}
             name={'Pseudo Legendary'}
             data={pseudoLegendary(pokemon) ? 'Yes' : 'No'}
           />
           {tabDescriptionData?.species?.generation?.name && (
             <DescriptionItem
-              backgroundColor={pokemonBackground.secondary}
-              borderColor={pokemonBackground.primary}
+              backgroundColor={pokemonBackground.primary('0.1')}
+              borderColor={pokemonBackground.primary()}
               name={'Generation'}
               data={toUpperCaseIndex(
                 tabDescriptionData.species?.generation?.name
@@ -175,8 +175,8 @@ const CardGeneralDescription = ({
           )}
           {tabDescriptionData?.species?.evolves_from_species && (
             <DescriptionItem
-              backgroundColor={pokemonBackground.secondary}
-              borderColor={pokemonBackground.primary}
+              backgroundColor={pokemonBackground.primary('0.1')}
+              borderColor={pokemonBackground.primary()}
               name={'Pre-evolution'}
               data={toUpperCaseIndex(
                 tabDescriptionData.species?.evolves_from_species?.name
@@ -185,16 +185,16 @@ const CardGeneralDescription = ({
           )}
           {tabDescriptionData?.species?.shape?.name && (
             <DescriptionItem
-              backgroundColor={pokemonBackground.secondary}
-              borderColor={pokemonBackground.primary}
+              backgroundColor={pokemonBackground.primary('0.1')}
+              borderColor={pokemonBackground.primary()}
               name={'Shape'}
               data={toUpperCaseIndex(tabDescriptionData.species?.shape.name)}
             />
           )}
           {tabDescriptionData?.species?.egg_groups?.length > 0 && (
             <DescriptionItem
-              backgroundColor={pokemonBackground.secondary}
-              borderColor={pokemonBackground.primary}
+              backgroundColor={pokemonBackground.primary('0.1')}
+              borderColor={pokemonBackground.primary()}
               name={
                 tabDescriptionData.species.egg_groups.length > 1
                   ? 'Egg groups'
@@ -205,8 +205,8 @@ const CardGeneralDescription = ({
           )}
           {tabDescriptionData?.species?.egg_groups?.length > 0 && (
             <DescriptionItem
-              backgroundColor={pokemonBackground.secondary}
-              borderColor={pokemonBackground.primary}
+              backgroundColor={pokemonBackground.primary('0.1')}
+              borderColor={pokemonBackground.primary()}
               name={'Grouth Rate'}
               data={toUpperCaseIndex(
                 tabDescriptionData.species?.growth_rate.name
