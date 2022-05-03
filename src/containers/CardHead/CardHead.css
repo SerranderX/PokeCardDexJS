@@ -70,6 +70,8 @@
     margin: initial;
     width: max-content;
     height: max-content;
+    max-inline-size: 100%;
+    max-width: fit-content;
 }
 
 .CharacterCard-Title em {
