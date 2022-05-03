@@ -68,10 +68,17 @@ function useAppInitialState() {
 
 
   const openPokemonCardHandler = (item) => {
-    if(pokedexPage){
-      document.documentElement.style.overflow = "hidden";
+    if (selectedId === null) {
+      if(pokedexPage) {
+        document.documentElement.style.overflow = "hidden";
+      } else {
+        document.documentElement.style.overflow = "";
+      }
+      openPokemonCard(item)
+    } else {
+      document.documentElement.style.overflow = "";
+      closePokemonCard()
     }
-    openPokemonCard(item)
   }
 
   const closePokemonCardHandler = () => {

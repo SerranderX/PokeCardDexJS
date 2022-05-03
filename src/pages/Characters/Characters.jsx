@@ -53,8 +53,10 @@ const Characters = () => {
     const regex = /\d+/g
     const matches = search.toLowerCase().match(regex)
     if (!matches) {
-      return characters.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase())
+      return characters.filter((item) => {
+          const nameAndTypes = item.types.map((type) => type.type.name) + item.name;
+          return nameAndTypes.toLowerCase().includes(search.toLowerCase())
+        }
       )
     } else {
       return characters.filter((item) =>
@@ -74,7 +76,7 @@ const Characters = () => {
               className="Search-box"
               name="Search-box"
               id="Search-box"
-              placeholder="Search pokemon by name."
+              placeholder="Search pokemon by name or type."
               value={search}
               onChange={handleSearch}
             />
