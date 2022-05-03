@@ -203,11 +203,7 @@ const usePokemonData = () => {
   }, [characterSelect, onLoadDescription, selectedTab, shinnyOn, famaleOn])
 
   const openPokemonCard = (item) => {
-    if (selectedId === null) {
       setCharacterSelect(item)
-    } else {
-      closePokemonCard()
-    }
   }
 
   const validateCardToClose = () => {
