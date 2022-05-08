@@ -124,7 +124,7 @@ const usePokemonsData = () => {
       if(pokemonsHomePage.length > 0) return;
 
       const responsePokemons = await Promise.all(pokemonHomeCardsReq.map(async (item) => {
-        const response = await axios.get(item.url).then(res => res.data).catch(error => console.log("Error", error));
+        const response = await axios.get(item.url).then(res => res.data).catch(error => console.error("Error", error));
         item.data = response;
         item.data.generation = findPokemonGeneration(item.data);
 
