@@ -80,20 +80,20 @@ const transformString = (text) => {
 }
 
 const pokemonHomeCardsReq = [
-  { name: 'pikachu', url: `${ENV.pokeApiURL}/25/` },
-  { name: 'mew', url: `${ENV.pokeApiURL}/151/` },
-  { name: 'moltres', url: `${ENV.pokeApiURL}/146/` },
-  { name: 'aegislash-shield', url: `${ENV.pokeApiURL}/681/` },
-  { name: 'kyogre', url: `${ENV.pokeApiURL}/382/` },
-  { name: 'sylveon', url: `${ENV.pokeApiURL}/700/` },
-  { name: 'lucario', url: `${ENV.pokeApiURL}/448/` },
-  { name: 'buzzwole', url: `${ENV.pokeApiURL}/794/` },
-  { name: 'gengar-gmax', url: `${ENV.pokeApiURL}/10202/` },
-  { name: 'bouffalant', url: `${ENV.pokeApiURL}/626/` },
-  { name: 'toxicroak', url: `${ENV.pokeApiURL}/454/` },
-  { name: 'sableye', url: `${ENV.pokeApiURL}/302/` },
-  { name: 'tyranitar', url: `${ENV.pokeApiURL}/248/` },
-  { name: 'corvisquire', url: `${ENV.pokeApiURL}/822/` },
+  { name: 'pikachu', url: `${ENV.pokeApiURL}pokemon/25/` },
+  { name: 'mew', url: `${ENV.pokeApiURL}pokemon/151/` },
+  { name: 'moltres', url: `${ENV.pokeApiURL}pokemon/146/` },
+  { name: 'aegislash-shield', url: `${ENV.pokeApiURL}pokemon/681/` },
+  { name: 'kyogre', url: `${ENV.pokeApiURL}pokemon/382/` },
+  { name: 'sylveon', url: `${ENV.pokeApiURL}pokemon/700/` },
+  { name: 'lucario', url: `${ENV.pokeApiURL}pokemon/448/` },
+  { name: 'buzzwole', url: `${ENV.pokeApiURL}pokemon/794/` },
+  { name: 'gengar-gmax', url: `${ENV.pokeApiURL}pokemon/10202/` },
+  { name: 'bouffalant', url: `${ENV.pokeApiURL}pokemon/626/` },
+  { name: 'toxicroak', url: `${ENV.pokeApiURL}pokemon/454/` },
+  { name: 'sableye', url: `${ENV.pokeApiURL}pokemon/302/` },
+  { name: 'tyranitar', url: `${ENV.pokeApiURL}pokemon/248/` },
+  { name: 'corvisquire', url: `${ENV.pokeApiURL}pokemon/822/` },
 ]
 
 const navMenu = [

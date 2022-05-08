@@ -19,7 +19,6 @@ const Characters = () => {
     pokedexPage,
     handleSearch,
     search,
-    generacion,
 
     openPokemonCard,
     closePokemonCard,
@@ -119,7 +118,6 @@ const Characters = () => {
                   famaleOn={famaleOn}
                   infoShared={infoShared}
                   tabDescriptionData={tabDescriptionData}
-                  generacion={generacion}
                   pokedexPage={pokedexPage}
                   enableEffect={enableEffect}
                   setEnableEffect={setEnableEffect}

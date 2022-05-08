@@ -10,6 +10,9 @@ const swipePower = (offset, velocity) => {
       return {
         x: direction > 0 ? 1000 : -1000,
         opacity: 0,
+        transition: {
+            duration: 0.1
+        }
       }
     },
     center: {

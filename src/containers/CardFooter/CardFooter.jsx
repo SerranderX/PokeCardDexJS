@@ -17,15 +17,7 @@ const CardFooter = ({
 
 
   return (
-    <motion.div
-      className="CharacterCard-Footer"
-      animate={{
-        opacity: [0, 1],
-        y: [10, 0],
-        transition: { duration: 0.8 },
-        delay: 0.8,
-      }}
-    >
+    <motion.div className="CharacterCard-Footer">
       {(shinny != undefined) && (
         <SlideButton state={shinny} handler={setShinny} label={'Shinny'} />
       )}

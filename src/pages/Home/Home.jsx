@@ -30,7 +30,6 @@ const Home = () => {
     famaleOn,
     infoShared,
     tabDescriptionData,
-    generacion,
     enableEffect,
     setEnableEffect,
     legendary,
@@ -85,7 +84,6 @@ const Home = () => {
               famaleOn={famaleOn}
               infoShared={infoShared}
               tabDescriptionData={tabDescriptionData}
-              generacion={generacion}
               enableEffect={enableEffect}
               setEnableEffect={setEnableEffect}
               pokedexPage={false}

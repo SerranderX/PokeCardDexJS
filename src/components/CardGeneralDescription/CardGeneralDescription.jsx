@@ -123,16 +123,6 @@ const CardGeneralDescription = ({
           <DescriptionItem
             backgroundColor={pokemonBackground.primary('0.1')}
             borderColor={pokemonBackground.primary()}
-            name={'Capture Rate'}
-            data={`${
-              tabDescriptionData?.species?.capture_rate
-                ? tabDescriptionData.species?.capture_rate
-                : 0
-            }/255`}
-          />
-          <DescriptionItem
-            backgroundColor={pokemonBackground.primary('0.1')}
-            borderColor={pokemonBackground.primary()}
             name={'Base happiness'}
             data={`${
               tabDescriptionData?.species?.base_happiness

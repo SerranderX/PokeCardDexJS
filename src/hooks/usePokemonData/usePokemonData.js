@@ -108,13 +108,12 @@ const usePokemonData = () => {
 
     const getPokemonGeneralData = async (id) => {
       if (tabDescriptionData === null) {
-        const evolutionTriggers = await axios.get(`${ENV.pokeApiURL}/evolution-trigger/${id}`)
+        console.log(characterSelect)
+
+        const evolutionTriggers = await axios.get(`${ENV.pokeApiURL}evolution-trigger/${id}`)
           .then((response) => response.data)
           .catch(() => null)
-        const encounterMethod = await axios.get(`${ENV.pokeApiURL}/encounter-method/${id}`)
-          .then((response) => response.data)
-          .catch(() => null)
-        const species = await axios.get(`${ENV.pokeApiURL}/pokemon-species/${id}`)
+        const species = await axios.get(`${ENV.pokeApiURL}pokemon-species/${id}`)
           .then((response) => response.data)
           .catch(() => null)
         const location = await axios.get(pokemon.location_area_encounters)
@@ -128,14 +127,12 @@ const usePokemonData = () => {
           setTabDescriptionData({
             evolutions,
             evolutionTriggers,
-            encounterMethod,
             location,
             species,
           })
         } else {
           setTabDescriptionData({
             evolutionTriggers,
-            encounterMethod,
             location,
             species,
           })
@@ -147,7 +144,6 @@ const usePokemonData = () => {
 
       } else {
         const evolutionTriggers = tabDescriptionData.evolutionTriggers
-        const encounterMethod = tabDescriptionData.encounterMethod
         const species = tabDescriptionData.species
         const location = tabDescriptionData.location
         const evolutions = tabDescriptionData.evolutions
@@ -169,7 +165,6 @@ const usePokemonData = () => {
               setTabDescriptionData({
                 evolutions,
                 evolutionTriggers,
-                encounterMethod,
                 location,
                 species,
                 abilities,
@@ -182,7 +177,6 @@ const usePokemonData = () => {
             setTabDescriptionData({
               evolutions,
               evolutionTriggers,
-              encounterMethod,
               location,
               species,
               abilities: abilitiesMem,

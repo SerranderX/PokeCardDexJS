@@ -21,7 +21,6 @@ const CardBody = ({
   famale,
   tabDescriptionData,
   pokemonBackground,
-  generacion,
   cardDimensions
 }) => {
   const [indexBkg, setIndexBkg] = useState(0)
@@ -149,7 +148,6 @@ const CardBody = ({
                     selectedTab={selectedTab}
                     pokemonBackground={pokemonBackground}
                     pokemon={pokemon}
-                    generacion={generacion}
                     cardDimensions={cardDimensions}
                   />
                 )}

@@ -34,6 +34,8 @@ const MiniCard = ({ selectedId, character, openPokemonCard, characterSelect, typ
           <motion.img
             src={character.sprites.front_default}
             alt={character.name}
+            width="96px"
+            height="96px"
           />
         }
         {typesMiniCard && (

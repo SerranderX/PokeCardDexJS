@@ -16,7 +16,6 @@ const CardMovesDescription = ({
   pokemonBackground,
   pokemon,
   selectedTab,
-  generacion,
   cardDimensions
 }) => {
   const [version, setVersion] = useState('')
@@ -28,18 +27,20 @@ const CardMovesDescription = ({
   const handleChange = (event) => {
     setVersion(event.target.value)
   }
-
+  
   useEffect(() => {
     if (pokemonVersions.length == 0) {
       let aux = false
 
       const pokemonAbailableVersions = versions.flatMap((version) => {
-        if (version.version.generation_id === generacion && aux === false) {
+        if (version.version.generation_id === pokemon.generation[0] && aux === false) {
           aux = true
         }
 
         return aux ? version : []
       })
+
+      console.log(pokemonAbailableVersions)
 
       setPokemonVersions(pokemonAbailableVersions)
       setVersion(pokemonAbailableVersions[0].version.name)
@@ -85,6 +86,12 @@ const CardMovesDescription = ({
       >
         <motion.h1>{toUpperCaseIndex(tabTitle)}</motion.h1>
         <p>{selectedTab.description}</p>
+        {glosaryElements && 
+          <Glosary 
+            pokemonPaletteColors={pokemonBackground} 
+            glosaryElements={glosaryElements}
+          />
+        }
         <div className="Pokemon-Version_div">
           <select
             className="Pokemon-Version_select"
@@ -100,12 +107,6 @@ const CardMovesDescription = ({
           </select>
         </div>
         <p style={{ marginTop: '.5em' }}>Select the pokemon game version.</p>
-        {glosaryElements && 
-          <Glosary 
-            pokemonPaletteColors={pokemonBackground} 
-            glosaryElements={glosaryElements}
-          />
-        }
       </section>
       <div className="CharacterCard-Description-Body">
         <InfoBox

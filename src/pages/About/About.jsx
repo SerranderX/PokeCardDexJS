@@ -8,7 +8,7 @@ import './About.css'
 const About = () => {
   const { pokedexPage, setPokedexPage } = useContext(AppContext)
 
-  const pokeApiLink = <a href={ENV.pokeApiURL}>PokeApi</a>;
+  const pokeApiLink = <a href={ENV.pokeApiURLPage}>PokeApi</a>;
 
   const pokemonShowdownLink = <a href={ENV.pokemonShowdown}>PokemonShowdown</a>;
 

@@ -48,7 +48,6 @@ const Card = ({
   infoShared,
   setShinnyOn,
   setFamaleOn,
-  generacion,
   enableEffect,
   setEnableEffect,
   pokedexPage,
@@ -116,7 +115,6 @@ const Card = ({
         famale={famaleOn}
         tabDescriptionData={tabDescriptionData}
         pokemonBackground={pokemonBackground}
-        generacion={generacion}
       />
       <CardFooter
         setShinny={setShinnyOn}
