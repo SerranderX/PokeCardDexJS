@@ -40,8 +40,6 @@ const CardMovesDescription = ({
         return aux ? version : []
       })
 
-      console.log(pokemonAbailableVersions)
-
       setPokemonVersions(pokemonAbailableVersions)
       setVersion(pokemonAbailableVersions[0].version.name)
     }

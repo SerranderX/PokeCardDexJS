@@ -108,7 +108,6 @@ const usePokemonData = () => {
 
     const getPokemonGeneralData = async (id) => {
       if (tabDescriptionData === null) {
-        console.log(characterSelect)
 
         const evolutionTriggers = await axios.get(`${ENV.pokeApiURL}evolution-trigger/${id}`)
           .then((response) => response.data)
