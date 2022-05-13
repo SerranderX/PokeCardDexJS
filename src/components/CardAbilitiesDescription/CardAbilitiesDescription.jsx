@@ -16,7 +16,7 @@ const CardAbilitiesDescription = ({
 
   return (
     <React.Fragment>
-      <section
+      <section 
         className="CharacterCard-Description-Title"
         style={{
           backgroundColor: pokemonBackground.primary('0.1'),
