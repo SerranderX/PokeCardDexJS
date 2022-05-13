@@ -17,6 +17,8 @@ const InfoBoxItem = ({
   const [isOpenEndPoint, setIsOpenEndPoint] = useState(false)
   const [contentRes, setContentRes] = useState(null)
 
+  let auxDescription = false;
+
   const toggleOpen = () => {
     if (!endPoint) {
       setIsOpen(!isOpen)
@@ -57,7 +59,6 @@ const InfoBoxItem = ({
       fetchData(endPoint)
     }
   }, [isOpenEndPoint])
-
 
   return (
     <Fragment>
@@ -146,9 +147,9 @@ const InfoBoxItem = ({
                 </li>
                 {contentRes.contest_type?.name && (
                   <li
-                    style={{
-                      borderBottom: `1px ${pokemonBackground.primary()} solid`,
-                    }}
+                  style={{
+                    borderBottom: `1px ${pokemonBackground.primary()} solid`,
+                  }}
                   >
                     <p>
                       <b>Contest type: </b>
@@ -158,9 +159,9 @@ const InfoBoxItem = ({
                 )}
                 {contentRes.contest_type?.name && (
                   <li
-                    style={{
-                      borderBottom: `1px ${pokemonBackground.primary()} solid`,
-                    }}
+                  style={{
+                    borderBottom: `1px ${pokemonBackground.primary()} solid`,
+                  }}
                   >
                     <p>
                       <b>Target: </b>
@@ -171,7 +172,12 @@ const InfoBoxItem = ({
                 <li>
                   <p>
                     <b>Description: </b>
-                    {contentRes.flavor_text_entries[0].flavor_text}
+                    {contentRes.flavor_text_entries.map( desc => {
+                      if(!auxDescription && desc.language.name === 'en') {
+                        auxDescription = true;
+                        return (desc.flavor_text)
+                      }
+                    })}
                   </p>
                 </li>
               </ul>

@@ -13,6 +13,7 @@ import { navMenu } from '@shared/Utils'
 import SubMenuItem from '@components/SubMenuItem/SubMenuItem'
 import PokemonLogo from '@images/pokemon_logo.jsx'
 import { ENV } from '@shared/Env'
+import { languageData } from '@shared/language'
 import {
   variantsSlideSideVar,
   varaintsThemeAnimation,
@@ -60,7 +61,7 @@ const Header = () => {
         <div className="Header-containerlogo">
           <Link to="/" name="link-to-home">
             <PokemonLogo />
-            <h2 className="Logo-text">{ENV.appTitle}</h2>
+            <h2 className="Logo-text">{languageData.appTitle}</h2>
           </Link>
         </div>
 

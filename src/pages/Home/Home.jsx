@@ -3,6 +3,7 @@ import { motion} from 'framer-motion'
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '@context/AppContext'
 import { ENV } from '@shared/Env'
+import { languageData } from '@shared/language'
 import { Card } from '@containers/Card/Card'
 import { HelmetSection } from '@components/HelmetSection/HelmetSection'
 import ArrowRight from '@icons/arrowRight.jsx'
@@ -52,8 +53,8 @@ const Home = () => {
     <Fragment>
       <HelmetSection sectionName={"Home"} />
       <div className="Home-info_presentation">
-        <h2>{ENV.appPresentationTitle}</h2>
-        <h3>{ENV.appPresentation}</h3>
+        <h2>{languageData.appPresentationTitle}</h2>
+        <h3>{languageData.appPresentation}</h3>
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -94,7 +95,7 @@ const Home = () => {
         </Slide>
       </div>
       <div className="Home-info_explain">
-        <h3>{ENV.appDescription}</h3>
+        <h3>{languageData.appDescription}</h3>
       </div>
     </Fragment>
   )
