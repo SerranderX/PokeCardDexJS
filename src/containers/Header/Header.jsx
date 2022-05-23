@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState } from 'react'
+import React, { useRef, useContext, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useCycle } from 'framer-motion'
 import { AppContext } from '@context/AppContext'
@@ -12,7 +12,6 @@ import { MenuItem } from '@components/MenuItem/MenuItem'
 import { navMenu } from '@shared/Utils'
 import SubMenuItem from '@components/SubMenuItem/SubMenuItem'
 import PokemonLogo from '@images/pokemon_logo.jsx'
-import { ENV } from '@shared/Env'
 import { languageData } from '@shared/language'
 import {
   variantsSlideSideVar,
@@ -23,12 +22,12 @@ import {
 } from '@shared/Animations'
 import './Header.css'
 import { SlideButton } from '@components/SlideButton/SlideButton'
+import { useOutsideClickEvent } from '@hooks/useOutsideClickEvent'
 
 const Header = () => {
   const {
     typesMiniCard,
     setTypesMiniCard,
-
     toggleTheme,
     theme,
     getGeneration,
@@ -56,14 +55,16 @@ const Header = () => {
     getGeneration(generation)
   }
 
+  useOutsideClickEvent(containerSideMenuRef, isOpen, handleNavIconClick)
+
   return (
     <div className="Header" ref={containerHeader}>
-        <div className="Header-containerlogo">
-          <Link to="/" name="link-to-home">
-            <PokemonLogo />
-            <h2 className="Logo-text">{languageData.appTitle}</h2>
-          </Link>
-        </div>
+      <div className="Header-containerlogo">
+        <Link to="/" name="link-to-home">
+          <PokemonLogo />
+          <h2 className="Logo-text">{languageData.appTitle}</h2>
+        </Link>
+      </div>
 
       {width > 768 && (
         <Button
@@ -131,7 +132,7 @@ const Header = () => {
             show={isOpen}
             state={autoSound}
             handler={setAutoSound}
-            label={`Auto card sound ${(autoSound) ? 'enabled' : 'disabled'}`}
+            label={`Auto card sound ${autoSound ? 'enabled' : 'disabled'}`}
             style={{ alignItems: 'center', margin: '5% 8% 0% 8%' }}
             variants={variantsNavSlideButton}
           />
@@ -139,13 +140,15 @@ const Header = () => {
             show={isOpen}
             state={typesMiniCard}
             handler={setTypesMiniCard}
-            label={`Mini card types ${(typesMiniCard) ? 'enabled' : 'disabled'}`}
+            label={`Mini card types ${typesMiniCard ? 'enabled' : 'disabled'}`}
             style={{ alignItems: 'center', margin: '0% 8%' }}
             variants={variantsNavSlideButton}
           />
-
         </Navigation>
-        <MenuToggle name="navigation-button" toggle={() => handleNavIconClick()} />
+        <MenuToggle
+          name="navigation-button"
+          toggle={() => handleNavIconClick()}
+        />
         {width <= 768 && isOpen && (
           <Button
             name="change-theme-button"
