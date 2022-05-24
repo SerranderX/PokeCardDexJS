@@ -1,4 +1,4 @@
-const swipeConfidenceThreshold = 10000
+const swipeConfidenceThreshold = 13000
 const swipePower = (offset, velocity) => {
   return Math.abs(offset) * velocity
 }
@@ -9,7 +9,7 @@ const variantsSlide = {
       x: direction > 0 ? 1000 : -1000,
       opacity: 0,
       transition: {
-        duration: 0.2,
+        duration: 0.3,
       },
     }
   },
@@ -25,7 +25,7 @@ const variantsSlide = {
       x: direction < 0 ? 1000 : -1000,
       opacity: 0,
       transition: {
-        duration: 0.2,
+        duration: 0.3,
       },
     }
   },

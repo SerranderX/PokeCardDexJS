@@ -3,8 +3,10 @@ import { pokemonTypeUtils } from '@shared/Utils'
 import { useToast } from '@hooks/useToast'
 import { initialState } from '@hooks/usePokemonData/initialState'
 import { actionTypes } from '@hooks/usePokemonData/actionTypes'
+import { useLocalStorage } from '@hooks/useLocalStorage'
 import { reducer } from '@hooks/usePokemonData/reducer'
 import { ENV } from '@shared/Env'
+import { languageData } from '@shared/language'
 import axios from 'axios'
 
 const usePokemonData = () => {
@@ -23,10 +25,10 @@ const usePokemonData = () => {
     shinnyOn,
     famaleOn,
     infoShared,
-    autoSound,
-    enableEffect,
     legendary
   } = state
+  const [autoSound, setAutoSound] = useLocalStorage(`autoSound-${languageData.appTitle}`, true)
+  const [enableEffect, setEnableEffect] = useLocalStorage(`enableEffect-${languageData.appTitle}`, true)
 
   //Action Creators
   const changeLoading = (data) => dispatch({ type: actionTypes.CHANGE_LOADING, payload: data })
@@ -37,13 +39,11 @@ const usePokemonData = () => {
   const setTabDescriptionData = (data) => dispatch({ type: actionTypes.SET_TAB_DESCRIPTION_DATA, payload: data })
   const setShinnyOn = (data) => dispatch({ type: actionTypes.SET_SHINNY_ON, payload: data })
   const setFamaleOn = (data) => dispatch({ type: actionTypes.SET_FAMALE_ON, payload: data })
-  const setAutoSound = (data) => dispatch({ type: actionTypes.SET_AUTO_SOUND, payload: data })
-  const setEnableEffect = (data) => dispatch({ type: actionTypes.SET_ENABLE_EFFECT, payload: data })
   const setLegendary = (data) => dispatch({ type: actionTypes.SET_LEGENDARY, payload: data })
   const loadPokemonCard = (data) => dispatch({ type: actionTypes.LOAD_POKEMON_CARD, payload: data })
 
   useEffect(() => {
-    const getPokemon = async (name) => {
+    const getPokemon = async () => {
       const pokemon = pokemonTypeUtils[characterSelect.types[0].type.name]
       const pokemonTypesIcons = characterSelect.types.map(
         (type) => pokemonTypeUtils[type.type.name]
@@ -105,35 +105,29 @@ const usePokemonData = () => {
         playPokemonSound(0.1, characterSelect.name)
       }
     }
-
     const getPokemonGeneralData = async (id) => {
       if (tabDescriptionData === null) {
-
-        const evolutionTriggers = await axios.get(`${ENV.pokeApiURL}evolution-trigger/${id}`)
-          .then((response) => response.data)
-          .catch(() => null)
+        
         const species = await axios.get(`${ENV.pokeApiURL}pokemon-species/${id}`)
-          .then((response) => response.data)
-          .catch(() => null)
+        .then((response) => response.data)
+        .catch(() => null)
         const location = await axios.get(pokemon.location_area_encounters)
-          .then((response) => response.data)
-          .catch(() => null)
-          
+        .then((response) => response.data)
+        .catch(() => null)
+        
         if (species != null) {
           const evolutions = await axios.get(species.evolution_chain.url)
-            .then((response) => response.data)
-            .catch(() => null)
+          .then((response) => response.data)
+          .catch(() => null)
           setTabDescriptionData({
             evolutions,
-            evolutionTriggers,
             location,
             species,
           })
         } else {
           setTabDescriptionData({
-            evolutionTriggers,
             location,
-            species,
+            species
           })
         }
 
