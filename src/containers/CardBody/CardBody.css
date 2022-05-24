@@ -22,10 +22,15 @@
   position: absolute;
   right: 6.5%;
   height: 3.5%;
-  border-radius: 50%;
   border: none;
-  width: 5%;
   margin-top: .5%;
+}
+
+.CharacterCard-Background_Button p {
+  color:white;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 0 1%;
 }
 
 .CharacterCard-Image img {

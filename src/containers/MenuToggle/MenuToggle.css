@@ -1,0 +1,7 @@
+.MenuToggle-description {
+    display: flex;
+    position: absolute;
+    font-size: 1.2em;
+    font-weight: bold;
+    left: 4px;
+}

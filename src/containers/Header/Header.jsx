@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState, useEffect } from 'react'
+import React, { useRef, useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useCycle } from 'framer-motion'
 import { AppContext } from '@context/AppContext'
@@ -44,6 +44,7 @@ const Header = () => {
   const [expanded, setExpanded] = useState(false)
   const containerHeader = useRef(null)
   const { width } = useDimensions(containerHeader)
+  const [menuDesc, setmMenuDesc] = useState(false)
 
   const handleNavIconClick = () => {
     toggleOpen()
@@ -68,12 +69,23 @@ const Header = () => {
 
       {width > 768 && (
         <Button
-          name="change-theme-button"
           classType={`Theme-button`}
           toggle={() => toggleTheme()}
           animation={varaintsThemeAnimation(1)}
+          ariaLabel="change-theme-button"
+          buttonHoverState={menuDesc}
+          setButtonHoverState={setmMenuDesc}
         >
           {theme === 'dark' ? LightIcon({ theme }) : DarkIcon({ theme })}
+          <motion.span 
+              style={{color: theme === 'dark' ? 'white' : 'black'}} 
+              animate={menuDesc ? 'visible' : 'invisible'}
+              variants={{visible: { opacity: 1 }, invisible: { opacity: 0 }}}
+              transition={{ delay: .2 }}
+              isOpen={isOpen}
+            >
+              Theme
+            </motion.span>
         </Button>
       )}
       <motion.nav
@@ -148,15 +160,27 @@ const Header = () => {
         <MenuToggle
           name="navigation-button"
           toggle={() => handleNavIconClick()}
-        />
+          isOpen={isOpen}
+        >
+        </MenuToggle>
         {width <= 768 && isOpen && (
           <Button
-            name="change-theme-button"
             classType={`Theme-button`}
             toggle={() => toggleTheme()}
             animation={varaintsThemeAnimation([0.0, 1])}
+            ariaLabel="change-theme-button"
+            buttonHoverState={menuDesc}
+            setButtonHoverState={setmMenuDesc}
           >
             {theme === 'dark' ? LightIcon({ theme }) : DarkIcon({ theme })}
+            <motion.span 
+              style={{color: theme === 'dark' ? 'white' : 'black'}} 
+              animate={menuDesc && !isOpen ? 'visible' : 'invisible'}
+              variants={{visible: { opacity: 1 }, invisible: { opacity: 0 }}}
+              transition={{ delay: .2 }}
+            >
+              Theme
+            </motion.span>
           </Button>
         )}
       </motion.nav>

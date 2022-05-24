@@ -97,6 +97,15 @@
   cursor: pointer;
 }
 
+.Theme-button span {
+  display: flex;
+  position: absolute;
+  font-size: 1.2em;
+  font-weight: bold;
+  right: 1px;
+  margin-top: 3px;
+}
+
 @media (max-width: 768px) {
   .Theme-button {
     left: 285px !important;
