@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   variantsCardAnimation,
@@ -7,28 +7,9 @@ import {
 import { CardBody } from '@containers/CardBody/CardBody'
 import { CardHead } from '@containers/CardHead/CardHead'
 import { CardFooter } from '@containers/CardFooter/CardFooter'
+import { useChangeCardDimensions, validateCardDimensions } from '@hooks/useChangeCardDimensions'
 import '@styles/PokemonTypes.css'
 import './Card.css'
-
-const validateCardDimensions = (windowWidth, windowHeight) => {
-  let cardHeight = 700;
-  let cardWidth = 700 / 1.5;
-
-  if(windowWidth <= cardWidth){
-    cardWidth = windowWidth - 60;
-    cardHeight = cardWidth * 1.5;
-  }
-
-  if(windowHeight <= cardHeight){
-    cardHeight = windowHeight;
-    cardWidth = cardHeight / 1.5;
-  }
-
-  return {
-    cardWidth: cardWidth,
-    cardHeight: cardHeight
-  }
-}
 
 const Card = ({
   selectedId,
@@ -61,25 +42,7 @@ const Card = ({
   })
   const [cardDimensions, setCardDimensions] = useState(validateCardDimensions(windowDimenion.winWidth, windowDimenion.winHeight));
   
-  useEffect(() => {
-    window.addEventListener('resize', detectSize)
-
-    if(cardRef && detectSize){
-      const cardDimensions = validateCardDimensions(windowDimenion.winWidth, windowDimenion.winHeight)
-      setCardDimensions(cardDimensions)
-    }
-
-    return () => {
-      window.removeEventListener('resize', detectSize)
-    }
-  }, [windowDimenion])
-
-  const detectSize = () => {
-    detectHW({
-      winWidth: window.innerWidth,
-      winHeight: window.innerHeight,
-    })
-  }
+  useChangeCardDimensions(cardRef, windowDimenion, setCardDimensions, detectHW)
 
   return (
     <motion.div

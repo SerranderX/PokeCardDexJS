@@ -12,7 +12,7 @@ const Path = (props) => (
   />
 )
 
-const MenuToggle = ({ toggle, isOpen }) => {
+const MenuToggle = ({ toggle, show }) => {
   const { theme } = useContext(AppContext)
   const [menuDesc, setMenuDesc] = useState(false)
 
@@ -51,7 +51,7 @@ const MenuToggle = ({ toggle, isOpen }) => {
           <motion.span 
             className="MenuToggle-description" 
             style={{color: theme === 'dark' ? 'white' : 'black'}} 
-            animate={menuDesc && !isOpen ? 'visible' : 'invisible'}
+            animate={menuDesc && !show ? 'visible' : 'invisible'}
             variants={{visible: { opacity: 1 }, invisible: { opacity: 0 }}}
             transition={{ delay: .2 }}
           >

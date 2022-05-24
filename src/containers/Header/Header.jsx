@@ -24,6 +24,8 @@ import './Header.css'
 import { SlideButton } from '@components/SlideButton/SlideButton'
 import { useOutsideClickEvent } from '@hooks/useOutsideClickEvent'
 
+
+
 const Header = () => {
   const {
     typesMiniCard,
@@ -82,7 +84,6 @@ const Header = () => {
               animate={menuDesc ? 'visible' : 'invisible'}
               variants={{visible: { opacity: 1 }, invisible: { opacity: 0 }}}
               transition={{ delay: .2 }}
-              isOpen={isOpen}
             >
               Theme
             </motion.span>
@@ -160,7 +161,7 @@ const Header = () => {
         <MenuToggle
           name="navigation-button"
           toggle={() => handleNavIconClick()}
-          isOpen={isOpen}
+          show={isOpen}
         >
         </MenuToggle>
         {width <= 768 && isOpen && (

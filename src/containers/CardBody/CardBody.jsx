@@ -93,7 +93,7 @@ const CardBody = ({
                   <motion.div
                     className="underline"
                     layoutId="underline"
-                    animate={{ opacity: [0, 1], transition: { delay: 0.2 } }}
+                    animate={{ x:0 }}
                   />
                 ) : null}
               </li>
