@@ -23,6 +23,7 @@ import {
 import './Header.css'
 import { SlideButton } from '@components/SlideButton/SlideButton'
 import { useOutsideClickEvent } from '@hooks/useOutsideClickEvent'
+import { useWindowsDimensions } from '@hooks/useWindowsDimensions' 
 
 
 
@@ -44,9 +45,8 @@ const Header = () => {
   const containerSideMenuRef = useRef(null)
   const { sideMenuRef } = useDimensions(containerSideMenuRef)
   const [expanded, setExpanded] = useState(false)
-  const containerHeader = useRef(null)
-  const { width } = useDimensions(containerHeader)
   const [menuDesc, setmMenuDesc] = useState(false)
+  const { windowDimenion } = useWindowsDimensions()
 
   const handleNavIconClick = () => {
     toggleOpen()
@@ -61,7 +61,7 @@ const Header = () => {
   useOutsideClickEvent(containerSideMenuRef, isOpen, handleNavIconClick)
 
   return (
-    <div className="Header" ref={containerHeader}>
+    <div className="Header">
       <div className="Header-containerlogo">
         <Link to="/" name="link-to-home">
           <PokemonLogo />
@@ -69,7 +69,7 @@ const Header = () => {
         </Link>
       </div>
 
-      {width > 768 && (
+      {windowDimenion.winWidth > 768 && (
         <Button
           classType={`Theme-button`}
           toggle={() => toggleTheme()}
@@ -164,7 +164,7 @@ const Header = () => {
           show={isOpen}
         >
         </MenuToggle>
-        {width <= 768 && isOpen && (
+        {windowDimenion.winWidth <= 768 && isOpen && (
           <Button
             classType={`Theme-button`}
             toggle={() => toggleTheme()}

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import {
   variantsCardAnimation,
@@ -7,7 +7,8 @@ import {
 import { CardBody } from '@containers/CardBody/CardBody'
 import { CardHead } from '@containers/CardHead/CardHead'
 import { CardFooter } from '@containers/CardFooter/CardFooter'
-import { useChangeCardDimensions, validateCardDimensions } from '@hooks/useChangeCardDimensions'
+import { useChangeCardDimensions } from '@hooks/useChangeCardDimensions'
+import { useWindowsDimensions } from '@hooks/useWindowsDimensions'
 import '@styles/PokemonTypes.css'
 import './Card.css'
 
@@ -36,13 +37,8 @@ const Card = ({
 }) => {
   
   const cardRef = useRef(null)
-  const [windowDimenion, detectHW] = useState({
-    winWidth: window.innerWidth,
-    winHeight: window.innerHeight,
-  })
-  const [cardDimensions, setCardDimensions] = useState(validateCardDimensions(windowDimenion.winWidth, windowDimenion.winHeight));
-  
-  useChangeCardDimensions(cardRef, windowDimenion, setCardDimensions, detectHW)
+  const { windowDimenion } = useWindowsDimensions()
+  const { cardDimensions } = useChangeCardDimensions(windowDimenion)
 
   return (
     <motion.div

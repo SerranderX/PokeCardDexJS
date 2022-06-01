@@ -1,17 +1,19 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-const validateCardDimensions = (windowWidth, windowHeight) => {
+const validateCardDimensions = (windowWidth = null, windowHeight = null) => {
   let cardHeight = 700
   let cardWidth = 700 / 1.5
 
-  if (windowWidth <= cardWidth) {
-    cardWidth = windowWidth - 60
-    cardHeight = cardWidth * 1.5
-  }
-
-  if (windowHeight <= cardHeight) {
-    cardHeight = windowHeight
-    cardWidth = cardHeight / 1.5
+  if(windowWidth != null && windowHeight != null){
+    if (windowWidth <= cardWidth) {
+      cardWidth = windowWidth - 60
+      cardHeight = cardWidth * 1.5
+    }
+  
+    if (windowHeight <= cardHeight) {
+      cardHeight = windowHeight
+      cardWidth = cardHeight / 1.5
+    }
   }
 
   return {
@@ -21,33 +23,24 @@ const validateCardDimensions = (windowWidth, windowHeight) => {
 }
 
 const useChangeCardDimensions = (
-  cardRef,
-  windowDimenion,
-  setCardDimensions,
-  detectHW
+  windowDimenion
 ) => {
-  useEffect(() => {
-    window.addEventListener('resize', detectSize)
+  const [cardDimensions, setCardDimensions] = useState(validateCardDimensions());
 
-    if (cardRef && detectSize) {
-      const cardDimensions = validateCardDimensions(
+  useEffect(() => {
+    if(windowDimenion){
+      const cardDimensionsRes = validateCardDimensions(
         windowDimenion.winWidth,
         windowDimenion.winHeight
       )
-      setCardDimensions(cardDimensions)
-    }
 
-    return () => {
-      window.removeEventListener('resize', detectSize)
+      if(cardDimensionsRes?.cardHeight !== cardDimensions?.cardHeight || cardDimensionsRes?.cardWidth !== cardDimensions?.cardWidth) {
+        setCardDimensions(cardDimensionsRes)
+      }
     }
-  }, [windowDimenion])
+  }, [windowDimenion]);
 
-  const detectSize = () => {
-    detectHW({
-      winWidth: window.innerWidth,
-      winHeight: window.innerHeight,
-    })
-  }
+  return { cardDimensions };
 }
 
-export { useChangeCardDimensions, validateCardDimensions }
+export { useChangeCardDimensions }
