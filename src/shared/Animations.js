@@ -1,27 +1,21 @@
-// While Hover Animations
-const whileHoverCard = {
-  scale: 0.9,
-  opacity: 0.7,
-}
-
-const whileHoverCardExit = {
+export const whileHoverCardExit = {
   scale: 1.1,
   rotate: 360,
 }
 
-const variantsCardAnimation = {
+export const variantsCardAnimation = {
   play: { x: [-3, 3, -3, 3, -3, 3, -3, 0] },
   stop: { x: 0 },
 }
 
-const whileHoverSpriteImage = {
+export const whileHoverSpriteImage = {
   scale: [1, 1.2, 1.2, 1.2, 1.2, 1.2, 1],
   x: [3, -3, 3, -3, 3, -3, 3],
   transition: { duration: 0.5, ease: 'easeInOut' },
 }
 
 // Variants Animations
-const variantsSlideSideVar = {
+export const variantsSlideSideVar = {
   open: (height = 1000) => ({
     clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
     transition: {
@@ -41,7 +35,7 @@ const variantsSlideSideVar = {
   },
 }
 
-const variantsNavbar = {
+export const variantsNavbar = {
   open: {
     height: '100%',
     width: '22em',
@@ -55,7 +49,7 @@ const variantsNavbar = {
   },
 }
 
-const varaintsThemeAnimation = (opacityVar) => ({
+export const varaintsThemeAnimation = (opacityVar) => ({
   whileTap: {
     scale: 0.7,
     transition: {
@@ -73,7 +67,7 @@ const varaintsThemeAnimation = (opacityVar) => ({
   },
 })
 
-const titleNavBarVariant = {
+export const titleNavBarVariant = {
   open: {
     y: 0,
     opacity: 1,
@@ -91,7 +85,7 @@ const titleNavBarVariant = {
   },
 }
 
-const variantsNavSlideButton = {
+export const variantsNavSlideButton = {
   open: {
     y: 0,
     opacity: [0, 1],
@@ -107,16 +101,4 @@ const variantsNavSlideButton = {
       y: { stiffness: 1000 },
     },
   },
-}
-
-export {
-  whileHoverCard,
-  whileHoverCardExit,
-  whileHoverSpriteImage,
-  variantsCardAnimation,
-  variantsNavSlideButton,
-  variantsSlideSideVar,
-  varaintsThemeAnimation,
-  variantsNavbar,
-  titleNavBarVariant,
 }

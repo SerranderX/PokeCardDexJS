@@ -52,7 +52,7 @@ const Home = () => {
   return (
     <Fragment>
       <HelmetSection sectionName={"Home"} />
-      <div className="Home-info_presentation">
+      <article className="Home-info_presentation">
         <h2>{languageData.appPresentationTitle}</h2>
         <h3>{languageData.appPresentation}</h3>
         <motion.div
@@ -63,8 +63,8 @@ const Home = () => {
           Go to Pokedex
           <ArrowRight theme={theme} />
         </motion.div>
-      </div>
-      <div className="Home-container">
+      </article>
+      <article className="Home-container">
         <Slide>
           {selectedId && (
             <Card
@@ -93,10 +93,10 @@ const Home = () => {
           )}
           {!selectedId && ( <Loading /> )}
         </Slide>
-      </div>
-      <div className="Home-info_explain">
+      </article>
+      <article className="Home-info_explain">
         <h3>{languageData.appDescription}</h3>
-      </div>
+      </article>
     </Fragment>
   )
 }
