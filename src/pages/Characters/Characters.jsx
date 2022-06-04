@@ -148,4 +148,4 @@ const Characters = () => {
   }
 }
 
-export { Characters }
+export default Characters

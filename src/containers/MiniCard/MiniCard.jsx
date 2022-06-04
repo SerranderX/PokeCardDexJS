@@ -14,9 +14,7 @@ const MiniCard = ({ selectedId, character, openPokemonCard, characterSelect, typ
   const handleItem = (item) => {
     openPokemonCard(item)
   }
-
-  console.log(show)
-
+  
   return (
     <section ref={ref} style={{padding:'10px', minHeight: '170px', minWidth: '230px'}}>
       {show && (
