@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import CardGeneralDescription from '@components/CardGeneralDescription/CardGeneralDescription'
 import CardLoadDescription from '@components/CardLoadDescription/CardLoadDescription'
@@ -8,6 +8,35 @@ import CardLocationsDescription from '@components/CardLocationsDescription/CardL
 import CardMovesDescription from '@components/CardMovesDescription/CardMovesDescription'
 import { toUpperCaseIndex, backgroundCardImages } from '@shared/Utils'
 import './CardBody.css'
+
+const getBackground = (type) => {
+  switch(type.toLowerCase()){
+    case 'fire':
+      return 9
+    case 'water':
+      return 4
+    case 'grass':
+      return 1
+    case 'ice':
+      return 0
+    case 'poison':
+      return 1
+    case 'flying':
+      return 2
+    case 'bug':
+      return 2
+    case 'dragon':
+      return 5
+    case 'psychic':
+      return 8
+    case 'ghost':
+      return 7
+    case 'fighting':
+      return 12
+    default:
+      return 0
+  }
+}
 
 const CardBody = ({
   pokemon,
@@ -23,7 +52,7 @@ const CardBody = ({
   pokemonBackground,
   cardDimensions
 }) => {
-  const [indexBkg, setIndexBkg] = useState(0)
+  const [indexBkg, setIndexBkg] = useState(getBackground(selectedTab.general.types[0].color.name))
   const [indexBkgColor, setIndexBkgColor] = useState(1)
   const [changeBkg, setChangeBkg] = useState(false)
   const mainWidth = (cardDimensions.cardHeight < 700) ? cardDimensions.cardHeight * 0.395 : '83%';
@@ -76,28 +105,29 @@ const CardBody = ({
       <div className="CharacterCard-Description">
         <nav className="CharacterCard-Description-nav">
           <ul className="CharacterCard-Description-ul">
-            {pokemonData.map((item) => (
-              <li
-                key={item.key}
-                className={item === selectedTab ? 'selected' : ''}
-                style={{
-                  backgroundColor:
-                    item === selectedTab
-                      ? pokemonData[0].general.types[0].color.primary()
-                      : 'transparent',
-                }}
-                onClick={() => changeSelectedTab(item)}
-              >
-                {toUpperCaseIndex(item.key)}
-                {item === selectedTab ? (
-                  <motion.div
-                    className="underline"
-                    layoutId="underline"
-                    animate={{ x:0 }}
-                  />
-                ) : null}
-              </li>
-            ))}
+            {pokemonData.map((item) => {
+              return (
+                <li
+                  key={item.key}
+                  className={item === selectedTab ? 'selected' : ''}
+                  style={{
+                    backgroundColor:
+                      item === selectedTab
+                        ? pokemonData[0].general.types[0].color.primary()
+                        : 'transparent',
+                  }}
+                  onClick={() => changeSelectedTab(item)}
+                >
+                  {toUpperCaseIndex(item.key)}
+                  {item === selectedTab ? (
+                    <motion.div
+                      className="underline"
+                      layoutId="underline"
+                      animate={{ x:0 }}
+                    />
+                  ) : null}
+                </li>
+            )})}
           </ul>
         </nav>
         <main className="CharacterCard-Description-Content" style={{height:mainWidth}}>

@@ -38,6 +38,7 @@ import Fire1BKG from '@images/fire1.jpg'
 import Fire2BKG from '@images/fire2.jpg'
 import Water1BKG from '@images/water1.jpg'
 import Water2BKG from '@images/water2.jpg'
+import FightingBKG from '@images/fighting.jpg'
 import WSXP from '@images/WSXP.jpg'
 
 const toUpperCaseIndex = (str) => {
@@ -647,6 +648,7 @@ const backgroundCardImages = [
   { img: Fire1BKG, color: '#c83402' },
   { img: Fire2BKG, color: '#c89202' },
   { img: WSXP, color: '#3a5415' },
+  { img: FightingBKG, color: '#0945b2' },
 ]
 
 export {

@@ -11,11 +11,10 @@
 }
 
 .CharacterCard-Image {
-  border-radius: 2%;
+  border-radius: 4%;
   background-size: 100% 100%;
   clear: both;
-  border-bottom: #3b3b3b 3px solid;
-  border-top: #3b3b3b 3px solid;
+  border: #323232 3px solid;
 }
 
 .CharacterCard-Background_Button {
