@@ -39,6 +39,7 @@ import Fire2BKG from '@images/fire2.jpg'
 import Water1BKG from '@images/water1.jpg'
 import Water2BKG from '@images/water2.jpg'
 import FightingBKG from '@images/fighting.jpg'
+import GhostBKG from '@images/ghost.jpg'
 import WSXP from '@images/WSXP.jpg'
 
 const toUpperCaseIndex = (str) => {
@@ -648,8 +649,39 @@ const backgroundCardImages = [
   { img: Fire1BKG, color: '#c83402' },
   { img: Fire2BKG, color: '#c89202' },
   { img: WSXP, color: '#3a5415' },
-  { img: FightingBKG, color: '#0945b2' },
+  { img: FightingBKG, color: '#c7c9d2' },
+  { img: GhostBKG, color: '#152411' },
 ]
+
+const findBKGByType = (type) => {
+  const typeBKG = type ? type.toLowerCase() : ''
+  switch(typeBKG){
+    case 'fire':
+      return 9
+    case 'water':
+      return 4
+    case 'grass':
+      return 1
+    case 'ice':
+      return 0
+    case 'poison':
+      return 1
+    case 'flying':
+      return 2
+    case 'bug':
+      return 2
+    case 'dragon':
+      return 5
+    case 'psychic':
+      return 8
+    case 'ghost':
+      return 13
+    case 'fighting':
+      return 12
+    default:
+      return 0
+  }
+}
 
 export {
   toUpperCaseIndex,
@@ -660,5 +692,6 @@ export {
   pokemonTypeUtils,
   versions,
   backgroundCardImages,
-  pokemonHomeCardsReq
+  pokemonHomeCardsReq,
+  findBKGByType
 }

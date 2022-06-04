@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import CardGeneralDescription from '@components/CardGeneralDescription/CardGeneralDescription'
 import CardLoadDescription from '@components/CardLoadDescription/CardLoadDescription'
@@ -6,37 +6,9 @@ import CardStatsDescription from '@components/CardStatsDescription/CardStatsDesc
 import CardAbilitiesDescription from '@components/CardAbilitiesDescription/CardAbilitiesDescription'
 import CardLocationsDescription from '@components/CardLocationsDescription/CardLocationsDescription'
 import CardMovesDescription from '@components/CardMovesDescription/CardMovesDescription'
-import { toUpperCaseIndex, backgroundCardImages } from '@shared/Utils'
+import { toUpperCaseIndex, backgroundCardImages, findBKGByType } from '@shared/Utils'
 import './CardBody.css'
 
-const getBackground = (type) => {
-  switch(type.toLowerCase()){
-    case 'fire':
-      return 9
-    case 'water':
-      return 4
-    case 'grass':
-      return 1
-    case 'ice':
-      return 0
-    case 'poison':
-      return 1
-    case 'flying':
-      return 2
-    case 'bug':
-      return 2
-    case 'dragon':
-      return 5
-    case 'psychic':
-      return 8
-    case 'ghost':
-      return 7
-    case 'fighting':
-      return 12
-    default:
-      return 0
-  }
-}
 
 const CardBody = ({
   pokemon,
@@ -52,10 +24,19 @@ const CardBody = ({
   pokemonBackground,
   cardDimensions
 }) => {
-  const [indexBkg, setIndexBkg] = useState(getBackground(selectedTab.general.types[0].color.name))
-  const [indexBkgColor, setIndexBkgColor] = useState(1)
-  const [changeBkg, setChangeBkg] = useState(false)
-  const mainWidth = (cardDimensions.cardHeight < 700) ? cardDimensions.cardHeight * 0.395 : '83%';
+  const getMainWidth = useCallback((width) => {
+    return (width < 700) ? cardDimensions.cardHeight * 0.395 : '83%';
+  })
+  const [indexBkg, setIndexBkg] = useState(0)
+  const [indexBkgColor, setIndexBkgColor] = useState(0)
+  const bkgButton = useRef(null)
+  const mainWidth = getMainWidth(cardDimensions.cardHeight);
+  
+  useEffect(() => {
+    const index = findBKGByType(selectedTab?.general?.types[0]?.color?.name)
+    setIndexBkg(index)
+    setIndexBkgColor(index === backgroundCardImages.length - 1 ? 1 : index + 1)
+  },[])
 
   const handleBackground = () => {
     setIndexBkg(indexBkg === backgroundCardImages.length - 1 ? 0 : indexBkg + 1)
@@ -90,17 +71,12 @@ const CardBody = ({
         <motion.button
           className="CharacterCard-Background_Button"
           name="background-change-button"
+          ref={bkgButton}
           style={{ backgroundColor: backgroundCardImages[indexBkgColor].color, borderRadius: '50%', width: '5%'}}
           type="button"
           onClick={handleBackground}
-          whileHover={{ width: '40%', borderRadius: '25px' }}
-          whileTap={{ scale: 0.95 }}
-          onMouseEnter={() => setChangeBkg(!changeBkg)}
-          onMouseLeave={() => setChangeBkg(!changeBkg)}
           aria-label="Change background"
-        >
-          { changeBkg && <motion.p animate={{ opacity: [0, 1] }} transition={{ delay: .2, x: { type: "spring", stiffness: 10 }}}>Change background</motion.p> }
-        </motion.button>
+        />
       </div>
       <div className="CharacterCard-Description">
         <nav className="CharacterCard-Description-nav">
