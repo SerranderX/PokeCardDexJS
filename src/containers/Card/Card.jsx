@@ -8,7 +8,6 @@ import { CardBody } from '@containers/CardBody/CardBody'
 import { CardHead } from '@containers/CardHead/CardHead'
 import { CardFooter } from '@containers/CardFooter/CardFooter'
 import { useChangeCardDimensions } from '@hooks/useChangeCardDimensions'
-import { useWindowsDimensions } from '@hooks/useWindowsDimensions'
 import '@styles/PokemonTypes.css'
 import './Card.css'
 
@@ -37,8 +36,7 @@ const Card = ({
 }) => {
   
   const cardRef = useRef(null)
-  const { windowDimenion } = useWindowsDimensions()
-  const { cardDimensions } = useChangeCardDimensions(windowDimenion)
+  const { cardDimensions } = useChangeCardDimensions()
 
   return (
     <motion.div

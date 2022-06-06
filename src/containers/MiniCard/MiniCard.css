@@ -6,6 +6,7 @@
     cursor: pointer;
     min-height: 170px;
     min-width: 230px;
+    max-width: 250px;
   }
   
 .MiniCard-Selected {

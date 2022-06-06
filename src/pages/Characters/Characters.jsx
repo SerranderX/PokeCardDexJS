@@ -49,19 +49,18 @@ const Characters = () => {
   }, [])
 
   const filtredPokemons = useMemo(() => {
-    const regex = /\d+/g
-    const matches = search.toLowerCase().match(regex)
-    if (!matches) {
-      return characters.filter((item) => {
-          const nameAndTypes = item.types.map((type) => type.type.name) + item.name;
-          return nameAndTypes.toLowerCase().includes(search.toLowerCase())
-        }
-      )
+    let searchStr = "";
+    if(typeof search !== 'string') {
+      searchStr = search.toString();
     } else {
-      return characters.filter((item) =>
-        item.url.split('/')[6].includes(matches[0])
-      )
+      searchStr = search;
     }
+
+    return characters.filter((item) => {
+        const nameAndTypesAndID = item.types.map((type) => type.type.name) + item.name + item.id.toString();
+        return nameAndTypesAndID.toLowerCase().includes(searchStr.toLowerCase())
+      }
+    )
   }, [search, characters])
 
   if (!loading && !error) {

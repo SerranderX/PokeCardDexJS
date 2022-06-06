@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useWindowsDimensions } from '@hooks/useWindowsDimensions'
 
 const validateCardDimensions = (windowWidth = null, windowHeight = null) => {
   let cardHeight = 700
@@ -22,17 +23,13 @@ const validateCardDimensions = (windowWidth = null, windowHeight = null) => {
   }
 }
 
-const useChangeCardDimensions = (
-  windowDimenion
-) => {
-  const [cardDimensions, setCardDimensions] = useState(validateCardDimensions());
+const useChangeCardDimensions = () => {
+  const { windowDimenion } = useWindowsDimensions()
+  const [cardDimensions, setCardDimensions] = useState(validateCardDimensions(windowDimenion.winWidth, windowDimenion.winHeight));
 
   useEffect(() => {
     if(windowDimenion){
-      const cardDimensionsRes = validateCardDimensions(
-        windowDimenion.winWidth,
-        windowDimenion.winHeight
-      )
+      const cardDimensionsRes = validateCardDimensions(windowDimenion.winWidth,windowDimenion.winHeight)
 
       if(cardDimensionsRes?.cardHeight !== cardDimensions?.cardHeight || cardDimensionsRes?.cardWidth !== cardDimensions?.cardWidth) {
         setCardDimensions(cardDimensionsRes)
