@@ -70,7 +70,12 @@ module.exports = {
         patterns: [{
             from: path.resolve(__dirname, "src", "assets/images"),
             to: "assets/images"
-        }]
+        },
+        { from: 'public/manifest.json', to: '' },
+        { from: 'public/service-worker.js', to: '' },
+        { from: 'public/favicon.ico', to: '' },
+        { from: 'public/icon.png', to: '' }
+      ],
     }),
     new CleanWebpackPlugin(),
     new BundleAnalyzerPlugin(),

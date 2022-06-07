@@ -1,15 +1,26 @@
 {
-  "short_name": "PokeCardDexJS",
   "name": "A pokedex inspired in TCG and VGC Pokemon games",
+  "short_name": "PokeCardDexJS",
+  "start_url": "/",
+  "display": "standalone",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "48x48 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "128x128 64x64",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": "/",
-  "display": "standalone",
+  "scope": "/",
   "theme_color": "#ffffff",
-  "background_color": "#0c3691"
+  "background_color": "#0c3691",
+  "related_applications": [{
+    "platform": "web"
+  }],
+  "prefer_related_applications": false
 }
