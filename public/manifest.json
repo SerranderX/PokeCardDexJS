@@ -5,13 +5,12 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "icon.png",
+      "src": "assets/icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
-  "scope": "/",
   "theme_color": "#ffffff",
   "background_color": "#0c3691",
   "related_applications": [],
