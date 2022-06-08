@@ -75,7 +75,7 @@ module.exports = {
       { from: 'public/manifest.json', to: '' },
       { from: 'public/service-worker.js', to: '' },
       { from: 'public/favicon.ico', to: '' },
-      { from: 'public/icon.png', to: 'assets/images' }
+      { from: 'public/icon.png', to: '' }
     ]
     }),
     new DotEnv(),
