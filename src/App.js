@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AppContext } from '@context/AppContext'
 import { useAppInitialState } from '@hooks/useAppInitialState'
 import { Layout } from '@containers/Layout/Layout'
+import { LoadingPage } from '@pages/LoadingPage/LoadingPage'
 import 'izitoast-react/dist/iziToast.css'
 
 const Characters = lazy(() => import('@pages/Characters/Characters'))
@@ -16,18 +17,18 @@ function App() {
 
   return (
     <AppContext.Provider value={initialState}>
-      <Suspense fallback={<div/>}>
         <BrowserRouter>
           <Layout theme={initialState.theme}>
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/pokedex" element={<Characters />} />
-              <Route exact path="/about" element={<About />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <Suspense fallback={<LoadingPage />}>
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/pokedex" element={<Characters />} />
+                <Route exact path="/about" element={<About />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>   
           </Layout>
         </BrowserRouter>
-      </Suspense>
     </AppContext.Provider>
   )
 }

@@ -141,7 +141,7 @@ const Characters = () => {
     return (
       <Fragment>
         <HelmetSection sectionName={"Pokedex"} />
-        <Loading pokedexPage={true} />
+        <Loading centered={true} />
       </Fragment>
     )  
   }
