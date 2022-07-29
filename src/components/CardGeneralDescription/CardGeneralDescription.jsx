@@ -12,6 +12,7 @@ const CardGeneralDescription = ({
   pokemonData,
   pokemon,
   pokemonBackground,
+  evolutionTrigger
 }) => {
   let auxDesc = false
   const pseudoLegendary = useCallback(
@@ -104,6 +105,14 @@ const CardGeneralDescription = ({
             name={'Weight'}
             data={`${transformWeight(pokemonData[0].general.weight)} kg`}
           />
+          {evolutionTrigger && (
+            <DescriptionItem
+              backgroundColor={pokemonBackground.primary('0.1')}
+              borderColor={pokemonBackground.primary()}
+              name={'Evolution Trigger'}
+              data={evolutionTrigger}
+            />
+          )}
           <DescriptionItem
             backgroundColor={pokemonBackground.primary('0.1')}
             borderColor={pokemonBackground.primary()}

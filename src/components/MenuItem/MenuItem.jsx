@@ -95,7 +95,7 @@ export const MenuItem = ({
               animate="open"
               exit="collapsed"
               variants={variantsSection}
-              transition={{ duration: 0.9, ease: [0.04, 0.62, 0.23, 0.98] }}
+              transition={{ duration: 0.6, ease: [0.04, 0.62, 0.23, 0.98] }}
             >
               {children}
             </motion.section>

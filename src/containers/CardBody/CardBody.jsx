@@ -31,6 +31,7 @@ const CardBody = ({
   const [indexBkgColor, setIndexBkgColor] = useState(0)
   const bkgButton = useRef(null)
   const mainWidth = getMainWidth(cardDimensions.cardHeight);
+  const [evolutionTrigger, setEvolutionTrigger] = useState("");
   
   useEffect(() => {
     const index = findBKGByType(selectedTab?.general?.types[0]?.color?.name)
@@ -44,6 +45,39 @@ const CardBody = ({
       indexBkgColor === backgroundCardImages.length - 1 ? 1 : indexBkgColor + 1
     )
   }
+
+  useEffect(() => {
+    if(tabDescriptionData?.evolutions?.chain?.evolution_details.length > 0) {
+      console.log("entro 1");
+      tabDescriptionData?.evolutions?.chain?.evolution_details.forEach(evolution => {
+          evolution?.evolution_details.forEach(evolutionDetails => {
+            setEvolutionTrigger(evolutionDetails?.trigger?.name);
+          });
+      });
+    } else if (tabDescriptionData?.evolutions?.chain?.evolves_to?.length > 0) {
+      console.log("entro 2");
+      console.log(tabDescriptionData?.evolutions?.chain?.evolves_to[1].species?.name);
+      tabDescriptionData?.evolutions?.chain?.evolves_to?.forEach(evolution => {
+        if(evolution?.species?.name == pokemon?.name ) {
+          let evolutionTriggerMemory = "";
+          evolution.evolution_details.forEach(evolutionDetails => {
+            if(!evolutionTriggerMemory.toLowerCase().includes(evolutionDetails?.trigger?.name.toLowerCase())){
+              if(evolutionDetails?.trigger?.name === "use-item"){
+                evolutionTriggerMemory += `[ ${evolutionDetails?.trigger?.name}: ${evolutionDetails?.item?.name} ]`;
+              } else {
+                evolutionTriggerMemory += `[ ${evolutionDetails?.trigger?.name} ]`;
+              } 
+            }
+          })
+          if(evolutionTriggerMemory != ""){
+            setEvolutionTrigger(evolutionTriggerMemory);
+          }
+        } else {
+
+        }
+      })
+    }
+  },[tabDescriptionData]);
 
   const imagen = () => {
     if (shinny && famale) {
@@ -127,6 +161,7 @@ const CardBody = ({
                     selectedTab={selectedTab}
                     pokemon={pokemon}
                     pokemonBackground={pokemonBackground}
+                    evolutionTrigger={evolutionTrigger}
                   />
                 )}
               {!onLoadDescription &&
