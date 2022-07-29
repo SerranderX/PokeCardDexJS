@@ -55,8 +55,6 @@ const CardBody = ({
           });
       });
     } else if (tabDescriptionData?.evolutions?.chain?.evolves_to?.length > 0) {
-      console.log("entro 2");
-      console.log(tabDescriptionData?.evolutions?.chain?.evolves_to[1].species?.name);
       tabDescriptionData?.evolutions?.chain?.evolves_to?.forEach(evolution => {
         if(evolution?.species?.name == pokemon?.name ) {
           let evolutionTriggerMemory = "";
@@ -72,8 +70,6 @@ const CardBody = ({
           if(evolutionTriggerMemory != ""){
             setEvolutionTrigger(evolutionTriggerMemory);
           }
-        } else {
-
         }
       })
     }
