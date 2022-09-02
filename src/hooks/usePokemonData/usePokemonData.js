@@ -102,7 +102,7 @@ const usePokemonData = () => {
       })
 
       if (autoSound) {
-        playPokemonSound(0.1, characterSelect.name)
+        playPokemonSound(0.07, characterSelect.name)
       }
     }
     const getPokemonGeneralData = async (id) => {
@@ -256,7 +256,7 @@ const usePokemonData = () => {
         }, 1000)
       })
       .catch(() => {
-        if (volume !== 0.15) {
+        if (volume === 0.15) {
           useToast({
             message: 'Sorry but we don`t have the sound of this pokemon.',
             type: 'error',

@@ -24,7 +24,7 @@ const useToast = ({ message, type, color = undefined, bkgColor }) => {
       position: 'top-center',
       style: {backgroundColor: bkgColor, color: 'black'},
       // Custom Icon
-      icon: '👏',
+      icon: '😓',
     
       // Change colors of success/error/loading icon
       iconTheme: {

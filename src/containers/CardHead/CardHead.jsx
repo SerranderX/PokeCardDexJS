@@ -17,7 +17,7 @@ const CardHead = ({
   pokedexPage,
 }) => {
   const soundToggle = (name) => {
-    playPokemonSound(0.1, name)
+    playPokemonSound(0.15, name)
   }
 
   const handleCloseCard = () => {
