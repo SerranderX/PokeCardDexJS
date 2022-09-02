@@ -27,7 +27,7 @@ const CardHead = ({
       useToast({
         message: 'Close function is not available in home page.',
         type: 'info',
-        bkgColor: 'rgba(255,241,88,1)',
+        bkgColor: '#d8c481',
       })
     }
   }

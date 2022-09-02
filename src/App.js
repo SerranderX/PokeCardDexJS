@@ -5,7 +5,7 @@ import { AppContext } from '@context/AppContext'
 import { useAppInitialState } from '@hooks/useAppInitialState'
 import { Layout } from '@containers/Layout/Layout'
 import { LoadingPage } from '@pages/LoadingPage/LoadingPage'
-import 'izitoast-react/dist/iziToast.css'
+
 
 const Characters = lazy(() => import('@pages/Characters/Characters'))
 const NotFound = lazy(() => import('@pages/NotFound/NotFound'))

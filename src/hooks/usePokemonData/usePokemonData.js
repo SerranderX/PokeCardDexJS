@@ -256,12 +256,12 @@ const usePokemonData = () => {
         }, 1000)
       })
       .catch(() => {
-        if (volume !== 0.1) {
+        if (volume !== 0.15) {
           useToast({
             message: 'Sorry but we don`t have the sound of this pokemon.',
-            type: 'warning',
+            type: 'error',
             color: 'red',
-            bkgColor: '#a83632'
+            bkgColor: '#b64e71'
           })
         }
       })

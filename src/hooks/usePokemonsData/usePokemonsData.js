@@ -114,8 +114,9 @@ const usePokemonsData = () => {
         useToast({
           message:
             'Sorry but something was wrong with trying to get the pokemons data.',
-          type: 'warning',
+          type: 'error',
           color: 'red',
+          bkgColor: '#b64e71'
         })
       }
     }
