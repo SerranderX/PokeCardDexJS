@@ -16,24 +16,27 @@ const CardMovesDescription = ({
   pokemonBackground,
   pokemon,
   selectedTab,
-  cardDimensions
+  cardDimensions,
 }) => {
   const [version, setVersion] = useState('')
   const [pokemonVersions, setPokemonVersions] = useState([])
   const [moves, setMoves] = useState([])
-  const selectVerWidth = (cardDimensions.cardHeight < 700) ? cardDimensions.cardWidth * 0.6 : '';
-
+  const selectVerWidth =
+    cardDimensions.cardHeight < 700 ? cardDimensions.cardWidth * 0.6 : ''
 
   const handleChange = (event) => {
     setVersion(event.target.value)
   }
-  
+
   useEffect(() => {
     if (pokemonVersions.length == 0) {
       let aux = false
 
       const pokemonAbailableVersions = versions.flatMap((version) => {
-        if (version.version.generation_id === pokemon.generation[0] && aux === false) {
+        if (
+          version.version.generation_id === pokemon.generation[0] &&
+          aux === false
+        ) {
           aux = true
         }
 
@@ -67,7 +70,6 @@ const CardMovesDescription = ({
         }
       })
 
-
       setMoves(movesFiltered)
     }
   }, [version])
@@ -84,17 +86,20 @@ const CardMovesDescription = ({
       >
         <motion.h1>{toUpperCaseIndex(tabTitle)}</motion.h1>
         <p>{selectedTab.description}</p>
-        {glosaryElements && 
-          <Glosary 
-            pokemonPaletteColors={pokemonBackground} 
+        {glosaryElements && (
+          <Glosary
+            pokemonPaletteColors={pokemonBackground}
             glosaryElements={glosaryElements}
           />
-        }
+        )}
         <div className="Pokemon-Version_div">
           <select
             className="Pokemon-Version_select"
             onChange={handleChange}
-            style={{ backgroundColor: pokemonBackground.primary(), width: selectVerWidth }}
+            style={{
+              backgroundColor: pokemonBackground.primary(),
+              width: selectVerWidth,
+            }}
           >
             {pokemonVersions.length > 0 &&
               pokemonVersions.map((version) => (

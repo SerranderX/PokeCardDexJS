@@ -23,9 +23,7 @@ import {
 import './Header.css'
 import { SlideButton } from '@components/SlideButton/SlideButton'
 import { useOutsideClickEvent } from '@hooks/useOutsideClickEvent'
-import { useWindowsDimensions } from '@hooks/useWindowsDimensions' 
-
-
+import { useWindowsDimensions } from '@hooks/useWindowsDimensions'
 
 const Header = () => {
   const {
@@ -79,14 +77,14 @@ const Header = () => {
           setButtonHoverState={setmMenuDesc}
         >
           {theme === 'dark' ? LightIcon({ theme }) : DarkIcon({ theme })}
-          <motion.span 
-              style={{color: theme === 'dark' ? 'white' : 'black'}} 
-              animate={menuDesc ? 'visible' : 'invisible'}
-              variants={{visible: { opacity: 1 }, invisible: { opacity: 0 }}}
-              transition={{ delay: .2 }}
-            >
-              Theme
-            </motion.span>
+          <motion.span
+            style={{ color: theme === 'dark' ? 'white' : 'black' }}
+            animate={menuDesc ? 'visible' : 'invisible'}
+            variants={{ visible: { opacity: 1 }, invisible: { opacity: 0 } }}
+            transition={{ delay: 0.2 }}
+          >
+            Theme
+          </motion.span>
         </Button>
       )}
       <motion.nav
@@ -162,8 +160,7 @@ const Header = () => {
           name="navigation-button"
           toggle={() => handleNavIconClick()}
           show={isOpen}
-        >
-        </MenuToggle>
+        ></MenuToggle>
         {windowDimenion.winWidth <= 768 && isOpen && (
           <Button
             classType={`Theme-button`}
@@ -174,11 +171,11 @@ const Header = () => {
             setButtonHoverState={setmMenuDesc}
           >
             {theme === 'dark' ? LightIcon({ theme }) : DarkIcon({ theme })}
-            <motion.span 
-              style={{color: theme === 'dark' ? 'white' : 'black'}} 
+            <motion.span
+              style={{ color: theme === 'dark' ? 'white' : 'black' }}
               animate={menuDesc && !isOpen ? 'visible' : 'invisible'}
-              variants={{visible: { opacity: 1 }, invisible: { opacity: 0 }}}
-              transition={{ delay: .2 }}
+              variants={{ visible: { opacity: 1 }, invisible: { opacity: 0 } }}
+              transition={{ delay: 0.2 }}
             >
               Theme
             </motion.span>
