@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "pokecarddexjs"
-  }
+    "default": "pokecarddexjs",
+    "prod": "pokecarddexjs"
+  },
+  "targets": {},
+  "etags": {}
 }
